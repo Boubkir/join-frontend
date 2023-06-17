@@ -1,1 +1,44 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+  --aside-font-color: #cdcdcd;
+  --field-required: #ff8190;
+  --field-wrong-msg: #ff001f;
+  --main-bg-color: #f6f7f8;
+  --main-black: #000000;
+  --main-blue: #42abe2;
+  --main-dark-contrast: #091931;
+  --main-dark: #2a3647;
+  --main-gray: #d5d5d5;
+  --main-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+  --main-white: #ffffff;
+  --prio-low: #7ae229;
+  --prio-medium: #ffa800;
+  --prio-urgent: #ff3d00;
+  --sub-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
+  --task-blue: #29abe2;
+
+  --label-1: #0190e0;
+  --label-2: #02cf3f;
+  --label-3: #ee00d6;
+  --label-4: #f4f4f4;
+  --label-5: #ff7a00;
+  --label-6: #1fd7c1;
+  --label-7: #9327ff;
+  --label-8: #4e963d;
+}
+
+body {
+  margin: 0;
+}
+
+* {
+  font-family: "Inter";
+}
+
+.display-flex {
+  display: flex;
+}
+
+.center {
+  display: flex;
+  place-items: center;
+}
