@@ -26,16 +26,20 @@ nav {
   align-items: flex-start;
   gap: 15px;
   width: 232px;
+}
 
-  a {
-    color: var(--aside-font-color);
-    text-decoration: none;
-    gap: 20px;
-    height: 46px;
-    width: 100%;
-    padding: 8px 53px;
-    box-sizing: border-box;
-  }
+a {
+  color: var(--aside-font-color);
+  text-decoration: none;
+  gap: 20px;
+  height: 46px;
+  width: 100%;
+  padding: 8px 53px;
+  box-sizing: border-box;
+}
+
+a.active {
+  background-color: var(--main-dark-contrast);
 }
 
 .legal-container {
@@ -55,4 +59,8 @@ nav {
   width: 100%;
   box-sizing: border-box;
   cursor: pointer;
+
+  :active {
+    background-color: var(--main-dark-contrast);
+  }
 }
