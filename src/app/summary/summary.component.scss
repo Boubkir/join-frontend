@@ -1,0 +1,150 @@
+.content {
+  padding-top: 82px;
+  padding-left: 123px;
+  box-sizing: border-box;
+  background-color: var(--main-bg-color);
+  font-style: normal;
+  min-height: calc(100vh - 94px);
+}
+
+.headline {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+
+  h1 {
+    margin: 0;
+    font-weight: 700;
+    font-size: 61px;
+  }
+
+  span {
+    font-weight: 400;
+    font-size: 27px;
+  }
+
+  img {
+    height: 59px;
+  }
+}
+
+.dashboard {
+  margin-top: 87px;
+}
+
+.task-number-card {
+  height: 170px;
+  width: 170px;
+  padding: 25px 0px;
+  gap: 13px;
+  box-sizing: border-box;
+  text-align: center;
+  background-color: white;
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 30px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: var(--main-dark);
+    color: #ffffff;
+  }
+}
+
+.number {
+  font-weight: 600;
+  font-size: 64px;
+}
+
+.task-status {
+  font-weight: 400;
+  font-size: 21px;
+}
+
+.important-tasks {
+  width: 580px;
+  height: 150px;
+  background-color: white;
+  border-radius: 30px;
+  padding: 28px 48px;
+  box-sizing: border-box;
+  gap: 61px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: var(--main-dark);
+    color: #ffffff;
+  }
+}
+
+.urgent-count {
+  gap: 18px;
+
+  .urgent-number {
+    font-weight: 600;
+    font-size: 47px;
+    text-align: center;
+  }
+
+  .urgent-text {
+    font-weight: 400;
+    font-size: 16px;
+  }
+}
+
+.seperate-line {
+  height: 102px;
+  width: 2px;
+  background-color: #d1d1d1;
+}
+
+.date {
+  font-weight: 700;
+  font-size: 21px;
+}
+
+.date-text {
+  font-weight: 400;
+  font-size: 16px;
+}
+
+.to-do-done-container {
+  gap: 18px;
+  width: 272.5px;
+  height: 150px;
+  background: #ffffff;
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 30px;
+  padding: 38px 19px;
+  box-sizing: border-box;
+  justify-content: center;
+}
+
+.to-do-done-number {
+  font-weight: 600;
+  font-size: 64px;
+  text-align: center;
+}
+
+.to-do-done-text {
+  font-weight: 400;
+  font-size: 21px;
+}
+
+.to-do-done-container:hover {
+  background-color: var(--main-dark);
+  color: white;
+  cursor: pointer;
+
+  svg circle {
+    fill: white;
+  }
+
+  .todo-svg path {
+    fill: var(--main-dark);
+  }
+
+  .done-svg path {
+    stroke: var(--main-dark);
+  }
+}
+

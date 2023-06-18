@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./add-task.component.scss'],
 })
 export class AddTaskComponent {
+  public hideLayout = false;
 
+  ngOnInit() {
+    this.hideLayout = false;
+  }
 }

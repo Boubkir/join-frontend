@@ -1,6 +1,8 @@
-<div class="content">
-  <app-header></app-header>
-  <app-aside></app-aside>
+<div [ngClass]="{'path-content': hideLayout}">
+  <ng-container *ngIf="!hideLayout">
+    <app-header></app-header>
+    <app-aside></app-aside>
+  </ng-container>
   <div class="path-content">
     <router-outlet></router-outlet>
   </div>

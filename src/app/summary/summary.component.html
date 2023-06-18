@@ -1,1 +1,74 @@
-<p>summary works!</p>
+<div class="content column">
+  <div class="headline">
+    <h1>Summary</h1>
+    <img src="assets/img/vertikal-line-summary.png" alt="">
+    <span>Everything in a nutshell!</span>
+  </div>
+  <div class="column dashboard gap-35">
+    <div class="display-flex gap-35">
+      <div routerLink="/board" class="task-number-card column center">
+        <span class="number">5</span>
+        <span class="task-status">Task in Board</span>
+      </div>
+      <div routerLink="/board" class="task-number-card column center">
+        <span class="number">2</span>
+        <span class="task-status">Task in Board</span>
+      </div>
+      <div routerLink="/board" class="task-number-card column center">
+        <span class="number">2</span>
+        <span class="task-status">Task in Board</span>
+      </div>
+    </div>
+    <div routerLink="/board" class="important-tasks display-flex center">
+      <div class="urgent-count display-flex center">
+        <img src="assets/icons/important.png" alt="">
+        <div class="display-flex column">
+          <div class="urgent-number">1</div>
+          <div class="urgent-text">Urgent</div>
+        </div>
+      </div>
+      <div class="seperate-line"></div>
+      <div class="display-flex column gap-13">
+        <span class="date">October 16,2022</span>
+        <span class="date-text">Upcoming Deadline</span>
+      </div>
+    </div>
+
+    <div class="gap-35 display-flex">
+      <div routerLink="/board" class="to-do-done-container display-flex center">
+        <svg class="todo-svg" width="70" height="70" viewBox="0 0 70 70" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="35.25" cy="35" r="34.5" fill="#2A3647" />
+          <path
+            d="M31.6156 47.262L26.0508 43.8847L40.211 20.553C40.7841 19.6087 42.0141 19.3078 42.9584 19.8809L45.1037 21.1829C46.0479 21.756 46.3488 22.986 45.7758 23.9303L31.6156 47.262Z"
+            fill="white" />
+          <path
+            d="M30.94 48.3749L25.3752 44.9976L26.2314 48.4972C26.3626 49.0337 26.9039 49.3622 27.4403 49.231L30.94 48.3749Z"
+            fill="white" />
+        </svg>
+        <div class="column">
+          <span class="to-do-done-number">
+            1
+          </span>
+          <span class="to-do-done-text">
+            To-do
+          </span>
+        </div>
+      </div>
+      <div routerLink="/board" class="to-do-done-container display-flex center">
+        <svg class="done-svg" width="70" height="70" viewBox="0 0 70 70" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="35.25" cy="35" r="34.5" fill="#2A3647" />
+          <path d="M20.2783 35.0001L31.5071 46.0662L50.2217 23.9341" stroke="white" stroke-width="7"
+            stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+        <div class="column">
+          <span class="to-do-done-number">
+            1
+          </span>
+          <span class="to-do-done-text">
+            Done
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

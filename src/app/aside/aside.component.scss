@@ -7,7 +7,7 @@
   background-color: var(--main-dark);
   width: 232px;
   height: 100vh;
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   bottom: 0;
@@ -36,6 +36,7 @@ a {
   width: 100%;
   padding: 8px 53px;
   box-sizing: border-box;
+  white-space: nowrap;
 }
 
 a.active {
