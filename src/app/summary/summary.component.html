@@ -7,16 +7,16 @@
   <div class="column dashboard gap-35">
     <div class="display-flex gap-35">
       <div routerLink="/board" class="task-number-card column center">
-        <span class="number">5</span>
+        <span class="number">{{todos.length}}</span>
         <span class="task-status">Task in Board</span>
       </div>
       <div routerLink="/board" class="task-number-card column center">
         <span class="number">2</span>
-        <span class="task-status">Task in Board</span>
+        <span class="task-status">Task in Progress</span>
       </div>
       <div routerLink="/board" class="task-number-card column center">
         <span class="number">2</span>
-        <span class="task-status">Task in Board</span>
+        <span class="task-status">Awaiting Feedback</span>
       </div>
     </div>
     <div routerLink="/board" class="important-tasks display-flex center">

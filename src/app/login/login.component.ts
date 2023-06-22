@@ -1,4 +1,9 @@
+import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { lastValueFrom } from 'rxjs';
+import { environment } from 'src/environments/environment.development';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -6,9 +11,25 @@ import { Component } from '@angular/core';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent {
+  username: any;
+  password: any;
   public hideLayout = true;
+
+
+  constructor(private router: Router, private authService:AuthService) {}
+
 
   ngOnInit() {
     this.hideLayout = true;
+  }
+
+
+  async login() {
+    try {
+      let resp = await this.authService.loginWithUsernameAndPassword(this.username,this.password)
+      this.router.navigate(['/summary']);
+    } catch (e) {
+      console.error(e);
+    }
   }
 }
