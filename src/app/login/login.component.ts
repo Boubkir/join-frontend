@@ -1,8 +1,5 @@
-import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { lastValueFrom } from 'rxjs';
-import { environment } from 'src/environments/environment.development';
 import { AuthService } from '../services/auth.service';
 
 @Component({
@@ -26,7 +23,8 @@ export class LoginComponent {
 
   async login() {
     try {
-      let resp = await this.authService.loginWithUsernameAndPassword(this.username,this.password)
+      let resp:any = await this.authService.loginWithUsernameAndPassword(this.username,this.password)
+      localStorage.setItem('token',resp['token'])
       this.router.navigate(['/summary']);
     } catch (e) {
       console.error(e);

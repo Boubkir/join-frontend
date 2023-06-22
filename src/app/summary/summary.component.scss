@@ -7,27 +7,6 @@
   min-height: calc(100vh - 94px);
 }
 
-.headline {
-  display: flex;
-  gap: 30px;
-  align-items: center;
-
-  h1 {
-    margin: 0;
-    font-weight: 700;
-    font-size: 61px;
-  }
-
-  span {
-    font-weight: 400;
-    font-size: 27px;
-  }
-
-  img {
-    height: 59px;
-  }
-}
-
 .dashboard {
   margin-top: 87px;
 }
@@ -36,13 +15,15 @@
   height: 170px;
   width: 170px;
   padding: 25px 0px;
-  gap: 13px;
   box-sizing: border-box;
   text-align: center;
   background-color: white;
   box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
   border-radius: 30px;
   cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 
   &:hover {
     background-color: var(--main-dark);
@@ -147,4 +128,3 @@
     stroke: var(--main-dark);
   }
 }
-

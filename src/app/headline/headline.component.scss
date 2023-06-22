@@ -1,0 +1,20 @@
+.headline {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+
+  h1 {
+    margin: 0;
+    font-weight: 700;
+    font-size: 61px;
+  }
+
+  span {
+    font-weight: 400;
+    font-size: 27px;
+  }
+
+  img {
+    height: 59px;
+  }
+}
