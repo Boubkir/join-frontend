@@ -1,10 +1,179 @@
-<div class="header">
-  <h1>Board</h1>
-  <div class="display-flex gap-35">
-    <div class="relative input">
-      <input type="text" placeholder="Find Task">
-      <img src="assets/icons/lens.svg" alt="">
+<div class="content">
+  <div class="header">
+    <h1>Board</h1>
+    <div class="display-flex gap-35">
+      <div class="relative input">
+        <input type="text" [(ngModel)]="searchText" placeholder="Find Task" (input)="filterTasks()" />
+        <img src="assets/icons/lens.svg" alt="">
+      </div>
+      <button>Add task <img src="assets/icons/cross.svg" alt=""></button>
     </div>
-    <button>Add task <img src="assets/icons/cross.svg" alt=""></button>
+  </div>
+  <div class="display-flex over-x-scroll gap-26" cdkDropListGroup>
+    <div class="drag-drop-container">
+
+
+      <div class="drag-drop-header">
+        <h3>To do</h3>
+        <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M15 7.5V22.5" stroke="#2A3647" stroke-width="2" stroke-linecap="round" />
+          <path d="M22.5 15.1416L7.5 15.1416" stroke="#2A3647" stroke-width="2" stroke-linecap="round" />
+          <rect x="1" y="1" width="28" height="28" rx="9" stroke="#2A3647" stroke-width="2" />
+        </svg>
+      </div>
+
+
+      <div class="drag-drop-area" cdkDropList [cdkDropListData]="open" (cdkDropListDropped)="drop($event)">
+
+
+        <div *ngFor="let task of open" cdkDrag class="card">
+          <div class="card-category">{{task.category}}</div>
+          <div class="card-content">
+            <h3>{{task.title}}</h3>
+            <span>{{task.description}}</span>
+          </div>
+          <div class="space-between full-width center">
+            <div class="progress-bar"></div>
+            <span>0/{{task.tasks.length}} Done</span>
+          </div>
+          <div class="space-between full-width center">
+            <div class="circle-container">
+
+            </div>
+            <img [src]="'assets/icons/card-'+task.priority+'.svg'" alt="">
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+    <div class="drag-drop-container">
+
+
+
+      <div class="drag-drop-header">
+        <h3>In progress</h3>
+        <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M15 7.5V22.5" stroke="#2A3647" stroke-width="2" stroke-linecap="round" />
+          <path d="M22.5 15.1416L7.5 15.1416" stroke="#2A3647" stroke-width="2" stroke-linecap="round" />
+          <rect x="1" y="1" width="28" height="28" rx="9" stroke="#2A3647" stroke-width="2" />
+        </svg>
+      </div>
+
+
+      <div class="drag-drop-area" cdkDropList [cdkDropListData]="inProgress" (cdkDropListDropped)="drop($event)">
+
+
+        <div *ngFor="let task of inProgress" cdkDrag class="card">
+          <div class="card-category">{{task.category}}</div>
+          <div class="card-content">
+            <h3>{{task.title}}</h3>
+            <span>{{task.description}}</span>
+          </div>
+          <div class="space-between full-width center">
+            <div class="progress-bar"></div>
+            <span>0/{{task.tasks.length}} Done</span>
+          </div>
+          <div class="space-between full-width center">
+            <div class="circle-container">
+
+            </div>
+            <img [src]="'assets/icons/card-'+task.priority+'.svg'" alt="">
+          </div>
+        </div>
+
+
+      </div>
+
+
+    </div>
+
+
+    <div class="drag-drop-container">
+
+
+      <div class="drag-drop-header">
+        <h3>Awaiting Feedback</h3>
+        <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M15 7.5V22.5" stroke="#2A3647" stroke-width="2" stroke-linecap="round" />
+          <path d="M22.5 15.1416L7.5 15.1416" stroke="#2A3647" stroke-width="2" stroke-linecap="round" />
+          <rect x="1" y="1" width="28" height="28" rx="9" stroke="#2A3647" stroke-width="2" />
+        </svg>
+      </div>
+
+
+      <div class="drag-drop-area" cdkDropList [cdkDropListData]="awaitingFeedback" (cdkDropListDropped)="drop($event)">
+
+
+        <div *ngFor="let task of awaitingFeedback" cdkDrag class="card">
+          <div class="card-category">{{task.category}}</div>
+          <div class="card-content">
+            <h3>{{task.title}}</h3>
+            <span>{{task.description}}</span>
+          </div>
+          <div class="space-between full-width center">
+            <div class="progress-bar"></div>
+            <span>0/{{task.tasks.length}} Done</span>
+          </div>
+          <div class="space-between full-width center">
+            <div class="circle-container">
+
+            </div>
+            <img [src]="'assets/icons/card-'+task.priority+'.svg'" alt="">
+          </div>
+        </div>
+
+
+      </div>
+
+
+    </div>
+
+
+    <div class="drag-drop-container">
+
+
+      <div class="drag-drop-header">
+
+
+        <h3>Done</h3>
+        <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M15 7.5V22.5" stroke="#2A3647" stroke-width="2" stroke-linecap="round" />
+          <path d="M22.5 15.1416L7.5 15.1416" stroke="#2A3647" stroke-width="2" stroke-linecap="round" />
+          <rect x="1" y="1" width="28" height="28" rx="9" stroke="#2A3647" stroke-width="2" />
+        </svg>
+
+
+      </div>
+
+
+      <div class="drag-drop-area" cdkDropList [cdkDropListData]="done" (cdkDropListDropped)="drop($event)">
+
+
+        <div *ngFor="let task of done" cdkDrag class="card">
+          <div class="card-category">{{task.category}}</div>
+          <div class="card-content">
+            <h3>{{task.title}}</h3>
+            <span>{{task.description}}</span>
+          </div>
+          <div class="space-between full-width center">
+            <div class="progress-bar"></div>
+            <span>0/{{task.tasks.length}} Done</span>
+          </div>
+          <div class="space-between full-width center">
+            <div class="circle-container">
+
+            </div>
+            <img [src]="'assets/icons/card-'+task.priority+'.svg'" alt="">
+          </div>
+        </div>
+
+
+      </div>
+
+
+    </div>
+
+
   </div>
 </div>

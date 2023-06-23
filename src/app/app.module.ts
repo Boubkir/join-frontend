@@ -15,6 +15,8 @@ import { FormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AuthInterceptorService } from './services/auth-interceptor.service';
 import { HeadlineComponent } from './headline/headline.component';
+import { DragDropModule } from '@angular/cdk/drag-drop';
+
 
 @NgModule({
   declarations: [
@@ -30,7 +32,13 @@ import { HeadlineComponent } from './headline/headline.component';
     RegisterComponent,
     HeadlineComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule,
+    DragDropModule,
+  ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,

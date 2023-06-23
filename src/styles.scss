@@ -43,17 +43,35 @@ body {
   place-items: center;
 }
 
+.space-between{
+  display: flex;
+  justify-content: space-between;
+}
+
+.full-width{
+  width: 100%;
+}
+
 .column {
   display: flex;
   flex-direction: column;
+}
+
+.gap-13{
+  gap: 13px;
+}
+
+.gap-26{
+  gap: 26px;
 }
 
 .gap-35 {
   gap: 35px;
 }
 
-.gap-13{
-  gap: 13px;
+.over-x-scroll{
+  overflow-x: scroll;
+  justify-content: space-between;
 }
 
 .relative{
