@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { lastValueFrom } from 'rxjs';
+import { environment } from 'src/environments/environment';
+import { DataService } from '../services/data.service';
 
 @Component({
   selector: 'app-contacts',
@@ -6,9 +9,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./contacts.component.scss'],
 })
 export class ContactsComponent {
+  contacts: any = [];
   public hideLayout = false;
+  constructor(private data:DataService){}
 
-  ngOnInit() {
+ async ngOnInit() {
+    this.contacts = await this.data.loadContacts()
     this.hideLayout = false;
   }
 }

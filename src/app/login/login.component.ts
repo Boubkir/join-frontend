@@ -12,14 +12,11 @@ export class LoginComponent {
   password: any;
   public hideLayout = true;
 
-
   constructor(private router: Router, private authService:AuthService) {}
-
 
   ngOnInit() {
     this.hideLayout = true;
   }
-
 
   async login() {
     try {
