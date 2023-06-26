@@ -20,15 +20,29 @@ export class LoginComponent {
         this.username,
         this.password
       );
-      console.log(resp)
+      console.log(resp);
       localStorage.setItem('token', resp['token']);
       localStorage.setItem('expire', resp['expiry']);
       this.router.navigate(['/summary']);
     } catch (e) {
       console.error('Fehler bei der Anmeldung', e);
-      console.log(Response)
+      console.log(Response);
     }
   }
 
-  async guestLogin() {}
+  async guestLogin() {
+    try {
+      let resp: any = await this.authService.loginWithUsernameAndPassword(
+        'Guest',
+        'testuser123'
+      );
+      console.log(resp);
+      localStorage.setItem('token', resp['token']);
+      localStorage.setItem('expire', resp['expiry']);
+      this.router.navigate(['/summary']);
+    } catch (e) {
+      console.error('Fehler bei der Anmeldung', e);
+      console.log(Response);
+    }
+  }
 }

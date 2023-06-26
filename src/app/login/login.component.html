@@ -1,6 +1,6 @@
 <div class="content center relative">
   <img class="logo" src="assets/icons/logo.svg" alt="">
-  <form (ngSubmit)="login()" class="center column gap-35" id="login">
+  <form class="center column gap-35" id="login">
     <div class="headline column center gap-24">
       <h1>Log in</h1>
       <div class="line"></div>
@@ -21,7 +21,7 @@
       <span class="link" routerLink="/forgot-password">Forgot my password</span>
     </div>
     <div class="center gap-35">
-      <button class="login-btn">Login</button>
+      <button class="login-btn" (click)="login()">Login</button>
       <button class="guest-login-btn" (click)="guestLogin()">Guest Login</button>
     </div>
   </form>
