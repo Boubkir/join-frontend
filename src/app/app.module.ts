@@ -10,12 +10,14 @@ import { BoardComponent } from './board/board.component';
 import { ContactsComponent } from './contacts/contacts.component';
 import { LegalNoticeComponent } from './legal-notice/legal-notice.component';
 import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './register/register.component';
 import { FormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AuthInterceptorService } from './services/auth-interceptor.service';
 import { HeadlineComponent } from './headline/headline.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { RegisterComponent } from './register/register.component';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
 
 
 @NgModule({
@@ -29,8 +31,10 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     ContactsComponent,
     LegalNoticeComponent,
     LoginComponent,
-    RegisterComponent,
     HeadlineComponent,
+    RegisterComponent,
+    ForgotPasswordComponent,
+    ResetPasswordComponent,
   ],
   imports: [
     BrowserModule,

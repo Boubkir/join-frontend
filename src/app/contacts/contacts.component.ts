@@ -10,11 +10,9 @@ import { DataService } from '../services/data.service';
 })
 export class ContactsComponent {
   contacts: any = [];
-  public hideLayout = false;
   constructor(private data:DataService){}
 
  async ngOnInit() {
     this.contacts = await this.data.loadContacts()
-    this.hideLayout = false;
   }
 }

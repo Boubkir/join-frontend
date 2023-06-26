@@ -6,7 +6,8 @@
   position: absolute;
   top: 94px;
   left: 232px;
-  height: calc(100vh - 94px);
+  height: 100%;
   width: calc(100% - 232px);
   box-sizing: border-box;
+  background-color: var(--main-bg-color);
 }

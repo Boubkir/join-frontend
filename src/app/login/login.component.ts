@@ -12,19 +12,23 @@ export class LoginComponent {
   password: any;
   public hideLayout = true;
 
-  constructor(private router: Router, private authService:AuthService) {}
-
-  ngOnInit() {
-    this.hideLayout = true;
-  }
+  constructor(private router: Router, private authService: AuthService) {}
 
   async login() {
     try {
-      let resp:any = await this.authService.loginWithUsernameAndPassword(this.username,this.password)
-      localStorage.setItem('token',resp['token'])
+      let resp: any = await this.authService.loginWithUsernameAndPassword(
+        this.username,
+        this.password
+      );
+      console.log(resp)
+      localStorage.setItem('token', resp['token']);
+      localStorage.setItem('expire', resp['expiry']);
       this.router.navigate(['/summary']);
     } catch (e) {
-      console.error(e);
+      console.error('Fehler bei der Anmeldung', e);
+      console.log(Response)
     }
   }
+
+  async guestLogin() {}
 }

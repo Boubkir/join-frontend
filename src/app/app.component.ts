@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  public hideLayout: boolean = false;
+  title = 'Join';
+  constructor(private router: Router, private route: ActivatedRoute) {}
+
+  shouldShowAside(): boolean {
+    const excludedRoutes = ['login', 'register', 'forgot-password'];
+    const currentRoute: any = this.route.snapshot.firstChild?.routeConfig?.path;
+
+    return !excludedRoutes.includes(currentRoute);
+  }
 }

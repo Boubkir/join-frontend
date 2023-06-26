@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-register',
@@ -6,9 +8,25 @@ import { Component } from '@angular/core';
   styleUrls: ['./register.component.scss'],
 })
 export class RegisterComponent {
-  public hideLayout = true;
+  firstName!: string;
+  lastName!: string;
+  userName!: string;
+  email!: string;
+  password!: string;
 
-  ngOnInit() {
-    this.hideLayout = true;
+  constructor(private authService: AuthService, private router: Router) {}
+
+  register() {
+    this.authService
+      .register(this.userName, this.email, this.password)
+      .subscribe(
+        (resp) => {
+          localStorage.setItem('token', resp['token']);
+          this.router.navigate(['/login/']);
+        },
+        (error) => {
+          console.error('Fehler bei der Registrierung', error);
+        }
+      );
   }
 }

@@ -6,9 +6,4 @@ import { Component } from '@angular/core';
   styleUrls: ['./legal-notice.component.scss'],
 })
 export class LegalNoticeComponent {
-  public hideLayout = false;
-
-  ngOnInit() {
-    this.hideLayout = false;
-  }
 }

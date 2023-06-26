@@ -22,8 +22,6 @@ export class BoardComponent implements OnInit {
   filteredTasks = [];
   searchText!: string;
 
-  public hideLayout = false;
-
   constructor(private data: DataService, private http: HttpClient) {}
 
   ngOnInit(): void {
@@ -33,7 +31,6 @@ export class BoardComponent implements OnInit {
   async loadTodos(): Promise<void> {
     this.todos = await this.data.loadTodos();
     this.filterTodos();
-    this.hideLayout = false;
   }
 
   filterTodos(): void {
@@ -125,10 +122,8 @@ export class BoardComponent implements OnInit {
 
   filterTasks() {
     if (this.searchText.trim() === '') {
-      // Wenn der Suchtext leer ist, zeige alle Cards
       this.filteredTasks = this.todos;
     } else {
-      // Filtere die Cards basierend auf dem Suchtext
       this.filteredTasks = this.todos.filter((task: any) => {
         return (
           task.title.toLowerCase().includes(this.searchText.toLowerCase()) ||
