@@ -18,6 +18,8 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 import { RegisterComponent } from './register/register.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import { QuestionComponent } from './question/question.component';
+import { PrivatcyComponent } from './privatcy/privatcy.component';
 
 
 @NgModule({
@@ -35,6 +37,8 @@ import { ResetPasswordComponent } from './reset-password/reset-password.componen
     RegisterComponent,
     ForgotPasswordComponent,
     ResetPasswordComponent,
+    QuestionComponent,
+    PrivatcyComponent,
   ],
   imports: [
     BrowserModule,
