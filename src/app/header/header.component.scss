@@ -23,11 +23,13 @@
 }
 
 .profile-picture {
-  height: 46px;
-  width: 46px;
+  min-height: 46px;
+  min-width: 46px;
   border-radius: 100%;
   margin-left: 26px;
   padding: 1px;
   border: 3px solid var(--main-dark);
+  color: white;
+  background-color: pink;
   cursor: pointer;
 }

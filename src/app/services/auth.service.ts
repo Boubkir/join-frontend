@@ -7,8 +7,8 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root',
 })
 export class AuthService {
-  currentUser:any;
-  
+  currentUser: any;
+
   constructor(private http: HttpClient) {}
 
   public async loginWithUsernameAndPassword(
@@ -30,6 +30,7 @@ export class AuthService {
     });
     await this.http.post(url, null, { headers }).toPromise();
     localStorage.removeItem('token');
+    this.removeCurrentUser();
   }
 
   register(username: string, email: string, password: string): Observable<any> {
@@ -51,5 +52,18 @@ export class AuthService {
     }
 
     return false;
+  }
+
+  setCurrentUser(user: any) {
+    localStorage.setItem('currentUser', JSON.stringify(user));
+  }
+
+  getCurrentUser(): any {
+    const userString = localStorage.getItem('currentUser');
+    return userString ? JSON.parse(userString) : null;
+  }
+
+  removeCurrentUser() {
+    localStorage.removeItem('currentUser');
   }
 }

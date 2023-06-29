@@ -1,0 +1,119 @@
+.content {
+  max-width: 140px;
+}
+
+.contacts-container {
+  width: 453px;
+  background-color: white;
+  box-shadow: 4px 0px 6px 0px rgba(0, 0, 0, 0.08);
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+.contact {
+  display: flex;
+  width: 357px;
+  padding: 15px 25px;
+  align-items: center;
+  gap: 35px;
+  border-radius: 10px;
+  box-sizing: border-box;
+
+  &:hover {
+    background: #2a3647;
+
+    .name {
+      color: white;
+    }
+  }
+}
+
+.circle {
+  height: 42px;
+  width: 42px;
+  border-radius: 100%;
+  font-size: 12px;
+  color: white;
+}
+
+.name {
+  font-size: 21px;
+  font-weight: 400;
+}
+
+.email {
+  color: #007cee;
+}
+
+.letter {
+  width: 357px;
+  padding: 10px;
+  flex-direction: column;
+  gap: 10px;
+
+  span {
+    display: flex;
+    width: 303px;
+    height: 40px;
+    flex-direction: column;
+    justify-content: center;
+    color: #000;
+    font-size: 21px;
+  }
+}
+
+.sepate-contacts {
+  padding: 14px 0;
+}
+
+.contact-detail {
+  width: 728px;
+  padding: 82px 58px;
+}
+
+.name-container {
+  display: flex;
+  align-items: center;
+}
+
+.big-circle {
+  height: 120px;
+  width: 120px;
+  border-radius: 100%;
+  font-size: 47px;
+  font-weight: 500;
+  color: white;
+}
+
+.detail-name {
+  font-size: 47px;
+  font-weight: 500;
+}
+
+.add-task {
+  color: var(--ligth-blue, #29abe2);
+  font-size: 16px;
+  line-height: 120%;
+}
+
+.button {
+  position: absolute;
+  right: 0;
+  bottom: 64px;
+  height: 53px;
+  padding: 18px 15px;
+  border-radius: 10px;
+  border: 1px solid #2a3647;
+  background: #2a3647;
+  color: var(--white, #fff);
+  font-size: 21px;
+  font-weight: 700;
+  box-sizing: border-box;
+}
+
+.contact.active {
+  background: #2a3647;
+}

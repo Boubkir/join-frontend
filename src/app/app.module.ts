@@ -10,7 +10,7 @@ import { BoardComponent } from './board/board.component';
 import { ContactsComponent } from './contacts/contacts.component';
 import { LegalNoticeComponent } from './legal-notice/legal-notice.component';
 import { LoginComponent } from './login/login.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AuthInterceptorService } from './services/auth-interceptor.service';
 import { HeadlineComponent } from './headline/headline.component';
@@ -20,6 +20,7 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { QuestionComponent } from './question/question.component';
 import { PrivatcyComponent } from './privatcy/privatcy.component';
+import { TaskCardComponent } from './task-card/task-card.component';
 
 
 @NgModule({
@@ -39,6 +40,7 @@ import { PrivatcyComponent } from './privatcy/privatcy.component';
     ResetPasswordComponent,
     QuestionComponent,
     PrivatcyComponent,
+    TaskCardComponent,
   ],
   imports: [
     BrowserModule,
@@ -46,6 +48,7 @@ import { PrivatcyComponent } from './privatcy/privatcy.component';
     FormsModule,
     HttpClientModule,
     DragDropModule,
+    ReactiveFormsModule,
   ],
   providers: [
     {

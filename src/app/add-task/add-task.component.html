@@ -1,0 +1,73 @@
+<div class="content relative">
+  <div class="gap-24 created-task" routerLink="/board" *ngIf="isTaskCreated">Task added to board <img
+      src="assets/icons/board.svg" alt=""></div>
+  <h1>Add Task</h1>
+  <form [formGroup]="taskForm" class="display-flex gap-59 relative">
+    <div class="left column gap-13 display-flex">
+      <label for="title">Title</label>
+      <input formControlName="title" type="text">
+      <div *ngIf="taskForm.controls['title'].invalid && taskForm.controls['title'].touched" class="error-message">
+        Title is required
+      </div>
+      <label for="description">Description</label>
+      <textarea formControlName="description" cols="30" rows="10"></textarea>
+      <div *ngIf="taskForm.controls['description'].invalid && taskForm.controls['description'].touched"
+        class="error-message">
+        Description is required
+      </div>
+      <label for="category">Category</label>
+      <div formControlName="category" class="drop-down column relative">
+        <img (click)="openCloseDropdown()" class="arrow-down" src="assets/icons/arrow-down.svg" alt="">
+        <span class="db" formControlName="category">Select task category</span>
+        <div class="column gap-13 down" [class.d-none]="!isDropDownOpen">
+          <span (click)="setCategory('Sales')">Sales</span>
+          <span (click)="setCategory('Accounting')">Accounting</span>
+          <span (click)="setCategory('Backoffice')">Backoffice</span>
+        </div>
+      </div>
+      <div *ngIf="taskForm.controls['category'].invalid && taskForm.controls['category'].touched" class="error-message">
+        Category is required
+      </div>
+      <label for="assignedTo">Assigned to:</label>
+      <div formArrayName="assignedTo" class="drop-down column relative">
+        <img (click)="openCloseUserDropdown()" class="arrow-down" src="assets/icons/arrow-down.svg" alt="">
+        <span class="db">Select contacts to assign</span>
+        <div class="column gap-13 down" [class.d-none]="!isUserDropDownOpen">
+          <span class="space-between" *ngFor="let user of users">
+            <span>{{ user['first_name'] }} {{ user['last_name'] }}</span>
+            <input type="checkbox" [checked]="isUserSelected(user)" (change)="updateAssignedTo(user)">
+          </span>
+        </div>
+      </div>
+    </div>
+    <img src="assets/icons/add-task-seperate.svg" alt="">
+    <div class="right column gap-13 relative">
+      <label for="dueDate">Due date</label>
+      <input formControlName="dueDate" type="date">
+      <label for="dueDate">Priority</label>
+      <div class="display-flex gap-8 prio">
+        <button (click)="setPriority('urgent')" [ngClass]="{ selected: priority === 'urgent' }">
+          Urgent <img src="assets/icons/card-urgent.svg" alt="" />
+        </button>
+        <button (click)="setPriority('medium')" [ngClass]="{ selected: priority === 'medium' }">
+          Medium <img src="assets/icons/card-medium.svg" alt="" />
+        </button>
+        <button (click)="setPriority('low')" [ngClass]="{ selected: priority === 'low' }">
+          Low <img src="assets/icons/card-low.svg" alt="" />
+        </button>
+      </div>
+      <label for="">Subtasks</label>
+      <div class="display-flex column">
+        <div *ngFor="let subtask of taskForm.get('subtasks')?.value; let i = index" class="display-flex gap-13">
+          <input type="text">
+          <button (click)="removeSubtask(i)">Remove</button>
+        </div>
+        <button (click)="addSubtask()">Add Subtask</button>
+      </div>
+    </div>
+    <div class="button-container gap-26 display-flex">
+      <button class="clear-btn">Clear</button>
+      <button (click)="onSubmit()" [disabled]="!taskForm.valid" class="add-btn">Add Task</button>
+    </div>
+  </form>
+</div>

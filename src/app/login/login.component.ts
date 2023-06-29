@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
+import { DataService } from '../services/data.service';
 
 @Component({
   selector: 'app-login',
@@ -10,9 +11,12 @@ import { AuthService } from '../services/auth.service';
 export class LoginComponent {
   username: any;
   password: any;
-  public hideLayout = true;
 
-  constructor(private router: Router, private authService: AuthService) {}
+  constructor(
+    private router: Router,
+    private authService: AuthService,
+    private data: DataService
+  ) {}
 
   async login() {
     try {
@@ -20,7 +24,7 @@ export class LoginComponent {
         this.username,
         this.password
       );
-      console.log(resp);
+      this.authService.setCurrentUser(resp['user']);
       localStorage.setItem('token', resp['token']);
       localStorage.setItem('expire', resp['expiry']);
       this.router.navigate(['/summary']);
@@ -30,13 +34,22 @@ export class LoginComponent {
     }
   }
 
+  setCurrentUser(user: any) {
+    localStorage.setItem('currenUser', JSON.stringify(user));
+  }
+
+  getCurrentUser(): any {
+    const userString = localStorage.getItem('currentUser');
+    return userString ? JSON.parse(userString) : null;
+  }
+
   async guestLogin() {
     try {
       let resp: any = await this.authService.loginWithUsernameAndPassword(
         'Guest',
-        'testuser123'
+        'guesttest123'
       );
-      console.log(resp);
+      this.authService.setCurrentUser(resp['user']);
       localStorage.setItem('token', resp['token']);
       localStorage.setItem('expire', resp['expiry']);
       this.router.navigate(['/summary']);

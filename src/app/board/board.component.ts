@@ -31,6 +31,7 @@ export class BoardComponent implements OnInit {
   async loadTodos(): Promise<void> {
     this.todos = await this.data.loadTodos();
     this.filterTodos();
+    console.log(this.todos)
   }
 
   filterTodos(): void {

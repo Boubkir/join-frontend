@@ -1,1 +1,46 @@
-<p>contacts works!</p>
+<div class="content display-flex">
+  <div class="contacts-container">
+    <div class="column" *ngFor="let contact of contacts, let i = index">
+      <div class="letter center" *ngIf="showLetter(contact.first_name[0], contacts[i-1]?.first_name[0])">
+        <span>{{contact.first_name[0]}}</span>
+        <img class="sepate-contacts" src="assets/img/sepate-contacts.svg" alt="">
+      </div>
+      <div (click)="selectContact(contact)" class="contact" [ngClass]="{ 'active': contact === selectedContact }">
+        <div class="circle center" [style.background]="contact.color">{{ contact.first_name[0] }}{{
+          contact['last_name'][0] }}</div>
+        <div class="column gap-5">
+          <span class="name">{{contact.first_name}} {{contact.last_name}}</span>
+          <span class="email">{{contact['email']}}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="contact-detail relative column gap-48">
+    <app-headline [h1]="h1" [motto]="motto"></app-headline>
+    <div *ngIf="selectedContact">
+      <div class="display-flex gap-54 name-container">
+        <div [style.background]="selectedContact?.color" class="big-circle center">{{ selectedContact?.first_name[0]
+          }}{{ selectedContact?.last_name[0] }}</div>
+        <div class="column">
+          <span class="detail-name">{{ selectedContact?.first_name }} {{ selectedContact?.last_name }}</span>
+          <div class="add-task">+ Add Task</div>
+        </div>
+      </div>
+      <div class="display-flex gap-59">
+        <span>Contact Information</span>
+        <div>Edit Contact</div>
+      </div>
+      <div class="information gap-15 column">
+        <div class="column">
+          <h4>Email</h4>
+          <span>{{ selectedContact?.email }}</span>
+        </div>
+        <div class="column">
+          <h4>Phone</h4>
+          <span>{{ selectedContact?.phone }}</span>
+        </div>
+      </div>
+    </div>
+    <div class="button">New Contact</div>
+  </div>
+</div>
