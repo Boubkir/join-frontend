@@ -4,6 +4,8 @@ import { lastValueFrom } from 'rxjs';
 import { environment } from 'src/environments/environment.development';
 import { DataService } from '../services/data.service';
 import { AuthService } from '../services/auth.service';
+import * as moment from 'moment';
+
 
 @Component({
   selector: 'app-summary',
@@ -20,6 +22,7 @@ export class SummaryComponent {
   currentUser: any;
   firstName!: any;
   lastName!: any;
+  upComing!: any;
   h1 = 'Summary';
   motto = 'Everything in a nutshell!';
 
@@ -35,6 +38,7 @@ export class SummaryComponent {
     this.currentUser = this.auth.getCurrentUser();
     this.firstName = this.currentUser?.first_name ?? 'Sunshine';
     this.lastName = this.currentUser?.last_name ?? '';
+    this.upComing = this.calculateUpcomingDeadline();
   }
 
   async loadTodos() {
@@ -54,10 +58,14 @@ export class SummaryComponent {
     this.urgent = this.todos.filter((t: any) => t['priority'] == 'urgent');
   }
 
-  // upcoming = this.todos.sort(function (a: any, b: any) {
-  //   let x: any = new Date(a['due_date']);
-  //   let y: any = new Date(b['due_date']);
-  //   return x - y;
-  // });
-  // deadline = new Date(this.upcoming[0]['due_date']).toString().slice(0, 16);
+  calculateUpcomingDeadline(): string {
+    let upcoming = this.todos.sort(function (a: any, b: any) {
+      let x: any = new Date(a.due_date);
+      let y: any = new Date(b.due_date);
+      return x - y;
+    });
+
+    let formattedDate = moment(upcoming[0].due_date).format('MMMM DD, YYYY');
+    return formattedDate;
+  }
 }
