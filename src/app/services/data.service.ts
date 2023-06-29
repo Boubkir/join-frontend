@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { lastValueFrom } from 'rxjs';
 import { environment } from 'src/environments/environment.development';
 import { Task } from '../models/task.model';
+import { Contact } from '../models/contact.model';
 
 @Injectable({
   providedIn: 'root',
@@ -28,5 +29,10 @@ export class DataService {
   createTask(task: Task) {
     const url = environment.baseUrl + '/todos/';
     return this.http.post(url, task);
+  }
+
+  createContact(contact: Contact) {
+    const url = environment.baseUrl + '/contacts/';
+    return this.http.post(url, contact);
   }
 }

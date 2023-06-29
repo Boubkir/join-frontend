@@ -21,6 +21,7 @@ export class BoardComponent implements OnInit {
   done: any = [];
   filteredTasks = [];
   searchText!: string;
+  openSlide: boolean = false;
 
   constructor(private data: DataService, private http: HttpClient) {}
 
@@ -132,5 +133,9 @@ export class BoardComponent implements OnInit {
       });
     }
     this.filterTaskss();
+  }
+
+  openCloseSlide() {
+    this.openSlide = !this.openSlide;
   }
 }

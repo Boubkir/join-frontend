@@ -1,0 +1,27 @@
+<div class="content display-flex">
+  <div class="left-container">
+    <img class="logo" src="assets/img/logo.png" alt="">
+    <h1>Add contact</h1>
+    <div class="column">
+      <span>Tasks are better with a Team!</span>
+      <img src="assets/img/task-underline.svg" alt="">
+    </div>
+  </div>
+  <div class="right-container display-flex">
+    <div class="circle center">
+      <img src="assets/img/user.svg" alt="">
+    </div>
+    <form [formGroup]="contactForm" class="column" action="">
+      <input type="text" name="" formControlName="firstName" placeholder="Firstname" id="">
+      <input type="text" name="" formControlName="lastName" placeholder="Lastname" id="">
+      <input type="email" name="" formControlName="email" placeholder="Email" id="">
+      <input type="text" name="" formControlName="phone" placeholder="Phone" id="">
+      <input type="color" name="" formControlName="color" placeholder="Color" id="">
+      
+      <div>
+        <button> Cancel</button>
+        <button (click)="onSubmit()">Create contact</button>
+      </div>
+    </form>
+  </div>
+</div>

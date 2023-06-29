@@ -29,8 +29,8 @@ export class AddTaskComponent implements OnInit {
       description: ['', Validators.required],
       category: ['', Validators.required],
       dueDate: [null, Validators.required],
-      assignedTo: this.formBuilder.array([]), // Initialize as an empty FormArray
-      subtasks: this.formBuilder.array([]), // Initialize as an empty FormArray
+      assignedTo: this.formBuilder.array([]),
+      subtasks: this.formBuilder.array([]), 
     });
   }
 

@@ -1,7 +1,4 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { lastValueFrom } from 'rxjs';
-import { environment } from 'src/environments/environment.development';
 import { DataService } from '../services/data.service';
 import { AuthService } from '../services/auth.service';
 import * as moment from 'moment';
@@ -27,7 +24,6 @@ export class SummaryComponent {
   motto = 'Everything in a nutshell!';
 
   constructor(
-    private http: HttpClient,
     private data: DataService,
     private auth: AuthService
   ) {}

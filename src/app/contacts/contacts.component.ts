@@ -1,6 +1,4 @@
 import { Component } from '@angular/core';
-import { lastValueFrom } from 'rxjs';
-import { environment } from 'src/environments/environment';
 import { DataService } from '../services/data.service';
 
 @Component({
@@ -15,6 +13,7 @@ export class ContactsComponent {
   h1 = 'Contacts';
   motto = 'Better with a team';
   selectedContact: any;
+  showSlide:boolean =false;
 
   constructor(private data: DataService) {}
 
@@ -46,5 +45,9 @@ export class ContactsComponent {
 
   selectContact(contact: any) {
     this.selectedContact = contact;
+  }
+
+  showSlider(){
+    this.showSlide = !this.showSlide
   }
 }

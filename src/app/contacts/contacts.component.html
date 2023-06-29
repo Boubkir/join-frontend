@@ -1,4 +1,5 @@
-<div class="content display-flex">
+<app-add-contact-slide *ngIf="showSlide"></app-add-contact-slide>
+<div class="content display-flex relative">
   <div class="contacts-container">
     <div class="column" *ngFor="let contact of contacts, let i = index">
       <div class="letter center" *ngIf="showLetter(contact.first_name[0], contacts[i-1]?.first_name[0])">
@@ -41,6 +42,6 @@
         </div>
       </div>
     </div>
-    <div class="button">New Contact</div>
+    <div class="button" (click)="showSlider()">New Contact</div>
   </div>
 </div>

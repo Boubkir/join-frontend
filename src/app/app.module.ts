@@ -21,6 +21,8 @@ import { ResetPasswordComponent } from './reset-password/reset-password.componen
 import { QuestionComponent } from './question/question.component';
 import { PrivatcyComponent } from './privatcy/privatcy.component';
 import { TaskCardComponent } from './task-card/task-card.component';
+import { AddContactSlideComponent } from './add-contact-slide/add-contact-slide.component';
+import { EditContactSlideComponent } from './edit-contact-slide/edit-contact-slide.component';
 
 
 @NgModule({
@@ -41,6 +43,8 @@ import { TaskCardComponent } from './task-card/task-card.component';
     QuestionComponent,
     PrivatcyComponent,
     TaskCardComponent,
+    AddContactSlideComponent,
+    EditContactSlideComponent,
   ],
   imports: [
     BrowserModule,

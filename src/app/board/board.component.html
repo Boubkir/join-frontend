@@ -1,4 +1,5 @@
-<div class="content">
+<div class="content relative">
+  <app-add-task *ngIf="openSlide" class="slide-in"></app-add-task>
   <div class="board">
     <div class="header">
       <h1>Board</h1>
@@ -7,10 +8,10 @@
           <input type="text" [(ngModel)]="searchText" placeholder="Find Task" (input)="filterTasks()" />
           <img src="assets/icons/lens.svg" alt="">
         </div>
-        <button>Add task <img src="assets/icons/cross.svg" alt=""></button>
+        <button (click)="openCloseSlide()">Add task <img src="assets/icons/cross.svg" alt=""></button>
       </div>
     </div>
-    <div class="display-flex over-x-scroll gap-26" cdkDropListGroup>
+    <div class="display-flex gap-26" cdkDropListGroup>
       <div class="drag-drop-container">
         <div class="drag-drop-header">
           <h3>To do</h3>
