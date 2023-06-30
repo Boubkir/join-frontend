@@ -8,7 +8,7 @@ import { Contact } from '../models/contact.model';
 @Injectable({
   providedIn: 'root',
 })
-export class DataService {
+export class SharedDataService {
   constructor(private http: HttpClient) {}
 
   loadTodos() {
@@ -34,5 +34,10 @@ export class DataService {
   createContact(contact: Contact) {
     const url = environment.baseUrl + '/contacts/';
     return this.http.post(url, contact);
+  }
+
+  editContact(contact: Contact, id: string) {
+    const url = environment.baseUrl + '/contacts/' + id + '/';
+    return this.http.patch(url, contact);
   }
 }

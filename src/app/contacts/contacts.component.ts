@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { DataService } from '../services/data.service';
+import { SharedDataService } from '../services/shared-data.service';
 
 @Component({
   selector: 'app-contacts',
@@ -13,16 +13,21 @@ export class ContactsComponent {
   h1 = 'Contacts';
   motto = 'Better with a team';
   selectedContact: any;
-  showSlide:boolean =false;
+  addContactSlide: boolean = false;
+  editContactSlide: boolean = false;
 
-  constructor(private data: DataService) {}
+  constructor(private data: SharedDataService) {}
 
   async ngOnInit() {
     this.contacts = await this.data.loadContacts();
     this.sortContacts();
-     if (this.contacts.length > 0) {
-       this.selectedContact = this.contacts[0];
-     }
+    if (this.contacts.length > 0) {
+      this.selectedContact = this.contacts[0];
+    }
+  }
+
+  async loadContacts() {
+    this.contacts = await this.data.loadContacts();
   }
 
   sortContacts() {
@@ -45,9 +50,14 @@ export class ContactsComponent {
 
   selectContact(contact: any) {
     this.selectedContact = contact;
+    console.log(this.selectedContact);
   }
 
-  showSlider(){
-    this.showSlide = !this.showSlide
+  addContactSlider() {
+    this.addContactSlide = !this.addContactSlide;
+  }
+
+  editContactSlider() {
+    this.addContactSlide = !this.addContactSlide;
   }
 }

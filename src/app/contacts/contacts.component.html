@@ -1,4 +1,5 @@
-<app-add-contact-slide *ngIf="showSlide"></app-add-contact-slide>
+<app-add-contact-slide *ngIf="addContactSlide" (onShowSlider)="addContactSlider()"></app-add-contact-slide>
+<app-edit-contact-slide *ngIf="contacts.length > 0 && editContactSlide" [currentContact]="selectedContact"></app-edit-contact-slide>
 <div class="content display-flex relative">
   <div class="contacts-container">
     <div class="column" *ngFor="let contact of contacts, let i = index">
@@ -24,12 +25,12 @@
           }}{{ selectedContact?.last_name[0] }}</div>
         <div class="column">
           <span class="detail-name">{{ selectedContact?.first_name }} {{ selectedContact?.last_name }}</span>
-          <div class="add-task">+ Add Task</div>
+          <div class="add-task" routerLink="/add-task">+ Add Task</div>
         </div>
       </div>
       <div class="display-flex gap-59">
         <span>Contact Information</span>
-        <div>Edit Contact</div>
+        <div (click)="editContactSlider()">Edit Contact</div>
       </div>
       <div class="information gap-15 column">
         <div class="column">
@@ -42,6 +43,6 @@
         </div>
       </div>
     </div>
-    <div class="button" (click)="showSlider()">New Contact</div>
+    <div class="button" (click)="addContactSlider()">New Contact</div>
   </div>
 </div>

@@ -1,13 +1,8 @@
-import { Component } from '@angular/core';
-import {
-  EmailValidator,
-  FormBuilder,
-  FormGroup,
-  Validators,
-} from '@angular/forms';
+import { Component, Output, EventEmitter } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Contact } from '../models/contact.model';
-import { DataService } from '../services/data.service';
 import { AuthService } from '../services/auth.service';
+import { SharedDataService } from '../services/shared-data.service';
 
 @Component({
   selector: 'app-add-contact-slide',
@@ -15,20 +10,21 @@ import { AuthService } from '../services/auth.service';
   styleUrls: ['./add-contact-slide.component.scss'],
 })
 export class AddContactSlideComponent {
+  @Output() onShowSlider: EventEmitter<void> = new EventEmitter<void>();
   currentUser: any;
   contactForm: FormGroup;
 
   constructor(
     private formBuilder: FormBuilder,
-    private data: DataService,
+    private data: SharedDataService,
     private auth: AuthService
   ) {
     this.contactForm = this.formBuilder.group({
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
-      email: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
       phone: ['', Validators.required],
-      color: ['', Validators.required],
+      color: [''],
     });
   }
 
@@ -47,7 +43,7 @@ export class AddContactSlideComponent {
         user: this.currentUser['id'],
       };
 
-      console.log(newContact);
+      this.triggerShowSlider();
 
       this.data.createContact(newContact).subscribe(
         () => {
@@ -58,5 +54,9 @@ export class AddContactSlideComponent {
         }
       );
     }
+  }
+
+  triggerShowSlider() {
+    this.onShowSlider.emit();
   }
 }

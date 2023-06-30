@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
-import { DataService } from '../services/data.service';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +14,7 @@ export class LoginComponent {
   constructor(
     private router: Router,
     private authService: AuthService,
-    private data: DataService
+
   ) {}
 
   async login() {

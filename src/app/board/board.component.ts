@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DataService } from '../services/data.service';
+import { SharedDataService } from '../services/shared-data.service';
 import {
   CdkDragDrop,
   moveItemInArray,
@@ -23,7 +23,7 @@ export class BoardComponent implements OnInit {
   searchText!: string;
   openSlide: boolean = false;
 
-  constructor(private data: DataService, private http: HttpClient) {}
+  constructor(private data: SharedDataService, private http: HttpClient) {}
 
   ngOnInit(): void {
     this.loadTodos();

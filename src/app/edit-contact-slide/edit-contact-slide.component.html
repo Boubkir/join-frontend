@@ -1,1 +1,54 @@
-<p>edit-contact-slide works!</p>
+<div class="background center">
+  <div class="content display-flex">
+    <div class="left-container">
+      <img class="logo" src="assets/img/logo.png" alt="">
+
+      <div class="column">
+        <h1>Edit contact</h1>
+        <img src="assets/img/task-underline.svg" alt="">
+      </div>
+    </div>
+    <div class="right-container display-flex">
+      <div class="circle center">
+        <img src="assets/img/user.svg" alt="">
+      </div>
+      <form [formGroup]="contactForm" class="column" action="">
+        <div>
+          <input type="text" name="" formControlName="first_name" placeholder="Firstname" id="">
+          <div *ngIf="contactForm.controls['first_name'].invalid && contactForm.controls['first_name'].touched"
+            class="error-message">Firstname
+            is required </div>
+        </div>
+
+        <div>
+          <input type="text" name="" formControlName="last_name" placeholder="Lastname" id="">
+          <div *ngIf="contactForm.controls['last_name'].invalid && contactForm.controls['last_name'].touched"
+            class="error-message">
+            Lastname is required </div>
+        </div>
+
+        <div>
+          <input type="email" name="" formControlName="email" placeholder="Email" id="">
+          <div *ngIf="contactForm.controls['email'].invalid && contactForm.controls['email'].touched"
+            class="error-message">
+            Valid email is required </div>
+        </div>
+
+        <div>
+          <input type="text" name="" formControlName="phone" placeholder="Phone" id="">
+          <div *ngIf="contactForm.controls['phone'].invalid && contactForm.controls['phone'].touched"
+            class="error-message">
+            Phonenumber is required </div>
+        </div>
+
+
+        <input type="color" name="" formControlName="color" placeholder="Color" id="">
+
+        <div>
+          <button (click)="triggerShowSlider()">Delete</button>
+          <button (click)="editContact(currentUser?.id)">Save</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

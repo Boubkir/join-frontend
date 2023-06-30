@@ -6,7 +6,7 @@
   width: 453px;
   background-color: white;
   box-shadow: 4px 0px 6px 0px rgba(0, 0, 0, 0.08);
-  height: 100vh;
+  height: calc(100vh - 93px);
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -70,7 +70,7 @@
 }
 
 .contact-detail {
-  width: calc(100vw - 400px);
+  width: calc(100vw - 40px);
   padding: 82px 58px;
 }
 

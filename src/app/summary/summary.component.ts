@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { DataService } from '../services/data.service';
 import { AuthService } from '../services/auth.service';
 import * as moment from 'moment';
+import { SharedDataService } from '../services/shared-data.service';
 
 
 @Component({
@@ -24,7 +24,7 @@ export class SummaryComponent {
   motto = 'Everything in a nutshell!';
 
   constructor(
-    private data: DataService,
+    private data: SharedDataService,
     private auth: AuthService
   ) {}
 

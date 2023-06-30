@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
-import { DataService } from '../services/data.service';
+import { SharedDataService } from '../services/shared-data.service';
 import { Task } from '../models/task.model';
 import { AuthService } from '../services/auth.service';
 
@@ -21,7 +21,7 @@ export class AddTaskComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private data: DataService,
+    private data: SharedDataService,
     private auth: AuthService
   ) {
     this.taskForm = this.formBuilder.group({
