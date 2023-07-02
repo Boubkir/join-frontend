@@ -23,6 +23,7 @@ import { PrivatcyComponent } from './privatcy/privatcy.component';
 import { TaskCardComponent } from './task-card/task-card.component';
 import { AddContactSlideComponent } from './add-contact-slide/add-contact-slide.component';
 import { EditContactSlideComponent } from './edit-contact-slide/edit-contact-slide.component';
+import { AddTaskSlideComponent } from './add-task-slide/add-task-slide.component';
 
 
 @NgModule({
@@ -45,6 +46,7 @@ import { EditContactSlideComponent } from './edit-contact-slide/edit-contact-sli
     TaskCardComponent,
     AddContactSlideComponent,
     EditContactSlideComponent,
+    AddTaskSlideComponent,
   ],
   imports: [
     BrowserModule,

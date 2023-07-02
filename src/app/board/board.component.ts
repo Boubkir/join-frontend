@@ -21,7 +21,7 @@ export class BoardComponent implements OnInit {
   done: any = [];
   filteredTasks = [];
   searchText!: string;
-  openSlide: boolean = false;
+  openAddTaskSlide: boolean = false;
 
   constructor(private data: SharedDataService, private http: HttpClient) {}
 
@@ -81,7 +81,7 @@ export class BoardComponent implements OnInit {
     }
     console.log(event.container.data);
     this.changeAllStatus();
-    this.updateToBackend();
+    // this.updateToBackend();
   }
 
   changeAllStatus() {
@@ -135,7 +135,8 @@ export class BoardComponent implements OnInit {
     this.filterTaskss();
   }
 
-  openCloseSlide() {
-    this.openSlide = !this.openSlide;
+  addTaskSlide() {
+    this.openAddTaskSlide = !this.openAddTaskSlide;
+    this.loadTodos();
   }
 }

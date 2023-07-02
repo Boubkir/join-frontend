@@ -1,0 +1,185 @@
+.background {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  z-index: 10;
+  background-color: rgba(0, 0, 0, 0.15);
+}
+
+.content {
+  padding: 82px 123px;
+  background-color: white;
+  box-sizing: border-box;
+  width: 1116px;
+  height: 914px;
+  border-radius: 30px;
+  background: #fff;
+  box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  font-size: 61px;
+  font-weight: 700;
+}
+
+input {
+  display: flex;
+  padding: 13px 21px;
+  align-items: center;
+  gap: 10px;
+  width: 422px;
+  box-sizing: border-box;
+  border-radius: 10px;
+  border: 1px solid var(--style, #d1d1d1);
+  background: #fff;
+}
+
+textarea {
+  display: flex;
+  height: 119px;
+  padding: 18px 21px;
+  align-items: flex-start;
+  gap: 10px;
+  align-self: stretch;
+  border-radius: 10px;
+  border: 1px solid var(--style, #d1d1d1);
+  background: #fff;
+}
+
+.drop-down {
+  width: 422px;
+  gap: 10px;
+  border-radius: 10px;
+  border: 1px solid var(--style, #d1d1d1);
+  background: #fff;
+  box-sizing: border-box;
+  transition: all 225ms;
+
+  span {
+    padding: 0 21px;
+  }
+
+  input {
+    border: 1px solid var(--style, #d1d1d1);
+  }
+}
+
+.arrow-down {
+  position: absolute;
+  position: absolute;
+  top: 24px;
+  right: 21px;
+  cursor: pointer;
+}
+
+.down {
+  gap: 8px;
+
+  span {
+    display: flex;
+    height: 31px;
+    padding: 0 21px;
+    align-items: center;
+    cursor: pointer;
+
+    &:hover {
+      background-color: #d1d1d1;
+    }
+  }
+}
+
+.prio button {
+  display: flex;
+  width: 136px;
+  height: 51px;
+  padding: 18px 10px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 10px;
+  background: var(--white, #fff);
+  box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.1);
+  border: none;
+  cursor: pointer;
+}
+
+.button-container {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+
+.clear-btn {
+  background-color: transparent;
+  display: flex;
+  width: 136px;
+  height: 55px;
+  padding: 18px 10px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 10px;
+  border: 1px solid var(--version-2-main-color, #2a3647);
+  box-sizing: border-box;
+  color: var(--version-2-main-color, #2a3647);
+  font-size: 21px;
+  cursor: pointer;
+}
+
+.add-btn {
+  display: flex;
+  height: 55px;
+  padding: 18px 15px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 10px;
+  background: #2a3647;
+  color: #fff;
+  font-size: 21px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.selected {
+  font-weight: bold;
+}
+
+.db {
+  display: flex;
+  padding: 13px 21px;
+  align-items: center;
+  height: 51px;
+  gap: 10px;
+  width: 422px;
+  box-sizing: border-box;
+  border-radius: 10px;
+  border: 1px solid var(--style, #d1d1d1);
+  background: #fff;
+}
+
+input[type="checkbox"] {
+  width: 30px;
+}
+
+.created-task {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  width: 326px;
+  height: 74px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+  background: #2a3647;
+  box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.15);
+  color: #fff;
+  font-size: 21px;
+  transition: all 1s ease-in-out;
+  cursor: pointer;
+}

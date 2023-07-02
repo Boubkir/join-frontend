@@ -2,7 +2,7 @@
   <span>Kanban Project Management Tool</span>
   <div class="display-flex center">
     <img routerLink="/help" class="help" src="assets/img/question-mark.png" alt="">
-    <div class="profile-picture center"> {{currentUser.first_name[0]}}{{currentUser.last_name[0]}}</div>
+    <div class="profile-picture center"> {{currentUser?.first_name[0]}}{{currentUser?.last_name[0]}}</div>
     <button (click)="logout()">Logout</button>
   </div>
 </div>

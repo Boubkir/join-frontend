@@ -11,7 +11,12 @@ export class AppComponent {
   constructor(private router: Router, private route: ActivatedRoute) {}
 
   shouldShowAside(): boolean {
-    const excludedRoutes = ['login', 'register', 'forgot-password'];
+    const excludedRoutes = [
+      'login',
+      'register',
+      'forgot-password',
+      'reset-password',
+    ];
     const currentRoute: any = this.route.snapshot.firstChild?.routeConfig?.path;
 
     return !excludedRoutes.includes(currentRoute);
