@@ -11,15 +11,8 @@ export class AuthService {
 
   constructor(private http: HttpClient) {}
 
-  public async loginWithUsernameAndPassword(
-    username: string,
-    password: string
-  ) {
+  public async loginWitEmailAndPassword(body:any) {
     const url = environment.baseUrl + '/login/';
-    const body = {
-      username: username,
-      password: password,
-    };
     return lastValueFrom(this.http.post(url, body));
   }
 
@@ -33,9 +26,8 @@ export class AuthService {
     this.removeCurrentUser();
   }
 
-  register(username: string, email: string, password: string): Observable<any> {
+  register(body: any): Observable<any> {
     const url = environment.baseUrl + '/register/';
-    const body = { username, email, password };
     return this.http.post(url, body);
   }
 

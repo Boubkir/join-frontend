@@ -1,34 +1,30 @@
 <div class="content center relative">
   <img class="logo" src="assets/icons/logo.svg" alt="">
-  <form (ngSubmit)="register()" class="center column gap-35 relative">
+  <form [formGroup]="registerForm" (ngSubmit)="register()" class="center column gap-35 relative">
     <div class="headline column center gap-24">
       <h1>Sign up</h1>
       <div class="line"></div>
     </div>
     <div class="relative input column">
-      <input type="text" name="firstname" placeholder="Firstname" [(ngModel)]="firstName" required>
+      <input type="text" name="firstname" placeholder="Firstname" formControlName="first_name">
       <img src="assets/icons/user.svg" alt="">
     </div>
     <div class="relative input column">
-      <input type="text" name="lastname" placeholder="Lastname" [(ngModel)]="lastName" required>
+      <input type="text" name="lastname" placeholder="Lastname" formControlName="last_name">
       <img src="assets/icons/user.svg" alt="">
     </div>
     <div class="relative input column">
-      <input type="text" name="username" placeholder="Username" [(ngModel)]="userName" required>
-      <img src="assets/icons/user.svg" alt="">
-    </div>
-    <div class="relative input column">
-      <input type="text" name="username" placeholder="Email" [(ngModel)]="email" required>
+      <input type="text" name="username" placeholder="Email" formControlName="email">
       <img src="assets/icons/email.svg" alt="">
     </div>
     <div class="relative input">
-      <input type="password" name="password" placeholder="Password" [(ngModel)]="password" required>
+      <input type="password" name="password" placeholder="Password" formControlName="password">
       <img src="assets/icons/password.svg" alt="">
     </div>
-        <div class="relative input">
-          <input type="password" name="password" placeholder="Confirm password" [(ngModel)]="password" required>
-          <img src="assets/icons/password.svg" alt="">
-        </div>
+    <div class="relative input">
+      <input type="password" name="password" placeholder="Confirm password" formControlName="confirmed_password">
+      <img src="assets/icons/password.svg" alt="">
+    </div>
     <button class="sign-up-btn">Sign up</button>
     <img routerLink="/login" class="arrow-left" src="assets/icons/arrow-left.svg" alt="">
   </form>
