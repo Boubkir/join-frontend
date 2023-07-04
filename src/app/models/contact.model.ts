@@ -5,4 +5,5 @@ export interface Contact {
   last_name:string;
   phone:string;
   user:string;
+  id:string;
 }

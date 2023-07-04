@@ -5,23 +5,36 @@
       <h1>Log in</h1>
       <div class="line"></div>
     </div>
-    <div>
-      <div class="input relative">
-        <input type="text" name="username" placeholder="Email" formControlName="email">
-        <img src="assets/icons/email.svg" alt="">
+    <div class="column gap-26">
+      <div class="column gap-5">
+        <div class="input relative">
+          <input type="text" name="email" placeholder="Email" formControlName="email">
+          <img src="assets/icons/email.svg" alt="">
+        </div>
+        <ng-container
+          *ngIf="loginForm.controls['email'].invalid && loginForm.controls['email'].touched; else placeHolder">
+          <div class="error-message">
+            Valid Email is required
+          </div>
+        </ng-container>
+        <ng-template #placeHolder>
+          <div class="place-holder"></div>
+        </ng-template>
       </div>
-      <div *ngIf="loginForm.controls['email'].invalid && loginForm.controls['email'].touched" class="error-message">
-        Valid Email is required
-      </div>
-    </div>
-    <div>
-      <div class="input relative">
-        <input type="password" name="password" placeholder="Password" formControlName="password">
-        <img src="assets/icons/password.svg" alt="">
-      </div>
-      <div *ngIf="loginForm.controls['password'].invalid && loginForm.controls['password'].touched"
-        class="error-message">
-        Password is required
+      <div class="column gap-5">
+        <div class="input relative">
+          <input type="password" name="password" placeholder="Password" formControlName="password">
+          <img src="assets/icons/password.svg" alt="">
+        </div>
+        <ng-container
+          *ngIf="loginForm.controls['password'].invalid && loginForm.controls['password'].touched; else placeHolder">
+          <div class="error-message">
+            Password is required
+          </div>
+        </ng-container>
+        <ng-template #placeHolder>
+          <div class="place-holder"></div>
+        </ng-template>
       </div>
     </div>
     <div class="center">
@@ -39,6 +52,6 @@
 
   <div class="registration-container display-flex gap-35 center">
     <span>Not a Join user?</span>
-    <button routerLink="/register">Sign up</button>
+    <button  routerLink="/register">Sign up</button>
   </div>
 </div>

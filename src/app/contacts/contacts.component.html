@@ -1,17 +1,19 @@
 <app-add-contact-slide *ngIf="addContactSlide" (onShowSlider)="addContactSlider()"></app-add-contact-slide>
-<app-edit-contact-slide *ngIf="contacts.length > 0 && editContactSlide" [currentContact]="selectedContact"></app-edit-contact-slide>
-<div class="content display-flex relative">
+<app-edit-contact-slide (onShowSlider)="editContactSlider()" *ngIf="contacts.length > 0 && editContactSlide"
+  [currentContact]="selectedContact"></app-edit-contact-slide>
+<div class="content display-flex">
   <div class="contacts-container">
     <div class="column" *ngFor="let contact of contacts, let i = index">
-      <div class="letter center" *ngIf="showLetter(contact.first_name[0], contacts[i-1]?.first_name[0])">
-        <span>{{contact.first_name[0]}}</span>
+      <div class="letter center"
+        *ngIf="showLetter(contact.first_name[0].uppercase, contacts[i-1]?.first_name[0].uppercase)">
+        <span>{{contact.first_name[0] | uppercase}}</span>
         <img class="sepate-contacts" src="assets/img/sepate-contacts.svg" alt="">
       </div>
       <div (click)="selectContact(contact)" class="contact" [ngClass]="{ 'active': contact === selectedContact }">
-        <div class="circle center" [style.background]="contact.color">{{ contact.first_name[0] }}{{
-          contact['last_name'][0] }}</div>
+        <div class="circle center" [style.background]="contact.color">{{ contact.first_name[0]| uppercase }}{{
+          contact.last_name[0]| uppercase }}</div>
         <div class="column gap-5">
-          <span class="name">{{contact.first_name}} {{contact.last_name}}</span>
+          <span class="name">{{contact.first_name |titlecase}} {{contact.last_name |titlecase}}</span>
           <span class="email">{{contact['email']}}</span>
         </div>
       </div>
@@ -19,23 +21,25 @@
   </div>
   <div class="contact-detail relative column gap-48">
     <app-headline [h1]="h1" [motto]="motto"></app-headline>
-    <div *ngIf="selectedContact">
+    <div *ngIf="selectedContact" class="column gap-24">
       <div class="display-flex gap-54 name-container">
         <div [style.background]="selectedContact?.color" class="big-circle center">{{ selectedContact?.first_name[0]
-          }}{{ selectedContact?.last_name[0] }}</div>
+          |uppercase }}{{ selectedContact?.last_name[0]|uppercase }}</div>
         <div class="column">
-          <span class="detail-name">{{ selectedContact?.first_name }} {{ selectedContact?.last_name }}</span>
+          <span class="detail-name">{{ selectedContact?.first_name |titlecase }} {{ selectedContact?.last_name
+            |titlecase }}</span>
           <div class="add-task" routerLink="/add-task">+ Add Task</div>
         </div>
       </div>
-      <div class="display-flex gap-59">
+      <div class="display-flex gap-59 align-center">
         <span>Contact Information</span>
-        <div (click)="editContactSlider()">Edit Contact</div>
+        <div class="pointer center gap-8" (click)="editContactSlider()"><img src="assets/icons/pencil.svg" alt=""> Edit
+          Contact</div>
       </div>
       <div class="information gap-15 column">
         <div class="column">
           <h4>Email</h4>
-          <span>{{ selectedContact?.email }}</span>
+          <a href="mailto:{{ selectedContact?.email }}" [style.color]="'#007CEE'">{{ selectedContact?.email }}</a>
         </div>
         <div class="column">
           <h4>Phone</h4>
@@ -43,6 +47,7 @@
         </div>
       </div>
     </div>
-    <div class="button" (click)="addContactSlider()">New Contact</div>
+    <div class="button gap-10" (click)="addContactSlider()">New Contact <img src="assets/icons/new-contact.svg" alt="">
+    </div>
   </div>
 </div>

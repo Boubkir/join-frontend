@@ -19,15 +19,15 @@ export class ContactsComponent {
   constructor(private data: SharedDataService) {}
 
   async ngOnInit() {
+    this.loadContacts();
+  }
+
+  async loadContacts() {
     this.contacts = await this.data.loadContacts();
     this.sortContacts();
     if (this.contacts.length > 0) {
       this.selectedContact = this.contacts[0];
     }
-  }
-
-  async loadContacts() {
-    this.contacts = await this.data.loadContacts();
   }
 
   sortContacts() {
@@ -53,11 +53,13 @@ export class ContactsComponent {
     console.log(this.selectedContact);
   }
 
-  addContactSlider() {
+  async addContactSlider() {
     this.addContactSlide = !this.addContactSlide;
+    await this.loadContacts();
   }
 
-  editContactSlider() {
-    this.addContactSlide = !this.addContactSlide;
+  async editContactSlider() {
+    this.editContactSlide = !this.editContactSlide;
+    await this.loadContacts();
   }
 }

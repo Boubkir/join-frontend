@@ -1,5 +1,6 @@
-<div class="background center" >
-  <div class="content display-flex">
+<div class="background center">
+  <div class="content display-flex relative">
+    <img (click)="triggerShowSlider()" class="cancel-x" src="assets/icons/cancel.svg" alt="">
     <div class="left-container">
       <img class="logo" src="assets/img/logo.png" alt="">
       <h1>Add contact</h1>
@@ -14,40 +15,63 @@
       </div>
       <form [formGroup]="contactForm" class="column" action="">
         <div>
-          <input type="text" name="" formControlName="firstName" placeholder="Firstname" id="">
+          <div class="input relative ">
+            <input type="text" name="" formControlName="firstName" placeholder="Firstname" id="">
+            <img src="assets/icons/user.svg" alt="">
+          </div>
           <div *ngIf="contactForm.controls['firstName'].invalid && contactForm.controls['firstName'].touched"
             class="error-message">Firstname
             is required </div>
         </div>
 
         <div>
-          <input type="text" name="" formControlName="lastName" placeholder="Lastname" id="">
+          <div class="input relative">
+            <input type="text" name="" formControlName="lastName" placeholder="Lastname" id="">
+            <img src="assets/icons/user.svg" alt="">
+          </div>
           <div *ngIf="contactForm.controls['lastName'].invalid && contactForm.controls['lastName'].touched"
             class="error-message">
             Lastname is required </div>
         </div>
 
         <div>
-          <input type="email" name="" formControlName="email" placeholder="Email" id="">
+          <div class="input relative">
+            <input type="email" name="" formControlName="email" placeholder="Email" id="">
+            <img src="assets/icons/email.svg" alt="">
+          </div>
           <div *ngIf="contactForm.controls['email'].invalid && contactForm.controls['email'].touched"
             class="error-message">
             Valid email is required </div>
         </div>
 
         <div>
-          <input type="text" name="" formControlName="phone" placeholder="Phone" id="">
+          <div class="input relative">
+            <input type="text" name="" formControlName="phone" placeholder="Phone" id="">
+            <img src="assets/icons/phone.svg" alt="">
+          </div>
           <div *ngIf="contactForm.controls['phone'].invalid && contactForm.controls['phone'].touched"
             class="error-message">
             Phonenumber is required </div>
         </div>
 
-
-        <input type="color" name="" formControlName="color" placeholder="Color" id="">
-
-        <div>
-          <button (click)="triggerShowSlider()">Cancel</button>
-          <button (click)="onSubmit()">Create contact</button>
+        <div class="input relative">
+          <input type="color" value="#2A3647" name="" formControlName="color" placeholder="Color" id="">
+          <img src="assets/icons/color-picker.svg" alt="">
         </div>
+        <div class="display-flex gap-25 center">
+          <button class="cancel-btn" (click)="triggerShowSlider()">Cancel <svg width="25" height="25"
+              viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <g id="iconoir:cancel">
+                <path id="Vector"
+                  d="M12.501 12.5001L17.744 17.7431M7.258 17.7431L12.501 12.5001L7.258 17.7431ZM17.744 7.25708L12.5 12.5001L17.744 7.25708ZM12.5 12.5001L7.258 7.25708L12.5 12.5001Z"
+                  stroke="#2A3647" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+              </g>
+            </svg>
+          </button>
+          <button class="create-btn" (click)="onSubmit()">Create contact <img src="assets/icons/check.svg"
+              alt=""></button>
+        </div>
+
       </form>
     </div>
   </div>

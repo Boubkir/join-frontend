@@ -37,22 +37,21 @@ export class EditContactSlideComponent {
     }
   }
 
-  onSubmit() {
+  editContact(id: any) {
     if (this.contactForm.valid) {
-      const newContact: Contact = {
+      const editedContact: Contact = {
         first_name: this.contactForm.get('first_name')?.value,
         last_name: this.contactForm.get('last_name')?.value,
         email: this.contactForm.get('email')?.value,
         phone: this.contactForm.get('phone')?.value,
         color: this.contactForm.get('color')?.value,
         user: this.currentUser['id'],
+        id: id,
       };
-
-      console.log(newContact);
-
-      this.data.createContact(newContact).subscribe(
+      this.data.editContact(editedContact, id).subscribe(
         () => {
           console.log('geschafft');
+          this.triggerShowSlider();
         },
         (error) => {
           console.error('Error creating task:', error);
@@ -61,28 +60,19 @@ export class EditContactSlideComponent {
     }
   }
 
-  triggerShowSlider() {
-    this.onShowSlider.emit();
+  deleteContact(id: any) {
+    this.data.deleteContact(id).subscribe(
+      () => {
+        console.log('geschafft');
+        this.triggerShowSlider();
+      },
+      (error) => {
+        console.error('Error creating task:', error);
+      }
+    );
   }
 
-  editContact(id: any) {
-    if (this.contactForm.valid) {
-      const newContact: Contact = {
-        first_name: this.contactForm.get('first_name')?.value,
-        last_name: this.contactForm.get('last_name')?.value,
-        email: this.contactForm.get('email')?.value,
-        phone: this.contactForm.get('phone')?.value,
-        color: this.contactForm.get('color')?.value,
-        user: this.currentUser['id'],
-      };
-      this.data.editContact(newContact, id).subscribe(
-        () => {
-          console.log('geschafft');
-        },
-        (error) => {
-          console.error('Error creating task:', error);
-        }
-      );;
-    }
+  triggerShowSlider() {
+    this.onShowSlider.emit();
   }
 }

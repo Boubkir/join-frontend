@@ -8,6 +8,7 @@
 h1 {
   font-size: 61px;
   font-weight: 700;
+  margin-top: 0;
 }
 
 input {
@@ -16,19 +17,23 @@ input {
   align-items: center;
   gap: 10px;
   width: 422px;
+  height: 51px;
   box-sizing: border-box;
   border-radius: 10px;
   border: 1px solid var(--style, #d1d1d1);
   background: #fff;
+  font-size: 21px;
+  font-weight: 400;
 }
 
 textarea {
   display: flex;
   height: 119px;
+  width: 422px;
   padding: 18px 21px;
   align-items: flex-start;
   gap: 10px;
-  align-self: stretch;
+  box-sizing: border-box;
   border-radius: 10px;
   border: 1px solid var(--style, #d1d1d1);
   background: #fff;
@@ -85,10 +90,13 @@ textarea {
   align-items: center;
   gap: 10px;
   border-radius: 10px;
-  background: var(--white, #fff);
   box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.1);
   border: none;
   cursor: pointer;
+  color: #000;
+  font-size: 21px;
+  font-weight: 400;
+  background-color: #fff;
 }
 
 .button-container {
@@ -112,6 +120,18 @@ textarea {
   color: var(--version-2-main-color, #2a3647);
   font-size: 21px;
   cursor: pointer;
+
+    &:hover {
+    border-radius: 10px;
+    border: 1px solid var(--ligth-blue, #29abe2);
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    color: #29abe2 ;
+    cursor: pointer;
+
+    svg >*>*{
+      stroke:   #29abe2;
+    }
+  }
 }
 
 .add-btn {
@@ -122,15 +142,20 @@ textarea {
   align-items: center;
   gap: 10px;
   border-radius: 10px;
+  border: none;
   background: #2a3647;
   color: #fff;
   font-size: 21px;
   font-weight: 700;
   cursor: pointer;
-}
 
-.selected {
-  font-weight: bold;
+  &:hover {
+    background-color: #29abe2;
+    border-color: #29abe2;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: all 225ms;
+  }
 }
 
 .db {
@@ -166,4 +191,37 @@ input[type="checkbox"] {
   font-size: 21px;
   transition: all 1s ease-in-out;
   cursor: pointer;
+}
+
+.selected-urgent {
+  background: #ff3d00 !important;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) !important;
+  color: #fff !important;
+  font-weight: 700 !important;
+
+  path {
+    fill: white !important;
+  }
+}
+
+.selected-medium {
+  background: #ffa800 !important;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) !important;
+  color: #fff !important;
+  font-weight: 700 !important;
+
+  path {
+    fill: white;
+  }
+}
+
+.selected-low {
+  background: #7ae229 !important;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) !important;
+  color: #fff !important;
+  font-weight: 700 !important;
+
+  path {
+    fill: white;
+  }
 }

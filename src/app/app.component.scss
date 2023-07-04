@@ -1,11 +1,5 @@
-.content {
-  position: relative;
-}
-
 .path-content {
-  position: absolute;
-  top: 94px;
-  left: 232px;
+  margin: 94px 0 0 232px;
   height: 100%;
   width: calc(100% - 232px);
   box-sizing: border-box;

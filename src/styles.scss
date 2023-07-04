@@ -70,12 +70,20 @@ body {
   gap: 8px;
 }
 
+.gap-10{
+  gap: 10px;
+}
+
 .gap-13 {
   gap: 13px;
 }
 
 .gap-24 {
   gap: 24px;
+}
+
+.gap-25{
+  gap: 25px;
 }
 
 .gap-26 {
@@ -123,4 +131,12 @@ body {
   color: #ff8190;
   font-size: 12px;
   font-weight: 400;
+}
+
+.place-holder{
+  height: 15px;
+}
+
+.align-center{
+  align-items: center;
 }

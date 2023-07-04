@@ -47,6 +47,11 @@
   }
 }
 
+.plus-icon:hover,
+.plus-icon:hover>* {
+    stroke: rgb(0 144 224);
+    cursor: pointer;
+}
 .input {
   box-sizing: border-box;
 

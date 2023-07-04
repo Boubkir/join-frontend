@@ -38,6 +38,11 @@ export class SharedDataService {
 
   editContact(contact: Contact, id: string) {
     const url = environment.baseUrl + '/contacts/' + id + '/';
-    return this.http.patch(url, contact);
+    return this.http.put(url, contact);
+  }
+
+  deleteContact( id: string) {
+    const url = environment.baseUrl + '/contacts/' + id + '/';
+    return this.http.delete(url);
   }
 }
