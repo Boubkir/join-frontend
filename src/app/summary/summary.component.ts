@@ -3,7 +3,6 @@ import { AuthService } from '../services/auth.service';
 import * as moment from 'moment';
 import { SharedDataService } from '../services/shared-data.service';
 
-
 @Component({
   selector: 'app-summary',
   templateUrl: './summary.component.html',
@@ -22,11 +21,9 @@ export class SummaryComponent {
   upComing!: any;
   h1 = 'Summary';
   motto = 'Everything in a nutshell!';
+  greetingMessage!: string;
 
-  constructor(
-    private data: SharedDataService,
-    private auth: AuthService
-  ) {}
+  constructor(private data: SharedDataService, private auth: AuthService) {}
 
   async ngOnInit() {
     this.todos = await this.data.loadTodos();
@@ -35,6 +32,7 @@ export class SummaryComponent {
     this.firstName = this.currentUser?.first_name ?? 'Sunshine';
     this.lastName = this.currentUser?.last_name ?? '';
     this.upComing = this.calculateUpcomingDeadline();
+    this.setGreetingMessage();
   }
 
   async loadTodos() {
@@ -63,5 +61,16 @@ export class SummaryComponent {
 
     let formattedDate = moment(upcoming[0].due_date).format('MMMM DD, YYYY');
     return formattedDate;
+  }
+
+  setGreetingMessage() {
+    const currentTime = new Date().getHours();
+    if (currentTime < 12) {
+      this.greetingMessage = 'Good morning,';
+    } else if (currentTime < 18) {
+      this.greetingMessage = 'Good afternoon,';
+    } else {
+      this.greetingMessage = 'Good evening,';
+    }
   }
 }

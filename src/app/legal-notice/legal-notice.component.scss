@@ -1,5 +1,7 @@
 .content {
   padding: 82px 123px;
+  height: calc(100vh - 94px);
+  box-sizing: border-box;
 }
 
 h1 {

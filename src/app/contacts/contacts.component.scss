@@ -1,5 +1,7 @@
 .content {
-  max-width: 140px;
+    height: calc(100vh - 94px);
+    width: calc(100vw - 453px);
+    box-sizing: border-box;
 }
 
 .contacts-container {
@@ -11,6 +13,11 @@
   align-items: center;
   flex-direction: column;
   box-sizing: border-box;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  overflow-y: scroll;
 }
 
 .contact {
@@ -71,8 +78,11 @@
 }
 
 .contact-detail {
-  width: calc(100vw - 40px);
+  width: calc(100vw - 685px);
   padding: 82px 58px;
+  top: 0;
+  left: 453px;
+  box-sizing: border-box;
 }
 
 .name-container {
@@ -102,7 +112,7 @@
 
 .button {
   position: absolute;
-  right: 0;
+  right: 64px;
   bottom: 64px;
   height: 53px;
   padding: 18px 15px;

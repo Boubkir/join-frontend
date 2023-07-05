@@ -1,4 +1,4 @@
-<div  cdkDrag class="card">
+<div cdkDrag class="card">
   <div class="card-category">{{task.category}}</div>
   <div class="card-content">
     <h3>{{task.title}}</h3>
@@ -9,8 +9,8 @@
     <span>0/{{task.sub_tasks.length}} Done</span>
   </div>
   <div class="space-between full-width center">
-    <div class="circle-container">
-
+    <div class="circle-container display-flex">
+   
     </div>
     <img [src]="'assets/icons/card-'+task.priority+'.svg'" alt="">
   </div>

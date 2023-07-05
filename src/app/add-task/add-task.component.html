@@ -21,12 +21,12 @@
         <label for="description">Description</label>
         <textarea formControlName="description" cols="30" rows="10"></textarea>
         <ng-container
-          *ngIf="taskForm.controls['description'].invalid && taskForm.controls['description'].touched; else placeHolder">
+          *ngIf="taskForm.controls['description'].invalid && taskForm.controls['description'].touched; else placeHolder2">
           <div class="error-message">
             Description is required
           </div>
         </ng-container>
-        <ng-template #placeHolder>
+        <ng-template #placeHolder2>
           <div class="place-holder"></div>
         </ng-template>
       </div>
@@ -42,12 +42,12 @@
           </div>
         </div>
         <ng-container
-          *ngIf="taskForm.controls['category'].invalid && taskForm.controls['category'].touched; else placeHolder">
+          *ngIf="taskForm.controls['category'].invalid && taskForm.controls['category'].touched; else placeHolder3">
           <div class="error-message">
             Category is required
           </div>
         </ng-container>
-        <ng-template #placeHolder>
+        <ng-template #placeHolder3>
           <div class="place-holder"></div>
         </ng-template>
       </div>
@@ -57,7 +57,7 @@
         <span class="db">Select contacts to assign</span>
         <div class="column gap-13 down" [class.d-none]="!isUserDropDownOpen">
           <span class="space-between" *ngFor="let user of users">
-            <span>{{ user['first_name'] }} {{ user['last_name'] }}</span>
+            <span>{{ user.first_name }} {{ user.last_name }}</span>
             <input type="checkbox" [checked]="isUserSelected(user)" (change)="updateAssignedTo(user)">
           </span>
         </div>
@@ -69,12 +69,12 @@
         <label for="dueDate">Due date</label>
         <input formControlName="dueDate" type="date">
         <ng-container
-          *ngIf="taskForm.controls['dueDate'].invalid && taskForm.controls['dueDate'].touched; else placeHolder">
+          *ngIf="taskForm.controls['dueDate'].invalid && taskForm.controls['dueDate'].touched; else placeHolder4">
           <div class="error-message">
             Due date is required
           </div>
         </ng-container>
-        <ng-template #placeHolder>
+        <ng-template #placeHolder4>
           <div class="place-holder"></div>
         </ng-template>
       </div>
@@ -143,12 +143,12 @@
           </button>
         </div>
         <ng-container
-          *ngIf="taskForm.controls['priority'].invalid && taskForm.controls['priority'].touched; else placeHolder">
+          *ngIf="taskForm.controls['priority'].invalid && taskForm.controls['priority'].touched; else placeHolder5">
           <div class="error-message">
             Priority is required
           </div>
         </ng-container>
-        <ng-template #placeHolder>
+        <ng-template #placeHolder5>
           <div class="place-holder"></div>
         </ng-template>
       </div>

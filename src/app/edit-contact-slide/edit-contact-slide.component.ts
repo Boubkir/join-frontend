@@ -11,7 +11,7 @@ import { AuthService } from '../services/auth.service';
 })
 export class EditContactSlideComponent {
   @Output() onShowSlider: EventEmitter<void> = new EventEmitter<void>();
-  @Input() currentContact?: Contact | null;
+  @Input() currentContact!: Contact;
   currentUser: any;
   contactForm: FormGroup;
 
@@ -31,13 +31,13 @@ export class EditContactSlideComponent {
 
   ngOnInit(): void {
     this.currentUser = this.auth.getCurrentUser();
-    console.log(this.currentContact);
+    console.log(this.currentContact?.id);
     if (this.currentContact) {
       this.contactForm.patchValue(this.currentContact);
     }
   }
 
-  editContact(id: any) {
+  editContact(id:string) {
     if (this.contactForm.valid) {
       const editedContact: Contact = {
         first_name: this.contactForm.get('first_name')?.value,
@@ -48,7 +48,7 @@ export class EditContactSlideComponent {
         user: this.currentUser['id'],
         id: id,
       };
-      this.data.editContact(editedContact, id).subscribe(
+      this.data.editContact(editedContact, editedContact.id).subscribe(
         () => {
           console.log('geschafft');
           this.triggerShowSlider();

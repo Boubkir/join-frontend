@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
 import { SharedDataService } from '../services/shared-data.service';
 import { Task } from '../models/task.model';
 import { AuthService } from '../services/auth.service';
+import { User } from '../models/user.model';
 
 @Component({
   selector: 'app-add-task',
@@ -11,12 +12,12 @@ import { AuthService } from '../services/auth.service';
 })
 export class AddTaskComponent implements OnInit {
   taskForm: FormGroup;
-  users: any;
+  users: User[] = [];
   priority!: string;
   isDropDownOpen = false;
   isUserDropDownOpen = false;
   userID!: any;
-  currentUser: any;
+  currentUser!: User;
   isTaskCreated: boolean = false;
 
   constructor(
@@ -29,8 +30,9 @@ export class AddTaskComponent implements OnInit {
       description: ['', Validators.required],
       category: ['', Validators.required],
       dueDate: [null, Validators.required],
+      priority: ['', Validators.required],
       assignedTo: this.formBuilder.array([]),
-      subtasks: this.formBuilder.array([]), 
+      subtasks: this.formBuilder.array([]),
     });
   }
 
@@ -40,7 +42,13 @@ export class AddTaskComponent implements OnInit {
   }
 
   async loadUser() {
-    this.users = await this.data.loadUsers();
+    try {
+      const loadedUsers = (await this.data.loadUsers()) as User[];
+      this.users = loadedUsers;
+      console.log(this.users);
+    } catch (error) {
+      console.error('Fehler beim Laden der Benutzer:', error);
+    }
   }
 
   openCloseDropdown() {
@@ -70,7 +78,7 @@ export class AddTaskComponent implements OnInit {
         assigned_to: this.taskForm.get('assignedTo')?.value,
         sub_tasks: this.taskForm.get('subtasks')?.value,
         priority: this.priority,
-        user: this.currentUser['id'],
+        user: this.currentUser.id,
         status: 'open',
       };
 

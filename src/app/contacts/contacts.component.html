@@ -1,14 +1,14 @@
 <app-add-contact-slide *ngIf="addContactSlide" (onShowSlider)="addContactSlider()"></app-add-contact-slide>
 <app-edit-contact-slide (onShowSlider)="editContactSlider()" *ngIf="contacts.length > 0 && editContactSlide"
   [currentContact]="selectedContact"></app-edit-contact-slide>
-<div class="content display-flex">
+<div class="content display-flex relative">
   <div class="contacts-container">
     <div class="column" *ngFor="let contact of contacts, let i = index">
       <div class="letter center"
-        *ngIf="showLetter(contact.first_name[0].uppercase, contacts[i-1]?.first_name[0].uppercase)">
+        *ngIf="showLetter(contact.first_name[0].toUpperCase(), contacts[i-1]?.first_name[0].toUpperCase())">
         <span>{{contact.first_name[0] | uppercase}}</span>
-        <img class="sepate-contacts" src="assets/img/sepate-contacts.svg" alt="">
       </div>
+      <img class="sepate-contacts" src="assets/img/sepate-contacts.svg" alt="">
       <div (click)="selectContact(contact)" class="contact" [ngClass]="{ 'active': contact === selectedContact }">
         <div class="circle center" [style.background]="contact.color">{{ contact.first_name[0]| uppercase }}{{
           contact.last_name[0]| uppercase }}</div>
@@ -47,7 +47,8 @@
         </div>
       </div>
     </div>
-    <div class="button gap-10" (click)="addContactSlider()">New Contact <img src="assets/icons/new-contact.svg" alt="">
-    </div>
+    <button class="button gap-10" (click)="addContactSlider()">
+      New Contact <img src="assets/icons/new-contact.svg" alt="">
+    </button>
   </div>
 </div>

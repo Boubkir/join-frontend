@@ -46,6 +46,7 @@ export class AddTaskSlideComponent {
 
   openCloseDropdown() {
     this.isDropDownOpen = !this.isDropDownOpen;
+    console.log(this.users);
   }
 
   openCloseUserDropdown() {

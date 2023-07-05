@@ -37,6 +37,8 @@ textarea {
   border-radius: 10px;
   border: 1px solid var(--style, #d1d1d1);
   background: #fff;
+  font-size: 21px;
+  font-weight: 400;
 }
 
 .drop-down {
@@ -121,15 +123,15 @@ textarea {
   font-size: 21px;
   cursor: pointer;
 
-    &:hover {
+  &:hover {
     border-radius: 10px;
     border: 1px solid var(--ligth-blue, #29abe2);
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-    color: #29abe2 ;
+    color: #29abe2;
     cursor: pointer;
 
-    svg >*>*{
-      stroke:   #29abe2;
+    svg > * > * {
+      stroke: #29abe2;
     }
   }
 }
