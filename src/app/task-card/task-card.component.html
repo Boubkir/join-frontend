@@ -1,5 +1,5 @@
 <div cdkDrag class="card">
-  <div class="card-category">{{task.category}}</div>
+<div [style.background-color]="task.category_color" class="card-category">{{task.category}}</div>
   <div class="card-content">
     <h3>{{task.title}}</h3>
     <span>{{task.description}}</span>

@@ -101,6 +101,7 @@ export class TaskBigCardComponent {
         title: this.taskForm.get('title')?.value,
         description: this.taskForm.get('description')?.value,
         category: this.taskForm.get('category')?.value,
+        category_color: this.taskForm.get('category_color')?.value,
         due_date: this.taskForm.get('due_date')?.value,
         assigned_to: this.taskForm.get('assigned_to')?.value,
         user: this.currentUser.id,

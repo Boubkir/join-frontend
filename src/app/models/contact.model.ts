@@ -1,9 +1,9 @@
 export interface Contact {
-  color:string;
-  email:string;
-  first_name:string;
-  last_name:string;
-  phone:string;
-  user:string;
-  id:string;
+  color: string;
+  email: string;
+  first_name: string;
+  last_name: string;
+  phone: string;
+  user: number;
+  id?: number;
 }

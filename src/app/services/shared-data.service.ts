@@ -36,7 +36,7 @@ export class SharedDataService {
     return this.http.post(url, contact);
   }
 
-  editContact(contact: Contact, id: string) {
+  editContact(contact: Contact, id: number) {
     const url = environment.baseUrl + '/contacts/' + id + '/';
     return this.http.put(url, contact);
   }

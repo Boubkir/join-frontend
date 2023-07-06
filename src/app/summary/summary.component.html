@@ -4,7 +4,7 @@
     <div class="column dashboard gap-35">
       <div class="display-flex gap-35">
         <div routerLink="/board" class="task-number-card column center">
-          <span class="number">{{todos.length}}</span>
+          <span class="number">{{tasks.length}}</span>
           <span class="task-status">Task in <br> Board</span>
         </div>
         <div routerLink="/board" class="task-number-card column center">
@@ -26,7 +26,8 @@
         </div>
         <div class="seperate-line"></div>
         <div class="display-flex column gap-13">
-          <span class="date">{{upComing}}</span>
+          <span *ngIf="upComing" class="date">{{upComing}}</span>
+          <span *ngIf="!upComing" class="date">No</span>
           <span class="date-text">Upcoming Deadline</span>
         </div>
       </div>

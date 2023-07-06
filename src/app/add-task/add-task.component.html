@@ -36,9 +36,12 @@
           <img (click)="openCloseDropdown()" class="arrow-down" src="assets/icons/arrow-down.svg" alt="">
           <input class="db" formControlName="category" placeholder="Select a task Category">
           <div class="column gap-13 down" [class.d-none]="!isDropDownOpen">
-            <span (click)="setCategory('Sales')">Sales</span>
-            <span (click)="setCategory('Accounting')">Accounting</span>
-            <span (click)="setCategory('Backoffice')">Backoffice</span>
+            <span class="space-between" (click)="setCategory('Sales','var(--label-1)')">Sales<div style="background-color: var(--label-1);"
+                class="dot" class=""></div></span>
+            <span class="space-between"  (click)="setCategory('Accounting','var(--label-2)')">Accounting <div
+                style="background-color: var(--label-2);" class="dot space-between" class=""></div></span>
+            <span class="space-between"  (click)="setCategory('Backoffice','var(--label-2)')">Backoffice <div
+                style="background-color: var(--label-3);" class="dot space-between" class=""></div></span>
           </div>
         </div>
         <ng-container
@@ -162,16 +165,16 @@
       </div>
     </div>
     <div class="button-container gap-26 display-flex">
-      <button class="clear-btn">Clear <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <g id="iconoir:cancel">
-          <path id="Vector"
-            d="M12.501 12.5001L17.744 17.7431M7.258 17.7431L12.501 12.5001L7.258 17.7431ZM17.744 7.25708L12.5 12.5001L17.744 7.25708ZM12.5 12.5001L7.258 7.25708L12.5 12.5001Z"
-            stroke="#2A3647" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-        </g>
-      </svg>
-</button>
-      <button (click)="onSubmit()"  class="add-btn">Add Task <img
-          src="assets/icons/check.svg" alt=""></button>
+      <button class="clear-btn">Clear <svg width="25" height="25" viewBox="0 0 25 25" fill="none"
+          xmlns="http://www.w3.org/2000/svg">
+          <g id="iconoir:cancel">
+            <path id="Vector"
+              d="M12.501 12.5001L17.744 17.7431M7.258 17.7431L12.501 12.5001L7.258 17.7431ZM17.744 7.25708L12.5 12.5001L17.744 7.25708ZM12.5 12.5001L7.258 7.25708L12.5 12.5001Z"
+              stroke="#2A3647" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+          </g>
+        </svg>
+      </button>
+      <button (click)="onSubmit()" class="add-btn">Add Task <img src="assets/icons/check.svg" alt=""></button>
     </div>
   </form>
 </div>

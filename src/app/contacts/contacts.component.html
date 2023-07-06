@@ -3,7 +3,7 @@
   [currentContact]="selectedContact"></app-edit-contact-slide>
 <div class="content display-flex relative">
   <div class="contacts-container">
-    <div class="column" *ngFor="let contact of contacts, let i = index">
+    <div class="column align-center" *ngFor="let contact of contacts, let i = index">
       <div class="letter center"
         *ngIf="showLetter(contact.first_name[0].toUpperCase(), contacts[i-1]?.first_name[0].toUpperCase())">
         <span>{{contact.first_name[0] | uppercase}}</span>

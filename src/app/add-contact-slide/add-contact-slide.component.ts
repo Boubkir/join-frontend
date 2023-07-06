@@ -41,7 +41,6 @@ export class AddContactSlideComponent {
         phone: this.contactForm.get('phone')?.value,
         color: this.contactForm.get('color')?.value,
         user: this.currentUser['id'],
-        id:''
       };
 
       this.triggerShowSlider();

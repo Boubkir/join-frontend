@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import * as moment from 'moment';
 import { SharedDataService } from '../services/shared-data.service';
+import { Task } from '../models/task.model';
 
 @Component({
   selector: 'app-summary',
@@ -9,7 +10,7 @@ import { SharedDataService } from '../services/shared-data.service';
   styleUrls: ['./summary.component.scss'],
 })
 export class SummaryComponent {
-  todos: any = [];
+  tasks: any = [];
   open: any = [];
   inProgress: any = [];
   awaitingFeedback: any = [];
@@ -26,34 +27,35 @@ export class SummaryComponent {
   constructor(private data: SharedDataService, private auth: AuthService) {}
 
   async ngOnInit() {
-    this.todos = await this.data.loadTasks();
-    this.filterTasks();
+    this.tasks = await this.data.loadTasks();
+    this.tasks = this.removeDuplicateTasks(this.tasks);
+    this.filterTodos();
     this.currentUser = this.auth.getCurrentUser();
     this.firstName = this.currentUser?.first_name ?? 'Sunshine';
     this.lastName = this.currentUser?.last_name ?? '';
-    this.upComing = this.calculateUpcomingDeadline();
     this.setGreetingMessage();
+     this.upComing = this.calculateUpcomingDeadline();
   }
 
   async loadTodos() {
-    this.todos = await this.data.loadTasks();
-    this.filterTasks();
+    this.tasks = await this.data.loadTasks();
+    this.filterTodos();
   }
 
-  filterTasks() {
-    this.open = this.todos.filter((t: any) => t['status'] == 'open');
-    this.inProgress = this.todos.filter(
+  filterTodos() {
+    this.open = this.tasks.filter((t: any) => t['status'] == 'open');
+    this.inProgress = this.tasks.filter(
       (t: any) => t['status'] == 'inprogress'
     );
-    this.awaitingFeedback = this.todos.filter(
+    this.awaitingFeedback = this.tasks.filter(
       (t: any) => t['status'] == 'awaitingfeedback'
     );
-    this.done = this.todos.filter((t: any) => t['status'] == 'done');
-    this.urgent = this.todos.filter((t: any) => t['priority'] == 'urgent');
+    this.done = this.tasks.filter((t: any) => t['status'] == 'done');
+    this.urgent = this.tasks.filter((t: any) => t['priority'] == 'urgent');
   }
 
   calculateUpcomingDeadline(): string {
-    let upcoming = this.todos.sort(function (a: any, b: any) {
+    let upcoming = this.tasks.sort(function (a: any, b: any) {
       let x: any = new Date(a.due_date);
       let y: any = new Date(b.due_date);
       return x - y;
@@ -72,5 +74,19 @@ export class SummaryComponent {
     } else {
       this.greetingMessage = 'Good evening,';
     }
+  }
+
+  removeDuplicateTasks(tasks: Task[]): Task[] {
+    const uniqueTasks: Task[] = [];
+    const taskIds: Set<number> = new Set();
+
+    for (const task of tasks) {
+      if (!taskIds.has(task.id)) {
+        uniqueTasks.push(task);
+        taskIds.add(task.id);
+      }
+    }
+
+    return uniqueTasks;
   }
 }

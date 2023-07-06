@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { SharedDataService } from '../services/shared-data.service';
+import { Contact } from '../models/contact.model';
 
 @Component({
   selector: 'app-contacts',
@@ -12,7 +13,7 @@ export class ContactsComponent {
   sortedContacts: any = [];
   h1 = 'Contacts';
   motto = 'Better with a team';
-  selectedContact: any;
+  selectedContact: Contact;
   addContactSlide: boolean = false;
   editContactSlide: boolean = false;
 
@@ -25,7 +26,7 @@ export class ContactsComponent {
   async loadContacts() {
     this.contacts = await this.data.loadContacts();
     this.sortContacts();
-    if (this.contacts.length > 0) {
+    if (!this.selectedContact) {
       this.selectedContact = this.contacts[0];
     }
   }
@@ -48,7 +49,7 @@ export class ContactsComponent {
     return currentLetter !== previousLetter;
   }
 
-  selectContact(contact: any) {
+  selectContact(contact: Contact) {
     this.selectedContact = contact;
     console.log(this.selectedContact);
   }

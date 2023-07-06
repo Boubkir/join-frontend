@@ -1,6 +1,6 @@
 <div class="content center">
   <form class="relative" [formGroup]="taskForm" [class.edit-layout]="editMode" >
-    <div *ngIf="!editMode" class="category">{{task.category}}</div>
+<div *ngIf="!editMode" [style.background-color]="task.category_color" class="category">{{task.category}}</div>
 
     <h2 *ngIf="!editMode">{{task.title}}</h2>
 

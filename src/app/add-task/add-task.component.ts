@@ -28,7 +28,8 @@ export class AddTaskComponent implements OnInit {
     this.taskForm = this.formBuilder.group({
       title: ['', Validators.required],
       description: ['', Validators.required],
-      category: ['', Validators.required],
+      category: [''],
+      category_color: [''],
       dueDate: [null, Validators.required],
       priority: [''],
       assignedTo: this.formBuilder.array([]),
@@ -63,9 +64,14 @@ export class AddTaskComponent implements OnInit {
     this.priority = prio;
   }
 
-  setCategory(input: string) {
+  setCategory(input: string, color: string) {
     this.taskForm.get('category')?.setValue(input);
+    this.setCategoryColor(color);
     this.openCloseDropdown();
+  }
+
+  setCategoryColor(color: string) {
+    this.taskForm.get('category_color')?.setValue(color);
   }
 
   onSubmit() {
@@ -75,6 +81,7 @@ export class AddTaskComponent implements OnInit {
         title: this.taskForm.get('title')?.value,
         description: this.taskForm.get('description')?.value,
         category: this.taskForm.get('category')?.value,
+        category_color: this.taskForm.get('category_color')?.value,
         due_date: this.taskForm.get('dueDate')?.value,
         assigned_to: this.taskForm.get('assignedTo')?.value,
         sub_tasks: this.taskForm.get('subtasks')?.value,

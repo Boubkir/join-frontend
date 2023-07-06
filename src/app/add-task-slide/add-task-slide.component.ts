@@ -69,6 +69,7 @@ export class AddTaskSlideComponent {
         title: this.taskForm.get('title')?.value,
         description: this.taskForm.get('description')?.value,
         category: this.taskForm.get('category')?.value,
+        category_color: this.taskForm.get('category_color')?.value,
         due_date: this.taskForm.get('dueDate')?.value,
         assigned_to: this.taskForm.get('assignedTo')?.value,
         sub_tasks: this.taskForm.get('subtasks')?.value,

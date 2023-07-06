@@ -36,7 +36,7 @@ export class EditContactSlideComponent {
     }
   }
 
-  editContact(id:string) {
+  editContact(id) {
     if (this.contactForm.valid) {
       const editedContact: Contact = {
         first_name: this.contactForm.get('first_name')?.value,
@@ -45,12 +45,12 @@ export class EditContactSlideComponent {
         phone: this.contactForm.get('phone')?.value,
         color: this.contactForm.get('color')?.value,
         user: this.currentUser.id,
-        id: id,
       };
-      this.data.editContact(editedContact, editedContact.id).subscribe(
+      this.data.editContact(editedContact,id).subscribe(
         () => {
           console.log('geschafft');
           this.triggerShowSlider();
+          console.log(id)
         },
         (error) => {
           console.error('Error creating task:', error);
