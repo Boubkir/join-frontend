@@ -23,6 +23,10 @@ export class LoginComponent {
     });
   }
 
+  ngOnInit() {
+    this.checkLocalStorageExpiration();
+  }
+
   async login(isGuestLogin: boolean = false) {
     let user: any;
 
@@ -57,5 +61,17 @@ export class LoginComponent {
   getCurrentUser(): any {
     const userString = localStorage.getItem('currentUser');
     return userString ? JSON.parse(userString) : null;
+  }
+
+  checkLocalStorageExpiration() {
+    const expireDate = localStorage.getItem('expire');
+    const currentTimestamp = new Date().getTime();
+    const expireTimestamp = new Date(expireDate).getTime();
+
+    if (currentTimestamp - expireTimestamp > 2 * 60 * 60 * 1000) {
+      localStorage.removeItem('token');
+      localStorage.removeItem('expire');
+      localStorage.removeItem('currentUser');
+    }
   }
 }

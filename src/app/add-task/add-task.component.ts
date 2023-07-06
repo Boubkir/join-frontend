@@ -16,9 +16,9 @@ export class AddTaskComponent implements OnInit {
   priority!: string;
   isDropDownOpen = false;
   isUserDropDownOpen = false;
-  userID!: any;
   currentUser!: User;
   isTaskCreated: boolean = false;
+  assignedUsers: User[] = [];
 
   constructor(
     private formBuilder: FormBuilder,
@@ -42,11 +42,16 @@ export class AddTaskComponent implements OnInit {
     this.currentUser = this.auth.getCurrentUser();
   }
 
-  async loadUser() {
+  async loadUser(): Promise<void> {
     try {
       const loadedUsers = (await this.data.loadUsers()) as User[];
+      const currentUserIndex = loadedUsers.findIndex(
+        (user) => user.id === this.currentUser.id
+      );
+      if (currentUserIndex !== -1) {
+        loadedUsers.splice(currentUserIndex, 1);
+      }
       this.users = loadedUsers;
-      console.log(this.users);
     } catch (error) {
       console.error('Fehler beim Laden der Benutzer:', error);
     }
@@ -103,20 +108,27 @@ export class AddTaskComponent implements OnInit {
     }
   }
 
-  isUserSelected(user: any): boolean {
+  isUserSelected(user: User): boolean {
     const assignedTo = this.taskForm.get('assignedTo')?.value as any[];
-    return assignedTo.includes(user['id']);
+    return assignedTo.includes(user.id);
   }
 
-  updateAssignedTo(user: any) {
-    const assignedTo = this.taskForm.get('assignedTo') as FormArray;
-    if (!assignedTo.value.includes(user['id'])) {
-      assignedTo.push(this.formBuilder.control(user['id']));
-    } else {
-      const index = assignedTo.value.indexOf(user['id']);
-      assignedTo.removeAt(index);
-    }
+updateAssignedTo(user: any) {
+  const assignedTo = this.taskForm.get('assignedTo') as FormArray;
+  const assignedUsers = this.assignedUsers;
+
+  if (!assignedTo.value.includes(user.id)) {
+    assignedTo.push(this.formBuilder.control(user.id));
+    assignedUsers.push(user);
+  } else {
+    const index = assignedTo.value.indexOf(user.id);
+    assignedTo.removeAt(index);
+
+    const userIndex = assignedUsers.findIndex(assignedUser => assignedUser.id === user.id);
+    assignedUsers.splice(userIndex, 1);
   }
+}
+
 
   addSubtask() {
     const subtasks = this.taskForm.get('subtasks') as FormArray;

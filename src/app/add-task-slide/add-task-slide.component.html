@@ -1,76 +1,196 @@
-<div class="background center">
-  <div class="content">
-    <div class="gap-24 created-task" routerLink="/board" *ngIf="isTaskCreated">Task added to board <img
-        src="assets/icons/board.svg" alt=""></div>
-    <h1>Add Task</h1>
-    <form [formGroup]="taskForm" class="display-flex gap-59 relative">
-      <div class="left column gap-13 display-flex">
+<div class="content relative">
+  <div class="gap-24 created-task" routerLink="/board" *ngIf="isTaskCreated">Task added to board <img
+      src="assets/icons/board.svg" alt=""></div>
+  <h1>Add Task</h1>
+  <form [formGroup]="taskForm" class="display-flex gap-59 relative">
+    <div class="left column gap-13 display-flex">
+      <div class="column gap-8">
         <label for="title">Title</label>
         <input formControlName="title" type="text">
-        <div *ngIf="taskForm.controls['title'].invalid && taskForm.controls['title'].touched" class="error-message">
-          Title is required
-        </div>
+        <ng-container
+          *ngIf="taskForm.controls['title'].invalid && taskForm.controls['title'].touched; else placeHolder">
+          <div class="error-message">
+            Title is required
+          </div>
+        </ng-container>
+        <ng-template #placeHolder>
+          <div class="place-holder"></div>
+        </ng-template>
+      </div>
+      <div class="column gap-8">
         <label for="description">Description</label>
         <textarea formControlName="description" cols="30" rows="10"></textarea>
-        <div *ngIf="taskForm.controls['description'].invalid && taskForm.controls['description'].touched"
-          class="error-message">
-          Description is required
-        </div>
-        <label for="category">Category</label>
-        <div formControlName="category" class="drop-down column relative">
-          <img (click)="openCloseDropdown()" class="arrow-down" src="assets/icons/arrow-down.svg" alt="">
-          <span class="db" formControlName="category">Select task category</span>
-          <div class="column gap-13 down" [class.d-none]="!isDropDownOpen">
-            <span (click)="setCategory('Sales')">Sales</span>
-            <span (click)="setCategory('Accounting')">Accounting</span>
-            <span (click)="setCategory('Backoffice')">Backoffice</span>
+        <ng-container
+          *ngIf="taskForm.controls['description'].invalid && taskForm.controls['description'].touched; else placeHolder2">
+          <div class="error-message">
+            Description is required
           </div>
-        </div>
-        <div *ngIf="taskForm.controls['category'].invalid && taskForm.controls['category'].touched"
-          class="error-message">
-          Category is required
-        </div>
-        <label for="assignedTo">Assigned to:</label>
-        <div formArrayName="assignedTo" class="drop-down column relative">
-          <img (click)="openCloseUserDropdown()" class="arrow-down" src="assets/icons/arrow-down.svg" alt="">
-          <input placeholder="Select contacts to assign" class="db">
-          <div class="column gap-13 drop-down" [class.d-none]="!isUserDropDownOpen">
-            <span class="space-between" *ngFor="let user of users">
-              <span>{{ user.first_name }} {{ user.last_name }}</span>
-              <input type="checkbox" [checked]="isUserSelected(user)" (change)="updateAssignedTo(user)">
+        </ng-container>
+        <ng-template #placeHolder2>
+          <div class="place-holder"></div>
+        </ng-template>
+      </div>
+      <div class="column">
+        <label for="category">Category</label>
+        <div class="drop-down column relative" [class.drop-down-open]="isDropDownOpen">
+          <img (click)="openCloseDropdown()" class="arrow-down" src="assets/icons/arrow-down.svg" alt="">
+          <input class="db" formArrayName="category" placeholder="Select a task Category">
+          <div class="column" [class.d-none]="!isDropDownOpen">
+            <span class="space-between align-center" (click)="setCategory('Accounting','var(--label-1)')">
+              Accounting
+              <div style="background-color: var(--label-1);" class="dot space-between"></div>
+            </span>
+            <span class="space-between align-center" (click)="setCategory('Accounting','var(--label-2)')">
+              Accounting
+              <div style="background-color: var(--label-2);" class="dot space-between"></div>
+            </span>
+            <span class="space-between align-center" (click)="setCategory('Backoffice','var(--label-2)')">
+              Backoffice
+              <div style="background-color: var(--label-3);" class="dot space-between"></div>
             </span>
           </div>
         </div>
+        <ng-container
+          *ngIf="taskForm.controls['category'].invalid && taskForm.controls['category'].touched; else placeHolder3">
+          <div class="error-message">
+            Category is required
+          </div>
+        </ng-container>
+        <ng-template #placeHolder3>
+          <div class="place-holder"></div>
+        </ng-template>
       </div>
-      <img src="assets/icons/add-task-seperate.svg" alt="">
-      <div class="right column gap-13 relative">
+      <label for="assignedTo">Assigned to:</label>
+      <div formArrayName="assignedTo" class="drop-down column relative" [class.drop-down-open]="isUserDropDownOpen">
+        <img (click)="openCloseUserDropdown()" class="arrow-down" src="assets/icons/arrow-down.svg" alt="">
+        <input class="db" placeholder="Select contacts to assign">
+        <div class="column gap-13 " [class.d-none]="!isUserDropDownOpen">
+          <span class="space-between align-center" *ngFor="let user of users">
+            <div class="center">{{ user.first_name }} {{ user.last_name }}</div>
+            <input type="checkbox" [checked]="isUserSelected(user)" (change)="updateAssignedTo(user)">
+          </span>
+        </div>
+      </div>
+      <div class="display-flex gap-8" *ngIf="assignedUsers">
+        <div *ngFor="let name of assignedUsers, let i = index">
+          <div class="display-flex">
+            <div [style.background-color]="'var(--label-'+(i+1)+')'" class="circle center">
+              {{ name.first_name[0]
+              |uppercase }}{{ name.last_name[0]|uppercase }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <img src="assets/icons/add-task-seperate.svg" alt="">
+    <div class="right column gap-13 relative">
+      <div class="column gap-8">
         <label for="dueDate">Due date</label>
         <input formControlName="dueDate" type="date">
-        <label for="dueDate">Priority</label>
-        <div class="display-flex gap-8 prio">
-          <button (click)="setPriority('urgent')" [ngClass]="{ selected: priority === 'urgent' }">
-            Urgent <img src="assets/icons/card-urgent.svg" alt="" />
-          </button>
-          <button (click)="setPriority('medium')" [ngClass]="{ selected: priority === 'medium' }">
-            Medium <img src="assets/icons/card-medium.svg" alt="" />
-          </button>
-          <button (click)="setPriority('low')" [ngClass]="{ selected: priority === 'low' }">
-            Low <img src="assets/icons/card-low.svg" alt="" />
-          </button>
-        </div>
-        <label for="">Subtasks</label>
-        <div class="display-flex column">
-          <div *ngFor="let subtask of taskForm.get('subtasks')?.value; let i = index" class="display-flex gap-13">
-            <input type="text">
-            <button (click)="removeSubtask(i)">Remove</button>
+        <ng-container
+          *ngIf="taskForm.controls['dueDate'].invalid && taskForm.controls['dueDate'].touched; else placeHolder4">
+          <div class="error-message">
+            Due date is required
           </div>
-          <button (click)="addSubtask()">Add Subtask</button>
+        </ng-container>
+        <ng-template #placeHolder4>
+          <div class="place-holder"></div>
+        </ng-template>
+      </div>
+      <label for="priotity">Priority</label>
+      <div>
+        <div class="display-flex gap-8 prio">
+          <button (click)="setPriority('urgent')" [ngClass]="{ 'selected-urgent': priority === 'urgent' }">
+            Urgent <svg width="20" height="15" viewBox="0 0 20 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <g id="Prio alta" clip-path="url(#clip0_67245_2031)">
+                <g id="Capa 2">
+                  <g id="Capa 1">
+                    <path id="Vector"
+                      d="M18.9041 14.7547C18.6695 14.7551 18.441 14.6803 18.2521 14.5412L10 8.458L1.74797 14.5412C1.63212 14.6267 1.50054 14.6887 1.36073 14.7234C1.22093 14.7582 1.07565 14.7651 0.933183 14.7437C0.790715 14.7223 0.653851 14.6732 0.530406 14.599C0.406961 14.5247 0.299352 14.427 0.213723 14.3112C0.128094 14.1954 0.0661217 14.0639 0.031345 13.9243C-0.00343163 13.7846 -0.0103318 13.6394 0.0110384 13.497C0.0541974 13.2095 0.209888 12.9509 0.44386 12.7781L9.34797 6.20761C9.53667 6.06802 9.76524 5.99268 10 5.99268C10.2348 5.99268 10.4634 6.06802 10.6521 6.20761L19.5562 12.7781C19.7421 12.915 19.88 13.1071 19.9501 13.327C20.0203 13.5469 20.0191 13.7833 19.9468 14.0025C19.8745 14.2216 19.7348 14.4124 19.5475 14.5475C19.3603 14.6826 19.1351 14.7551 18.9041 14.7547Z"
+                      fill="#FF3D00" />
+                    <path id="Vector_2"
+                      d="M18.9041 9.00568C18.6695 9.00609 18.441 8.93124 18.2521 8.79214L10 2.70898L1.74797 8.79214C1.514 8.96495 1.22091 9.0378 0.933188 8.99468C0.645461 8.95155 0.386663 8.79597 0.213727 8.56218C0.0407916 8.32838 -0.0321162 8.03551 0.0110429 7.74799C0.0542019 7.46048 0.209892 7.20187 0.443864 7.02906L9.34797 0.458588C9.53667 0.318997 9.76525 0.243652 10 0.243652C10.2348 0.243652 10.4634 0.318997 10.6521 0.458588L19.5562 7.02906C19.7421 7.16598 19.88 7.35809 19.9501 7.57797C20.0203 7.79785 20.0191 8.03426 19.9468 8.25344C19.8745 8.47262 19.7348 8.66338 19.5475 8.79847C19.3603 8.93356 19.1351 9.00608 18.9041 9.00568Z"
+                      fill="#FF3D00" />
+                  </g>
+                </g>
+              </g>
+              <defs>
+                <clipPath id="clip0_67245_2031">
+                  <rect width="20" height="14.5098" fill="white" transform="translate(0 0.245117)" />
+                </clipPath>
+              </defs>
+            </svg>
+          </button>
+          <button (click)="setPriority('medium')" [ngClass]="{ 'selected-medium': priority === 'medium' }">
+            Medium <svg width="20" height="9" viewBox="0 0 20 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <g id="Prio media" clip-path="url(#clip0_67245_2038)">
+                <g id="Capa 2">
+                  <g id="Capa 1">
+                    <path id="Vector"
+                      d="M18.9041 8.22528H1.09589C0.805242 8.22528 0.526498 8.10898 0.320979 7.90197C0.11546 7.69495 0 7.41419 0 7.12143C0 6.82867 0.11546 6.5479 0.320979 6.34089C0.526498 6.13388 0.805242 6.01758 1.09589 6.01758H18.9041C19.1948 6.01758 19.4735 6.13388 19.679 6.34089C19.8845 6.5479 20 6.82867 20 7.12143C20 7.41419 19.8845 7.69495 19.679 7.90197C19.4735 8.10898 19.1948 8.22528 18.9041 8.22528Z"
+                      fill="#FFA800" />
+                    <path id="Vector_2"
+                      d="M18.9041 2.98211H1.09589C0.805242 2.98211 0.526498 2.86581 0.320979 2.6588C0.11546 2.45179 0 2.17102 0 1.87826C0 1.5855 0.11546 1.30474 0.320979 1.09772C0.526498 0.890712 0.805242 0.774414 1.09589 0.774414L18.9041 0.774414C19.1948 0.774414 19.4735 0.890712 19.679 1.09772C19.8845 1.30474 20 1.5855 20 1.87826C20 2.17102 19.8845 2.45179 19.679 2.6588C19.4735 2.86581 19.1948 2.98211 18.9041 2.98211Z"
+                      fill="#FFA800" />
+                  </g>
+                </g>
+              </g>
+              <defs>
+                <clipPath id="clip0_67245_2038">
+                  <rect width="20" height="7.45098" fill="white" transform="translate(0 0.774414)" />
+                </clipPath>
+              </defs>
+            </svg>
+
+          </button>
+          <button (click)="setPriority('low')" [ngClass]="{ 'selected-low': priority === 'low' }">
+            Low <svg width="20" height="15" viewBox="0 0 20 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <g id="Prio baja">
+                <g id="Capa 2">
+                  <g id="Capa 1">
+                    <path id="Vector"
+                      d="M10 9.00614C9.7654 9.00654 9.53687 8.9317 9.34802 8.79262L0.444913 2.22288C0.329075 2.13733 0.231235 2.02981 0.15698 1.90647C0.0827245 1.78313 0.033508 1.64638 0.0121402 1.50404C-0.031014 1.21655 0.0418855 0.923717 0.214802 0.689945C0.387718 0.456173 0.646486 0.300615 0.934181 0.257493C1.22188 0.21437 1.51493 0.287216 1.74888 0.460004L10 6.54248L18.2511 0.460004C18.367 0.374448 18.4985 0.312529 18.6383 0.277782C18.7781 0.243035 18.9234 0.236141 19.0658 0.257493C19.2083 0.278844 19.3451 0.328025 19.4685 0.402225C19.592 0.476425 19.6996 0.574193 19.7852 0.689945C19.8708 0.805697 19.9328 0.937168 19.9676 1.07685C20.0023 1.21653 20.0092 1.36169 19.9879 1.50404C19.9665 1.64638 19.9173 1.78313 19.843 1.90647C19.7688 2.02981 19.6709 2.13733 19.5551 2.22288L10.652 8.79262C10.4631 8.9317 10.2346 9.00654 10 9.00614Z"
+                      fill="#7AE229" />
+                    <path id="Vector_2"
+                      d="M10 14.7547C9.7654 14.7551 9.53687 14.6802 9.34802 14.5412L0.444913 7.97142C0.210967 7.79863 0.0552944 7.54005 0.0121402 7.25257C-0.031014 6.96509 0.0418855 6.67225 0.214802 6.43848C0.387718 6.20471 0.646486 6.04915 0.934181 6.00603C1.22188 5.96291 1.51493 6.03575 1.74888 6.20854L10 12.291L18.2511 6.20854C18.4851 6.03575 18.7781 5.96291 19.0658 6.00603C19.3535 6.04915 19.6123 6.20471 19.7852 6.43848C19.9581 6.67225 20.031 6.96509 19.9879 7.25257C19.9447 7.54005 19.789 7.79863 19.5551 7.97142L10.652 14.5412C10.4631 14.6802 10.2346 14.7551 10 14.7547Z"
+                      fill="#7AE229" />
+                  </g>
+                </g>
+              </g>
+            </svg>
+
+          </button>
         </div>
+        <ng-container
+          *ngIf="taskForm.controls['priority'].invalid && taskForm.controls['priority'].touched; else placeHolder5">
+          <div class="error-message">
+            Priority is required
+          </div>
+        </ng-container>
+        <ng-template #placeHolder5>
+          <div class="place-holder"></div>
+        </ng-template>
       </div>
-      <div class="button-container gap-26 display-flex">
-        <button class="clear-btn" (click)="triggerShowSlider()">Clear</button>
-        <button (click)="onSubmit()" [disabled]="!taskForm.valid" class="add-btn">Add Task</button>
+      <label for="">Subtasks</label>
+      <div class="display-flex column">
+        <div *ngFor="let subtask of taskForm.get('subtasks')?.value; let i = index" class="display-flex gap-13">
+          <input type="text">
+          <button (click)="removeSubtask(i)">Remove</button>
+        </div>
+        <button (click)="addSubtask()">Add Subtask</button>
       </div>
-    </form>
-  </div>
-</div>Ì
+    </div>
+    <div class="button-container gap-26 display-flex">
+      <button (click)="triggerShowSlider()" class="clear-btn center">Clear <svg width="25" height="25" viewBox="0 0 25 25" fill="none"
+          xmlns="http://www.w3.org/2000/svg">
+          <g id="iconoir:cancel">
+            <path id="Vector"
+              d="M12.501 12.5001L17.744 17.7431M7.258 17.7431L12.501 12.5001L7.258 17.7431ZM17.744 7.25708L12.5 12.5001L17.744 7.25708ZM12.5 12.5001L7.258 7.25708L12.5 12.5001Z"
+              stroke="#2A3647" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+          </g>
+        </svg>
+      </button>
+      <button (click)="onSubmit()" class="add-btn center">Add Task <img src="assets/icons/check.svg" alt=""></button>
+    </div>
+  </form>
+</div>

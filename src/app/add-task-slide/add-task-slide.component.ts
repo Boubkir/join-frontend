@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
 import { SharedDataService } from '../services/shared-data.service';
 import { Task } from '../models/task.model';
 import { AuthService } from '../services/auth.service';
+import { User } from '../models/user.model';
 
 @Component({
   selector: 'app-add-task-slide',
@@ -12,13 +13,13 @@ import { AuthService } from '../services/auth.service';
 export class AddTaskSlideComponent {
   @Output() onShowSlider: EventEmitter<void> = new EventEmitter<void>();
   taskForm: FormGroup;
-  users: any;
+  users: User[] = [];
   priority!: string;
   isDropDownOpen = false;
   isUserDropDownOpen = false;
-  userID!: any;
-  currentUser: any;
+  currentUser!: User;
   isTaskCreated: boolean = false;
+  assignedUsers: User[] = [];
 
   constructor(
     private formBuilder: FormBuilder,
@@ -28,8 +29,10 @@ export class AddTaskSlideComponent {
     this.taskForm = this.formBuilder.group({
       title: ['', Validators.required],
       description: ['', Validators.required],
-      category: ['', Validators.required],
+      category: [''],
+      category_color: [''],
       dueDate: [null, Validators.required],
+      priority: [''],
       assignedTo: this.formBuilder.array([]),
       subtasks: this.formBuilder.array([]),
     });
@@ -40,14 +43,23 @@ export class AddTaskSlideComponent {
     this.currentUser = this.auth.getCurrentUser();
   }
 
-  async loadUser() {
-    this.users = await this.data.loadUsers();
-  
+  async loadUser(): Promise<void> {
+    try {
+      const loadedUsers = (await this.data.loadUsers()) as User[];
+      const currentUserIndex = loadedUsers.findIndex(
+        (user) => user.id === this.currentUser.id
+      );
+      if (currentUserIndex !== -1) {
+        loadedUsers.splice(currentUserIndex, 1);
+      }
+      this.users = loadedUsers;
+    } catch (error) {
+      console.error('Fehler beim Laden der Benutzer:', error);
+    }
   }
 
   openCloseDropdown() {
     this.isDropDownOpen = !this.isDropDownOpen;
-      console.log(this.users);
   }
 
   openCloseUserDropdown() {
@@ -58,12 +70,18 @@ export class AddTaskSlideComponent {
     this.priority = prio;
   }
 
-  setCategory(input: string) {
+  setCategory(input: string, color: string) {
     this.taskForm.get('category')?.setValue(input);
+    this.setCategoryColor(color);
     this.openCloseDropdown();
   }
 
+  setCategoryColor(color: string) {
+    this.taskForm.get('category_color')?.setValue(color);
+  }
+
   onSubmit() {
+    console.log(this.taskForm);
     if (this.taskForm.valid) {
       const newTask: Task = {
         title: this.taskForm.get('title')?.value,
@@ -74,7 +92,7 @@ export class AddTaskSlideComponent {
         assigned_to: this.taskForm.get('assignedTo')?.value,
         sub_tasks: this.taskForm.get('subtasks')?.value,
         priority: this.priority,
-        user: this.currentUser['id'],
+        user: this.currentUser.id,
         status: 'open',
       };
 
@@ -89,23 +107,30 @@ export class AddTaskSlideComponent {
         }
       );
     }
-
     this.triggerShowSlider();
     this.loadUser();
   }
 
-  isUserSelected(user: any): boolean {
+  isUserSelected(user: User): boolean {
     const assignedTo = this.taskForm.get('assignedTo')?.value as any[];
-    return assignedTo.includes(user['id']);
+    return assignedTo.includes(user.id);
   }
 
   updateAssignedTo(user: any) {
     const assignedTo = this.taskForm.get('assignedTo') as FormArray;
-    if (!assignedTo.value.includes(user['id'])) {
-      assignedTo.push(this.formBuilder.control(user['id']));
+    const assignedUsers = this.assignedUsers;
+
+    if (!assignedTo.value.includes(user.id)) {
+      assignedTo.push(this.formBuilder.control(user.id));
+      assignedUsers.push(user);
     } else {
-      const index = assignedTo.value.indexOf(user['id']);
+      const index = assignedTo.value.indexOf(user.id);
       assignedTo.removeAt(index);
+
+      const userIndex = assignedUsers.findIndex(
+        (assignedUser) => assignedUser.id === user.id
+      );
+      assignedUsers.splice(userIndex, 1);
     }
   }
 
@@ -118,7 +143,6 @@ export class AddTaskSlideComponent {
     const subtasks = this.taskForm.get('subtasks') as FormArray;
     subtasks.removeAt(index);
   }
-
   triggerShowSlider() {
     this.onShowSlider.emit();
   }

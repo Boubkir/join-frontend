@@ -34,10 +34,10 @@
         <label for="category">Category</label>
         <div class="drop-down column relative" [class.drop-down-open]="isDropDownOpen">
           <img (click)="openCloseDropdown()" class="arrow-down" src="assets/icons/arrow-down.svg" alt="">
-          <input class="db" formArrayName="category" placeholder="Select a task Category" >
+          <input class="db" formArrayName="category" placeholder="Select a task Category">
           <div class="column" [class.d-none]="!isDropDownOpen">
             <span class="space-between align-center" (click)="setCategory('Accounting','var(--label-1)')">
-              Accounting
+              Sales
               <div style="background-color: var(--label-1);" class="dot space-between"></div>
             </span>
             <span class="space-between align-center" (click)="setCategory('Accounting','var(--label-2)')">
@@ -45,7 +45,7 @@
               <div style="background-color: var(--label-2);" class="dot space-between"></div>
             </span>
             <span class="space-between align-center" (click)="setCategory('Backoffice','var(--label-2)')">
-              Backoffice 
+              Backoffice
               <div style="background-color: var(--label-3);" class="dot space-between"></div>
             </span>
           </div>
@@ -69,6 +69,16 @@
             <div class="center">{{ user.first_name }} {{ user.last_name }}</div>
             <input type="checkbox" [checked]="isUserSelected(user)" (change)="updateAssignedTo(user)">
           </span>
+        </div>
+      </div>
+      <div class="display-flex gap-8" *ngIf="assignedUsers">
+        <div *ngFor="let name of assignedUsers, let i = index">
+          <div class="display-flex">
+            <div [style.background-color]="'var(--label-'+(i+1)+')'" class="circle center">
+              {{ name.first_name[0]
+              |uppercase }}{{ name.last_name[0]|uppercase }}
+            </div>
+          </div>
         </div>
       </div>
     </div>
