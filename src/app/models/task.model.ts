@@ -8,6 +8,6 @@ export interface Task {
   due_date: Date;
   assigned_to: any[];
   sub_tasks: any[];
-  user: number;
+  user?: number;
   id?: number;
 }

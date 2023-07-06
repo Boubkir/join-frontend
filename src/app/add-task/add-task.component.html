@@ -36,12 +36,18 @@
           <img (click)="openCloseDropdown()" class="arrow-down" src="assets/icons/arrow-down.svg" alt="">
           <input class="db" formControlName="category" placeholder="Select a task Category">
           <div class="column gap-13 down" [class.d-none]="!isDropDownOpen">
-            <span class="space-between" (click)="setCategory('Sales','var(--label-1)')">Sales<div style="background-color: var(--label-1);"
-                class="dot" class=""></div></span>
-            <span class="space-between"  (click)="setCategory('Accounting','var(--label-2)')">Accounting <div
-                style="background-color: var(--label-2);" class="dot space-between" class=""></div></span>
-            <span class="space-between"  (click)="setCategory('Backoffice','var(--label-2)')">Backoffice <div
-                style="background-color: var(--label-3);" class="dot space-between" class=""></div></span>
+            <span class="space-between" (click)="setCategory('Sales','var(--label-1)')">
+              Sales
+              <div style="background-color: var(--label-1);" class="dot" class=""></div>
+            </span>
+            <span class="space-between" (click)="setCategory('Accounting','var(--label-2)')">
+              Accounting
+              <div style="background-color: var(--label-2);" class="dot space-between"></div>
+            </span>
+            <span class="space-between" (click)="setCategory('Backoffice','var(--label-2)')">
+              Backoffice 
+              <div style="background-color: var(--label-3);" class="dot space-between"></div>
+            </span>
           </div>
         </div>
         <ng-container

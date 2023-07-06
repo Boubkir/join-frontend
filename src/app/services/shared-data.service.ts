@@ -51,7 +51,7 @@ export class SharedDataService {
     return this.http.delete(url);
   }
 
-  editTask(task: Task, id: string) {
+  editTask(task: Task, id: number) {
     const url = environment.baseUrl + '/tasks/' + id + '/';
     return this.http.put(url, task);
   }

@@ -12,7 +12,7 @@ import { SharedDataService } from '../services/shared-data.service';
 })
 export class TaskBigCardComponent {
   @Output() onShowSlider: EventEmitter<void> = new EventEmitter<void>();
-  @Input() task!: any;
+  @Input() task!: Task;
   users: User[] = [];
   taskForm: FormGroup;
   editMode: boolean = false;
@@ -39,6 +39,10 @@ export class TaskBigCardComponent {
   ngOnInit(): void {
     if (this.task) {
       this.taskForm.patchValue(this.task);
+      this.priority = this.task.priority;
+      const dueDate = new Date(this.task.due_date);
+      const formattedDueDate = dueDate.toISOString().split('T')[0];
+      this.taskForm.patchValue({ dueDate: formattedDueDate });
     }
     console.log(this.task);
   }
@@ -95,20 +99,22 @@ export class TaskBigCardComponent {
     this.triggerShowSlider();
   }
 
-  editTask(id: any) {
+  editTask(taskid: number) {
     if (this.taskForm.valid) {
       const editedTask: Task = {
         title: this.taskForm.get('title')?.value,
         description: this.taskForm.get('description')?.value,
         category: this.taskForm.get('category')?.value,
-        category_color: this.taskForm.get('category_color')?.value,
-        due_date: this.taskForm.get('due_date')?.value,
-        assigned_to: this.taskForm.get('assigned_to')?.value,
-        user: this.currentUser.id,
-        sub_tasks: this.taskForm.get('sub_tasks')?.value,
+        category_color: this.task.category_color,
+        due_date: this.taskForm.get('due_date')?.value || this.task.due_date,
+        assigned_to: this.task.assigned_to,
+        user: this.task.user,
+        sub_tasks: this.task.sub_tasks,
         priority: this.priority,
+        id: this.task.id,
       };
-      this.data.editTask(editedTask, id).subscribe(
+      console.log(editedTask)
+      this.data.editTask(editedTask, editedTask.id).subscribe(
         () => {
           console.log('geschafft');
           this.triggerShowSlider();
