@@ -5,7 +5,7 @@ export interface Task {
   priority: string;
   status?: string;
   due_date: Date;
-  assigned_to?: any[];
+  assigned_to: any[];
   sub_tasks: any[];
   user:number;
 }

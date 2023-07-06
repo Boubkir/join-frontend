@@ -11,8 +11,8 @@ import { Contact } from '../models/contact.model';
 export class SharedDataService {
   constructor(private http: HttpClient) {}
 
-  loadTodos() {
-    const url = environment.baseUrl + '/todos/';
+  loadTasks() {
+    const url = environment.baseUrl + '/tasks/';
     return lastValueFrom(this.http.get(url));
   }
 
@@ -27,7 +27,7 @@ export class SharedDataService {
   }
 
   createTask(task: Task) {
-    const url = environment.baseUrl + '/todos/';
+    const url = environment.baseUrl + '/tasks/';
     return this.http.post(url, task);
   }
 
@@ -41,8 +41,18 @@ export class SharedDataService {
     return this.http.put(url, contact);
   }
 
-  deleteContact( id: string) {
+  deleteContact(id: string) {
     const url = environment.baseUrl + '/contacts/' + id + '/';
     return this.http.delete(url);
+  }
+
+  deleteTask(id: number) {
+    const url = environment.baseUrl + '/tasks/' + id + '/';
+    return this.http.delete(url);
+  }
+
+  editTask(task: Task, id: string) {
+    const url = environment.baseUrl + '/tasks/' + id + '/';
+    return this.http.put(url, task);
   }
 }

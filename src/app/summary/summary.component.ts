@@ -26,8 +26,8 @@ export class SummaryComponent {
   constructor(private data: SharedDataService, private auth: AuthService) {}
 
   async ngOnInit() {
-    this.todos = await this.data.loadTodos();
-    this.filterTodos();
+    this.todos = await this.data.loadTasks();
+    this.filterTasks();
     this.currentUser = this.auth.getCurrentUser();
     this.firstName = this.currentUser?.first_name ?? 'Sunshine';
     this.lastName = this.currentUser?.last_name ?? '';
@@ -36,11 +36,11 @@ export class SummaryComponent {
   }
 
   async loadTodos() {
-    this.todos = await this.data.loadTodos();
-    this.filterTodos();
+    this.todos = await this.data.loadTasks();
+    this.filterTasks();
   }
 
-  filterTodos() {
+  filterTasks() {
     this.open = this.todos.filter((t: any) => t['status'] == 'open');
     this.inProgress = this.todos.filter(
       (t: any) => t['status'] == 'inprogress'

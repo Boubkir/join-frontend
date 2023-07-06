@@ -7,6 +7,7 @@ import {
 } from '@angular/cdk/drag-drop';
 import { environment } from 'src/environments/environment.development';
 import { HttpClient } from '@angular/common/http';
+import { Task } from '../models/task.model';
 
 @Component({
   selector: 'app-board',
@@ -14,38 +15,55 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./board.component.scss'],
 })
 export class BoardComponent implements OnInit {
-  todos: any = [];
-  open: any = [];
-  inProgress: any = [];
-  awaitingFeedback: any = [];
-  done: any = [];
-  filteredTasks = [];
+  tasks: any[] = [];
+  filteredTasks: Task[] = [];
+  open: any[] = [];
+  inProgress: any[] = [];
+  awaitingFeedback: any[] = [];
+  done: any[] = [];
   searchText!: string;
   openAddTaskSlide: boolean = false;
+  openBigCard: boolean = false;
+  selectedTask!: Task;
 
   constructor(private data: SharedDataService, private http: HttpClient) {}
 
   ngOnInit(): void {
-    this.loadTodos();
+    this.loadTasks();
   }
 
-  async loadTodos(): Promise<void> {
-    this.todos = await this.data.loadTodos();
-    this.filterTodos();
+  async loadTasks(): Promise<void> {
+    try {
+      const loadedTasks = (await this.data.loadTasks()) as Task[];
+      this.tasks = loadedTasks;
+      this.filterTasks();
+    } catch (error) {
+      console.error('Fehler beim Laden der Tasks:', error);
+    }
   }
 
-  filterTodos(): void {
-    this.open = this.todos.filter((t: any) => t['status'] == 'open');
-    this.inProgress = this.todos.filter(
-      (t: any) => t['status'] == 'inprogress'
-    );
-    this.awaitingFeedback = this.todos.filter(
-      (t: any) => t['status'] == 'awaitingfeedback'
-    );
-    this.done = this.todos.filter((t: any) => t['status'] == 'done');
+  filterTasks(): void {
+    this.open = this.filterUniqueTasks('open');
+    this.inProgress = this.filterUniqueTasks('inprogress');
+    this.awaitingFeedback = this.filterUniqueTasks('awaitingfeedback');
+    this.done = this.filterUniqueTasks('done');
   }
 
-  filterTaskss(): void {
+  filterUniqueTasks(status: string): Task[] {
+    const filteredTasks: Task[] = [];
+    const addedIds: Set<number> = new Set<number>();
+
+    for (const task of this.tasks) {
+      if (task.status === status && !addedIds.has(task['id'])) {
+        filteredTasks.push(task);
+        addedIds.add(task['id']);
+      }
+    }
+
+    return filteredTasks;
+  }
+
+  filterMatches(): void {
     this.open = this.filteredTasks.filter((t: any) => t['status'] == 'open');
     this.inProgress = this.filteredTasks.filter(
       (t: any) => t['status'] == 'inprogress'
@@ -81,7 +99,7 @@ export class BoardComponent implements OnInit {
     }
     console.log(event.container.data);
     this.changeAllStatus();
-    // this.updateToBackend();
+    this.updateToBackend();
   }
 
   changeAllStatus() {
@@ -99,21 +117,21 @@ export class BoardComponent implements OnInit {
   }
 
   updateToBackend() {
-    this.updateTodos(this.open);
-    this.updateTodos(this.inProgress);
-    this.updateTodos(this.awaitingFeedback);
-    this.updateTodos(this.done);
+    this.updateTasks(this.open);
+    this.updateTasks(this.inProgress);
+    this.updateTasks(this.awaitingFeedback);
+    this.updateTasks(this.done);
   }
 
-  updateTodos(array: any) {
+  updateTasks(array: any) {
     for (let i = 0; i < array.length; i++) {
       const element = array[i];
-      const url = `${environment.baseUrl}/todos/${element.id}/`;
+      const url = `${environment.baseUrl}/tasks/${element.id}/`;
 
-      this.http.patch(url, element).subscribe({
+      this.http.put(url, element).subscribe({
         error: (error) => {
           console.error(
-            `Fehler beim Aktualisieren des Elements mit ID ${element.id}:`,
+            `Fehler beim Aktualisieren des Elements mit ID ${element['id']}:`,
             error
           );
         },
@@ -121,22 +139,36 @@ export class BoardComponent implements OnInit {
     }
   }
 
-  filterTasks() {
+  searchMatches() {
     if (this.searchText.trim() === '') {
-      this.filteredTasks = this.todos;
+      this.filteredTasks = this.tasks;
     } else {
-      this.filteredTasks = this.todos.filter((task: any) => {
+      this.filteredTasks = this.tasks.filter((task: any) => {
         return (
           task.title.toLowerCase().includes(this.searchText.toLowerCase()) ||
           task.description.toLowerCase().includes(this.searchText.toLowerCase())
         );
       });
     }
-    this.filterTaskss();
+    this.filterMatches();
   }
 
   addTaskSlide() {
     this.openAddTaskSlide = !this.openAddTaskSlide;
-    this.loadTodos();
+    this.loadTasks();
+  }
+
+  showBigCard() {
+    this.openBigCard = !this.openBigCard;
+    this.loadTasks();
+  }
+
+  onTaskSelected(task: Task) {
+    this.selectedTask = task;
+  }
+
+  onTaskClick(task: Task) {
+    this.showBigCard();
+    this.onTaskSelected(task);
   }
 }

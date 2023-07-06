@@ -16,20 +16,20 @@
       <form [formGroup]="contactForm" class="column" action="">
         <div>
           <div class="input relative ">
-            <input type="text" name="" formControlName="firstName" placeholder="Firstname" id="">
+            <input type="text" name="" formControlName="first_name" placeholder="Firstname" id="">
             <img src="assets/icons/user.svg" alt="">
           </div>
-          <div *ngIf="contactForm.controls['firstName'].invalid && contactForm.controls['firstName'].touched"
+          <div *ngIf="contactForm.controls['first_name'].invalid && contactForm.controls['first_name'].touched"
             class="error-message">Firstname
             is required </div>
         </div>
 
         <div>
           <div class="input relative">
-            <input type="text" name="" formControlName="lastName" placeholder="Lastname" id="">
+            <input type="text" name="" formControlName="last_name" placeholder="Lastname" id="">
             <img src="assets/icons/user.svg" alt="">
           </div>
-          <div *ngIf="contactForm.controls['lastName'].invalid && contactForm.controls['lastName'].touched"
+          <div *ngIf="contactForm.controls['last_name'].invalid && contactForm.controls['last_name'].touched"
             class="error-message">
             Lastname is required </div>
         </div>

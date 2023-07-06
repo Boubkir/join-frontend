@@ -30,7 +30,7 @@ export class AddTaskComponent implements OnInit {
       description: ['', Validators.required],
       category: ['', Validators.required],
       dueDate: [null, Validators.required],
-      priority: ['', Validators.required],
+      priority: [''],
       assignedTo: this.formBuilder.array([]),
       subtasks: this.formBuilder.array([]),
     });
@@ -69,6 +69,7 @@ export class AddTaskComponent implements OnInit {
   }
 
   onSubmit() {
+    console.log(this.taskForm);
     if (this.taskForm.valid) {
       const newTask: Task = {
         title: this.taskForm.get('title')?.value,

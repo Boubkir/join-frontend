@@ -49,3 +49,16 @@
   height: 8px;
   background-color: var(--label-4);
 }
+
+.circle {
+  min-height: 35px;
+  min-width: 35px;
+  background-color: #29abe2;
+  color: white;
+  border-radius: 100%;
+  border: 1px solid var(--white, #FFF);
+
+  &:not(:first-child) {
+    margin-left: -6px;
+  }
+}

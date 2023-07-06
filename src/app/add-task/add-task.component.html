@@ -78,7 +78,7 @@
           <div class="place-holder"></div>
         </ng-template>
       </div>
-      <label for="dueDate">Priority</label>
+      <label for="priotity">Priority</label>
       <div>
         <div class="display-flex gap-8 prio">
           <button (click)="setPriority('urgent')" [ngClass]="{ 'selected-urgent': priority === 'urgent' }">
@@ -170,7 +170,7 @@
         </g>
       </svg>
 </button>
-      <button (click)="onSubmit()" [disabled]="!taskForm.valid" class="add-btn">Add Task <img
+      <button (click)="onSubmit()"  class="add-btn">Add Task <img
           src="assets/icons/check.svg" alt=""></button>
     </div>
   </form>

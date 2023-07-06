@@ -1,11 +1,12 @@
 <app-add-task-slide *ngIf="openAddTaskSlide" (onShowSlider)="addTaskSlide()"></app-add-task-slide>
+<app-task-big-card *ngIf="openBigCard && selectedTask" [task]="selectedTask" (onShowSlider)="showBigCard()"></app-task-big-card>
 <div class="content relative">
   <div class="board">
     <div class="header">
       <h1>Board</h1>
       <div class="display-flex gap-35">
         <div class="relative input">
-          <input type="text" [(ngModel)]="searchText" placeholder="Find Task" (input)="filterTasks()" />
+          <input type="text" [(ngModel)]="searchText" placeholder="Find Task" (input)="searchMatches()" />
           <img src="assets/icons/lens.svg" alt="">
         </div>
         <button (click)="addTaskSlide()">Add task <img src="assets/icons/cross.svg" alt=""></button>
@@ -23,7 +24,7 @@
         </div>
         <div class="drag-drop-area" cdkDropList [cdkDropListData]="open" (cdkDropListDropped)="drop($event)">
           <div *ngFor="let task of open">
-            <app-task-card [task]="task"></app-task-card>
+            <app-task-card  [task]="task" (click)="onTaskClick(task)"></app-task-card>
           </div>
         </div>
       </div>
@@ -38,7 +39,7 @@
         </div>
         <div class="drag-drop-area" cdkDropList [cdkDropListData]="inProgress" (cdkDropListDropped)="drop($event)">
           <div *ngFor="let task of inProgress">
-            <app-task-card [task]="task"></app-task-card>
+            <app-task-card (click)="onTaskClick(task)" [task]="task"></app-task-card>
           </div>
         </div>
       </div>
@@ -54,7 +55,7 @@
         <div class="drag-drop-area" cdkDropList [cdkDropListData]="awaitingFeedback"
           (cdkDropListDropped)="drop($event)">
           <div *ngFor="let task of awaitingFeedback" cdkDrag class="card">
-            <app-task-card [task]="task"></app-task-card>
+            <app-task-card (click)="onTaskClick(task)" [task]="task"></app-task-card>
           </div>
         </div>
       </div>
@@ -69,7 +70,7 @@
         </div>
         <div class="drag-drop-area" cdkDropList [cdkDropListData]="done" (cdkDropListDropped)="drop($event)">
           <div *ngFor="let task of done" cdkDrag class="card">
-            <app-task-card [task]="task"></app-task-card>
+            <app-task-card (click)="onTaskClick(task)"[task]="task"></app-task-card>
           </div>
         </div>
       </div>

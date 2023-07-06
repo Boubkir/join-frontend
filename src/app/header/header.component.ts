@@ -9,13 +9,14 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent {
   currentUser: any;
+  showLogOutButton: boolean = false;
 
   constructor(public auth: AuthService, private router: Router) {}
 
   ngOnInit(): void {
     this.currentUser = this.auth.getCurrentUser();
   }
-  
+
   async logout() {
     try {
       await this.auth.logout();
@@ -23,5 +24,9 @@ export class HeaderComponent {
     } catch (error) {
       console.error('Fehler beim Ausloggen', error);
     }
+  }
+
+  showLogOut() {
+    this.showLogOutButton = !this.showLogOutButton;
   }
 }

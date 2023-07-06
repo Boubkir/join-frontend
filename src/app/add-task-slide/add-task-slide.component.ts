@@ -42,11 +42,12 @@ export class AddTaskSlideComponent {
 
   async loadUser() {
     this.users = await this.data.loadUsers();
+  
   }
 
   openCloseDropdown() {
     this.isDropDownOpen = !this.isDropDownOpen;
-    console.log(this.users);
+      console.log(this.users);
   }
 
   openCloseUserDropdown() {

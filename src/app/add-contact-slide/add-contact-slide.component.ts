@@ -20,8 +20,8 @@ export class AddContactSlideComponent {
     private auth: AuthService
   ) {
     this.contactForm = this.formBuilder.group({
-      firstName: ['', Validators.required],
-      lastName: ['', Validators.required],
+      first_name: ['', Validators.required],
+      last_name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       phone: ['', Validators.required],
       color: [''],
@@ -35,8 +35,8 @@ export class AddContactSlideComponent {
   onSubmit() {
     if (this.contactForm.valid) {
       const newContact: Contact = {
-        first_name: this.contactForm.get('firstName')?.value,
-        last_name: this.contactForm.get('lastName')?.value,
+        first_name: this.contactForm.get('first_name')?.value,
+        last_name: this.contactForm.get('last_name')?.value,
         email: this.contactForm.get('email')?.value,
         phone: this.contactForm.get('phone')?.value,
         color: this.contactForm.get('color')?.value,

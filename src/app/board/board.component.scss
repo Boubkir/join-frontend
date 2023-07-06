@@ -1,9 +1,8 @@
 .content {
-  padding: 82px 60px 11px 70px;
-  flex-direction: column;
-  box-sizing: border-box;
+   padding: 82px 123px;
   background-color: var(--main-bg-color);
-  min-height: calc(100vh - 94px);
+  box-sizing: border-box;
+  height: calc(100vh - 93px);
 }
 
 .board {
@@ -109,7 +108,7 @@
 
 .cdk-drag-placeholder {
   border: 1px dashed black;
-  background-color: transparent;
+  background-color: red;
 }
 
 .cdk-drag-placeholder > * {

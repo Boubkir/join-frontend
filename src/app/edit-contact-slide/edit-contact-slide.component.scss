@@ -143,9 +143,11 @@ form {
     color: #29abe2 ;
     cursor: pointer;
 
-    svg >*>*{
+    svg >*>*,svg >*>*>*{
       stroke:   #29abe2;
+      fill: #29abe2;
     }
+  
   }
 }
 
