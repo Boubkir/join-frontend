@@ -39,8 +39,11 @@
   span {
     color: #a8a8a8;
     height: 38px;
+    width: 215px;
     text-overflow: ellipsis;
     overflow: hidden;
+    word-wrap: break-word;
+    display: block;
   }
 }
 
@@ -56,7 +59,7 @@
   background-color: #29abe2;
   color: white;
   border-radius: 100%;
-  border: 1px solid var(--white, #FFF);
+  border: 1px solid var(--white, #fff);
 
   &:not(:first-child) {
     margin-left: -6px;

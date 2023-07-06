@@ -47,13 +47,21 @@ textarea {
   background: #fff;
   box-sizing: border-box;
   transition: all 225ms;
-
+  max-height: 162px;
   span {
     padding: 0 21px;
   }
 
   input {
     border: 1px solid var(--style, #d1d1d1);
+  }
+}
+
+.drop-down-open {
+  overflow-y: scroll;
+  overflow-x: hidden;
+  .db {
+    border: none;
   }
 }
 
@@ -70,7 +78,7 @@ textarea {
 
   span {
     display: flex;
-    height: 31px;
+    height: 51px;
     padding: 0 21px;
     align-items: center;
     cursor: pointer;
@@ -162,7 +170,8 @@ textarea {
   display: flex;
   padding: 13px 21px;
   align-items: center;
-  height: 51px;
+  min-height: 51px;
+  max-height: 51px;
   gap: 10px;
   width: 422px;
   box-sizing: border-box;
@@ -249,12 +258,15 @@ h2 {
 }
 
 .description {
-  display: flex;
-  width: 518px;
-  flex-direction: column;
+  width: 518px !important;
   color: var(--black, #000);
   font-size: 21px;
   font-weight: 400;
+  height: 50px;
+  width: 215px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  word-wrap: break-word;
 }
 
 h3 {
@@ -326,7 +338,7 @@ h3 {
 }
 
 .edit-layout {
-  width: 623px;
+  width: 515px;
   height: 824px;
 }
 

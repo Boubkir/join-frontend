@@ -14,17 +14,18 @@ export class TaskBigCardComponent {
   @Output() onShowSlider: EventEmitter<void> = new EventEmitter<void>();
   @Input() task!: Task;
   users: User[] = [];
+  assignedUsers: User[] = [];
   taskForm: FormGroup;
   editMode: boolean = false;
   isDropDownOpen: boolean = false;
   isUserDropDownOpen: boolean = false;
   priority!: string;
-  currentUser: any;
+  currentUser: User = this.auth.getCurrentUser();
 
   constructor(
     private formBuilder: FormBuilder,
-    private auth: AuthService,
-    private data: SharedDataService
+    private data: SharedDataService,
+    private auth: AuthService
   ) {
     this.taskForm = this.formBuilder.group({
       title: ['', Validators.required],
@@ -36,7 +37,7 @@ export class TaskBigCardComponent {
     });
   }
 
-  ngOnInit(): void {
+  async ngOnInit() {
     if (this.task) {
       this.taskForm.patchValue(this.task);
       this.priority = this.task.priority;
@@ -44,7 +45,8 @@ export class TaskBigCardComponent {
       const formattedDueDate = dueDate.toISOString().split('T')[0];
       this.taskForm.patchValue({ dueDate: formattedDueDate });
     }
-    console.log(this.task);
+    await this.loadUser();
+    this.updateAssignedUsers();
   }
 
   openCloseDropdown() {
@@ -68,18 +70,23 @@ export class TaskBigCardComponent {
     this.onShowSlider.emit();
   }
 
-  isUserSelected(user: any): boolean {
-    const assignedTo = this.taskForm.get('assignedTo')?.value as any[];
-    return assignedTo.includes(user['id']);
+  isUserSelected(user: User): boolean {
+    return this.assignedUsers.some(
+      (assignedUser) => assignedUser.id === user.id
+    );
   }
 
-  updateAssignedTo(user: any) {
-    const assignedTo = this.taskForm.get('assignedTo') as FormArray;
-    if (!assignedTo.value.includes(user['id'])) {
-      assignedTo.push(this.formBuilder.control(user['id']));
+  updateAssignedTo(user: User): void {
+    const assignedUsers = this.assignedUsers;
+    const userId = user.id;
+
+    if (!assignedUsers.some((assignedUser) => assignedUser.id === userId)) {
+      assignedUsers.push(user);
     } else {
-      const index = assignedTo.value.indexOf(user['id']);
-      assignedTo.removeAt(index);
+      const index = assignedUsers.findIndex(
+        (assignedUser) => assignedUser.id === userId
+      );
+      assignedUsers.splice(index, 1);
     }
   }
 
@@ -99,7 +106,7 @@ export class TaskBigCardComponent {
     this.triggerShowSlider();
   }
 
-  editTask(taskid: number) {
+  editTask() {
     if (this.taskForm.valid) {
       const editedTask: Task = {
         title: this.taskForm.get('title')?.value,
@@ -107,13 +114,13 @@ export class TaskBigCardComponent {
         category: this.taskForm.get('category')?.value,
         category_color: this.task.category_color,
         due_date: this.taskForm.get('due_date')?.value || this.task.due_date,
-        assigned_to: this.task.assigned_to,
+        assigned_to: this.assignedUsers.map((user) => user.id),
         user: this.task.user,
         sub_tasks: this.task.sub_tasks,
         priority: this.priority,
         id: this.task.id,
       };
-      console.log(editedTask)
+      console.log(editedTask);
       this.data.editTask(editedTask, editedTask.id).subscribe(
         () => {
           console.log('geschafft');
@@ -124,5 +131,26 @@ export class TaskBigCardComponent {
         }
       );
     }
+  }
+
+  async loadUser(): Promise<void> {
+    try {
+      const loadedUsers = (await this.data.loadUsers()) as User[];
+      const currentUserIndex = loadedUsers.findIndex(
+        (user) => user.id === this.currentUser.id
+      );
+      if (currentUserIndex !== -1) {
+        loadedUsers.splice(currentUserIndex, 1);
+      }
+      this.users = loadedUsers;
+    } catch (error) {
+      console.error('Fehler beim Laden der Benutzer:', error);
+    }
+  }
+
+  updateAssignedUsers() {
+    this.assignedUsers = this.task.assigned_to.map((userId) => {
+      return this.users.find((user) => user.id === userId);
+    });
   }
 }

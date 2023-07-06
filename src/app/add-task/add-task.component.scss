@@ -15,34 +15,30 @@ form {
   max-width: 965px;
 }
 
-input {
+input,
+textarea {
   display: flex;
   padding: 13px 21px;
   align-items: center;
-  gap: 10px;
   width: 422px;
-  height: 51px;
   box-sizing: border-box;
   border-radius: 10px;
   border: 1px solid var(--style, #d1d1d1);
   background: #fff;
   font-size: 21px;
   font-weight: 400;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+input {
+  height: 51px;
 }
 
 textarea {
-  display: flex;
   height: 119px;
-  width: 422px;
-  padding: 18px 21px;
-  align-items: flex-start;
-  gap: 10px;
-  box-sizing: border-box;
-  border-radius: 10px;
-  border: 1px solid var(--style, #d1d1d1);
-  background: #fff;
-  font-size: 21px;
-  font-weight: 400;
 }
 
 .drop-down {
@@ -53,13 +49,11 @@ textarea {
   background: #fff;
   box-sizing: border-box;
   transition: all 225ms;
-
+  max-height: 162px;
   span {
     padding: 0 21px;
-  }
-
-  input {
-    border: 1px solid var(--style, #d1d1d1);
+    height: 51px;
+    cursor: pointer;
   }
 }
 
@@ -69,22 +63,6 @@ textarea {
   top: 24px;
   right: 21px;
   cursor: pointer;
-}
-
-.down {
-  gap: 8px;
-
-  span {
-    display: flex;
-    height: 31px;
-    padding: 0 21px;
-    align-items: center;
-    cursor: pointer;
-
-    &:hover {
-      background-color: #d1d1d1;
-    }
-  }
 }
 
 .prio button {
@@ -111,28 +89,35 @@ textarea {
   bottom: 0;
 }
 
-.clear-btn {
-  background-color: transparent;
-  display: flex;
-  width: 136px;
+.clear-btn,
+.add-btn {
   height: 55px;
-  padding: 18px 10px;
-  justify-content: center;
-  align-items: center;
+  padding: 18px 15px;
   gap: 10px;
   border-radius: 10px;
-  border: 1px solid var(--version-2-main-color, #2a3647);
-  box-sizing: border-box;
-  color: var(--version-2-main-color, #2a3647);
+  border: none;
+  color: #fff;
   font-size: 21px;
+  font-weight: 700;
+  box-sizing: border-box;
   cursor: pointer;
 
   &:hover {
-    border-radius: 10px;
+    border-color: #29abe2;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2);
+    transition: all 225ms;
+  }
+}
+
+.clear-btn {
+  background-color: transparent;
+  width: 136px;
+  border: 1px solid var(--version-2-main-color, #2a3647);
+  color: var(--version-2-main-color, #2a3647);
+
+  &:hover {
     border: 1px solid var(--ligth-blue, #29abe2);
-    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
     color: #29abe2;
-    cursor: pointer;
 
     svg > * > * {
       stroke: #29abe2;
@@ -141,44 +126,18 @@ textarea {
 }
 
 .add-btn {
-  display: flex;
-  height: 55px;
-  padding: 18px 15px;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  border-radius: 10px;
   border: none;
   background: #2a3647;
   color: #fff;
-  font-size: 21px;
-  font-weight: 700;
-  cursor: pointer;
 
   &:hover {
     background-color: #29abe2;
     border-color: #29abe2;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2);
-    cursor: pointer;
-    transition: all 225ms;
   }
 }
 
-.db {
-  display: flex;
-  padding: 13px 21px;
-  align-items: center;
-  height: 51px;
-  gap: 10px;
-  width: 422px;
-  box-sizing: border-box;
-  border-radius: 10px;
-  border: 1px solid var(--style, #d1d1d1);
-  background: #fff;
-}
-
 input[type="checkbox"] {
-  width: 30px;
+  width: 24px;
 }
 
 .created-task {
@@ -199,19 +158,9 @@ input[type="checkbox"] {
   cursor: pointer;
 }
 
+.selected-low,
+.selected-medium,
 .selected-urgent {
-  background: #ff3d00 !important;
-  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) !important;
-  color: #fff !important;
-  font-weight: 700 !important;
-
-  path {
-    fill: white !important;
-  }
-}
-
-.selected-medium {
-  background: #ffa800 !important;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) !important;
   color: #fff !important;
   font-weight: 700 !important;
@@ -222,17 +171,30 @@ input[type="checkbox"] {
 }
 
 .selected-low {
-  background: #7ae229 !important;
-  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) !important;
-  color: #fff !important;
-  font-weight: 700 !important;
+  background: var(--prio-low) !important;
+}
 
-  path {
-    fill: white;
+.selected-medium {
+  background: var(--prio-medium) !important;
+}
+
+.selected-urgent {
+  background: var(--prio-urgent) !important;
+}
+
+.drop-down-open {
+  overflow-x: hidden;
+  overflow-y: scroll;
+
+  input {
+    border: none;
+  }
+  span:hover {
+    background-color: rgba(0, 0, 0, 0.25);
   }
 }
 
-.dot{
+.dot {
   min-height: 20px;
   min-width: 20px;
   border-radius: 100%;

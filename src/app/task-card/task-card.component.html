@@ -9,10 +9,10 @@
     <span>0/{{task.sub_tasks.length}} Done</span>
   </div>
   <div class="space-between full-width align-center">
-    <div class="circle-container display-flex">
-      <div class="circle center">BB</div>
-      <div class="circle center">BB</div>
-      <div class="circle center">BB</div>
+    <div  class="circle-container display-flex">
+      <div [style.background-color]="'var(--label-'+(i+1)+')'" *ngFor="let name of assignedUsers, let i = index" class="circle center">
+        {{ name.first_name[0]
+      |uppercase }}{{ name.last_name[0]|uppercase }}</div>
     </div>
     <img [src]="'assets/icons/card-'+task.priority+'.svg'" alt="">
   </div>

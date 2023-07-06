@@ -30,21 +30,21 @@
           <div class="place-holder"></div>
         </ng-template>
       </div>
-      <div class="column gap-8">
+      <div class="column">
         <label for="category">Category</label>
-        <div class="drop-down column relative">
+        <div class="drop-down column relative" [class.drop-down-open]="isDropDownOpen">
           <img (click)="openCloseDropdown()" class="arrow-down" src="assets/icons/arrow-down.svg" alt="">
-          <input class="db" formControlName="category" placeholder="Select a task Category">
-          <div class="column gap-13 down" [class.d-none]="!isDropDownOpen">
-            <span class="space-between" (click)="setCategory('Sales','var(--label-1)')">
-              Sales
-              <div style="background-color: var(--label-1);" class="dot" class=""></div>
+          <input class="db" formArrayName="category" placeholder="Select a task Category" >
+          <div class="column" [class.d-none]="!isDropDownOpen">
+            <span class="space-between align-center" (click)="setCategory('Accounting','var(--label-1)')">
+              Accounting
+              <div style="background-color: var(--label-1);" class="dot space-between"></div>
             </span>
-            <span class="space-between" (click)="setCategory('Accounting','var(--label-2)')">
+            <span class="space-between align-center" (click)="setCategory('Accounting','var(--label-2)')">
               Accounting
               <div style="background-color: var(--label-2);" class="dot space-between"></div>
             </span>
-            <span class="space-between" (click)="setCategory('Backoffice','var(--label-2)')">
+            <span class="space-between align-center" (click)="setCategory('Backoffice','var(--label-2)')">
               Backoffice 
               <div style="background-color: var(--label-3);" class="dot space-between"></div>
             </span>
@@ -61,12 +61,12 @@
         </ng-template>
       </div>
       <label for="assignedTo">Assigned to:</label>
-      <div formArrayName="assignedTo" class="drop-down column relative">
+      <div formArrayName="assignedTo" class="drop-down column relative" [class.drop-down-open]="isUserDropDownOpen">
         <img (click)="openCloseUserDropdown()" class="arrow-down" src="assets/icons/arrow-down.svg" alt="">
-        <span class="db">Select contacts to assign</span>
-        <div class="column gap-13 down" [class.d-none]="!isUserDropDownOpen">
-          <span class="space-between" *ngFor="let user of users">
-            <span>{{ user.first_name }} {{ user.last_name }}</span>
+        <input class="db" placeholder="Select contacts to assign">
+        <div class="column gap-13 " [class.d-none]="!isUserDropDownOpen">
+          <span class="space-between align-center" *ngFor="let user of users">
+            <div class="center">{{ user.first_name }} {{ user.last_name }}</div>
             <input type="checkbox" [checked]="isUserSelected(user)" (change)="updateAssignedTo(user)">
           </span>
         </div>
@@ -171,7 +171,7 @@
       </div>
     </div>
     <div class="button-container gap-26 display-flex">
-      <button class="clear-btn">Clear <svg width="25" height="25" viewBox="0 0 25 25" fill="none"
+      <button class="clear-btn center">Clear <svg width="25" height="25" viewBox="0 0 25 25" fill="none"
           xmlns="http://www.w3.org/2000/svg">
           <g id="iconoir:cancel">
             <path id="Vector"
@@ -180,7 +180,7 @@
           </g>
         </svg>
       </button>
-      <button (click)="onSubmit()" class="add-btn">Add Task <img src="assets/icons/check.svg" alt=""></button>
+      <button (click)="onSubmit()" class="add-btn center">Add Task <img src="assets/icons/check.svg" alt=""></button>
     </div>
   </form>
 </div>

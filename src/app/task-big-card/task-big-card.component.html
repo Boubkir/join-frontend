@@ -1,6 +1,6 @@
 <div class="content center">
-  <form class="relative" [formGroup]="taskForm" [class.edit-layout]="editMode" >
-<div *ngIf="!editMode" [style.background-color]="task.category_color" class="category">{{task.category}}</div>
+  <form class="relative" [formGroup]="taskForm" [class.edit-layout]="editMode">
+    <div *ngIf="!editMode" [style.background-color]="task.category_color" class="category">{{task.category}}</div>
 
     <h2 *ngIf="!editMode">{{task.title}}</h2>
 
@@ -132,13 +132,18 @@
     </div>
     <h3>Assigned to:</h3>
     <div *ngIf="!editMode" class="column gap-25">
-      <div class="display-flex gap-25 align-center" *ngFor="let user of task.assigned_to">
-        <div class="circle center">BB</div>
-        <span style="font-size: 21px;">Boubkir Benamar</span>
+      <div class="display-flex gap-25 align-center" *ngFor="let name of assignedUsers, let i = index">
+        <div class="space-between gap-25">
+          <div [style.background-color]="'var(--label-'+(i+1)+')'" class="circle center">
+            {{ name.first_name[0]
+            |uppercase }}{{ name.last_name[0]|uppercase }}</div>
+        </div>
+        <div>{{ name.first_name
+          |titlecase }} {{ name.last_name|titlecase }}</div>
       </div>
     </div>
     <div *ngIf="editMode">
-      <div formArrayName="assignedTo" class="drop-down column relative">
+      <div formArrayName="assignedTo" class="drop-down column relative" [class.drop-down-open]="isUserDropDownOpen">
         <img (click)="openCloseUserDropdown()" class="arrow-down" src="assets/icons/arrow-down.svg" alt="">
         <span class="db">Select contacts to assign</span>
         <div class="column gap-13 down" [class.d-none]="!isUserDropDownOpen">
@@ -149,9 +154,19 @@
         </div>
       </div>
     </div>
+    <div class="display-flex gap-8" *ngIf="editMode">
+      <div *ngFor="let name of assignedUsers, let i = index">
+        <div class="display-flex">
+          <div [style.background-color]="'var(--label-'+(i+1)+')'" class="circle center">
+            {{ name.first_name[0]
+            |uppercase }}{{ name.last_name[0]|uppercase }}
+          </div>
+        </div>
+      </div>
+    </div>
     <div *ngIf="!editMode" class="button-div">
-      <div (click)="deleteTask(task['id'])" class="delete-btn center"><svg width="32" height="32" viewBox="0 0 32 32" fill="none"
-          xmlns="http://www.w3.org/2000/svg">
+      <div (click)="deleteTask(task['id'])" class="delete-btn center"><svg width="32" height="32" viewBox="0 0 32 32"
+          fill="none" xmlns="http://www.w3.org/2000/svg">
           <g id="delete">
             <mask id="mask0_67591_2015" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="32"
               height="32">
@@ -176,13 +191,15 @@
         </svg>
       </div>
     </div>
-    <svg (click)="triggerShowSlider()" class="close" width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg (click)="triggerShowSlider()" class="close" width="25" height="25" viewBox="0 0 25 25" fill="none"
+      xmlns="http://www.w3.org/2000/svg">
       <g id="iconoir:cancel">
         <path id="Vector"
           d="M12.501 12.5001L17.744 17.7431M7.258 17.7431L12.501 12.5001L7.258 17.7431ZM17.744 7.25708L12.5 12.5001L17.744 7.25708ZM12.5 12.5001L7.258 7.25708L12.5 12.5001Z"
           stroke="#2A3647" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
       </g>
     </svg>
-    <button (click)="editTask(task.id)" *ngIf="editMode" class="save center gap-10">Ok <img src="assets/icons/check.svg" alt=""></button>
+    <button (click)="editTask()" *ngIf="editMode" class="save center gap-10">Ok <img src="assets/icons/check.svg"
+        alt=""></button>
   </form>
 </div>
