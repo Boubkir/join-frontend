@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
 import { SharedDataService } from '../services/shared-data.service';
 import { Task } from '../models/task.model';
@@ -11,6 +11,7 @@ import { User } from '../models/user.model';
   styleUrls: ['./add-task.component.scss'],
 })
 export class AddTaskComponent implements OnInit {
+  @ViewChild('categoryInput') categoryInput!: ElementRef<HTMLInputElement>;
   taskForm: FormGroup;
   users: User[] = [];
   priority!: string;
@@ -18,7 +19,17 @@ export class AddTaskComponent implements OnInit {
   isUserDropDownOpen = false;
   currentUser!: User;
   isTaskCreated: boolean = false;
+  isNewCategory: boolean = false;
   assignedUsers: User[] = [];
+  selectedColor: string | null = null;
+  colors: string[] = [
+    'var(--label-1)',
+    'var(--label-2)',
+    'var(--label-3)',
+    'var(--label-4)',
+    'var(--label-5)',
+    'var(--label-6)',
+  ];
 
   constructor(
     private formBuilder: FormBuilder,
@@ -75,7 +86,17 @@ export class AddTaskComponent implements OnInit {
     this.openCloseDropdown();
   }
 
+  setCreatedCategory() {
+    const categoryName = this.taskForm.get('category').value;
+    this.taskForm.get('category')?.setValue(categoryName);
+    this.setCategoryColor(this.selectedColor);
+    this.isDropDownOpen = false;
+    this.isNewCategory = false;
+    this.categoryInput.nativeElement.readOnly = true;
+  }
+
   setCategoryColor(color: string) {
+    this.selectedColor = color;
     this.taskForm.get('category_color')?.setValue(color);
   }
 
@@ -113,22 +134,23 @@ export class AddTaskComponent implements OnInit {
     return assignedTo.includes(user.id);
   }
 
-updateAssignedTo(user: any) {
-  const assignedTo = this.taskForm.get('assignedTo') as FormArray;
-  const assignedUsers = this.assignedUsers;
+  updateAssignedTo(user: any) {
+    const assignedTo = this.taskForm.get('assignedTo') as FormArray;
+    const assignedUsers = this.assignedUsers;
 
-  if (!assignedTo.value.includes(user.id)) {
-    assignedTo.push(this.formBuilder.control(user.id));
-    assignedUsers.push(user);
-  } else {
-    const index = assignedTo.value.indexOf(user.id);
-    assignedTo.removeAt(index);
+    if (!assignedTo.value.includes(user.id)) {
+      assignedTo.push(this.formBuilder.control(user.id));
+      assignedUsers.push(user);
+    } else {
+      const index = assignedTo.value.indexOf(user.id);
+      assignedTo.removeAt(index);
 
-    const userIndex = assignedUsers.findIndex(assignedUser => assignedUser.id === user.id);
-    assignedUsers.splice(userIndex, 1);
+      const userIndex = assignedUsers.findIndex(
+        (assignedUser) => assignedUser.id === user.id
+      );
+      assignedUsers.splice(userIndex, 1);
+    }
   }
-}
-
 
   addSubtask() {
     const subtasks = this.taskForm.get('subtasks') as FormArray;
@@ -138,5 +160,20 @@ updateAssignedTo(user: any) {
   removeSubtask(index: number) {
     const subtasks = this.taskForm.get('subtasks') as FormArray;
     subtasks.removeAt(index);
+  }
+
+  newCategory() {
+    this.isNewCategory = !this.isNewCategory;
+    this.categoryInput.nativeElement.focus();
+    this.categoryInput.nativeElement.readOnly = false;
+    this.categoryInput.nativeElement.placeholder = 'Enter new Categoryname';
+  }
+
+  closeNewCategory() {
+    this.isNewCategory = false;
+    this.categoryInput.nativeElement.placeholder = 'Select task category';
+    this.selectedColor = 'nothing';
+    this.categoryInput.nativeElement.readOnly = true;
+    this.categoryInput.nativeElement.value = null;
   }
 }

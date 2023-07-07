@@ -30,13 +30,23 @@
           <div class="place-holder"></div>
         </ng-template>
       </div>
-      <div class="column">
+      <div class="column gap-8">
         <label for="category">Category</label>
         <div class="drop-down column relative" [class.drop-down-open]="isDropDownOpen">
-          <img (click)="openCloseDropdown()" class="arrow-down" src="assets/icons/arrow-down.svg" alt="">
-          <input class="db" formArrayName="category" placeholder="Select a task Category">
+          <div class="relative">
+            <img (click)="openCloseDropdown()" *ngIf="!isNewCategory" class="arrow-down"
+              src="assets/icons/arrow-down.svg" alt="">
+            <input (click)="!isNewCategory && openCloseDropdown()" #categoryInput class="pointer" maxlength="15"
+              formControlName="category" placeholder="Select task category" readonly="readonly">
+            <div *ngIf="!isNewCategory && selectedColor && selectedColor.length > 2" class="input-dot"
+              [style.background-color]="selectedColor"></div>
+            <div *ngIf="isNewCategory" (click)="openCloseDropdown()" class="display-flex gap-8 new-task">
+              <img (click)="closeNewCategory()" s src="assets/icons/x.svg" alt="">
+              <img (click)="setCreatedCategory()" src="assets/icons/check-dark.svg" alt="">
+            </div>
+          </div>
           <div class="column" [class.d-none]="!isDropDownOpen">
-            <span class="space-between align-center" (click)="setCategory('Accounting','var(--label-1)')">
+            <span class="space-between align-center" (click)="setCategory('Sales','var(--label-1)')">
               Sales
               <div style="background-color: var(--label-1);" class="dot space-between"></div>
             </span>
@@ -44,30 +54,41 @@
               Accounting
               <div style="background-color: var(--label-2);" class="dot space-between"></div>
             </span>
-            <span class="space-between align-center" (click)="setCategory('Backoffice','var(--label-2)')">
+            <span class="space-between align-center" (click)="setCategory('Backoffice','var(--label-3)')">
               Backoffice
               <div style="background-color: var(--label-3);" class="dot space-between"></div>
             </span>
+            <div class="column">
+              <span (click)="newCategory()" class="space-between align-center" (click)="setCategory('','')">
+                New Category
+              </span>
+            </div>
           </div>
         </div>
         <ng-container
-          *ngIf="taskForm.controls['category'].invalid && taskForm.controls['category'].touched; else placeHolder3">
+          *ngIf="taskForm.controls['category'].invalid && taskForm.controls['category'].touched; placeHolder3">
           <div class="error-message">
             Category is required
           </div>
         </ng-container>
-        <ng-template #placeHolder3>
+        <ng-template ngIf="!isNewCategory" #placeHolder3>
           <div class="place-holder"></div>
         </ng-template>
+        <div *ngIf="isNewCategory" class="display-flex">
+          <div *ngFor="let color of colors" class="dot" [ngStyle]="{ 'background-color': color }"
+            [ngClass]="{ 'selected-color': selectedColor === color }" (click)="setCategoryColor(color)"></div>
+        </div>
       </div>
       <label for="assignedTo">Assigned to:</label>
       <div formArrayName="assignedTo" class="drop-down column relative" [class.drop-down-open]="isUserDropDownOpen">
         <img (click)="openCloseUserDropdown()" class="arrow-down" src="assets/icons/arrow-down.svg" alt="">
-        <input class="db" placeholder="Select contacts to assign">
-        <div class="column gap-13 " [class.d-none]="!isUserDropDownOpen">
+        <input (click)="openCloseUserDropdown()" class="pointer" placeholder="Select contacts to assign"
+          readonly="readonly">
+        <div class="column" [class.d-none]="!isUserDropDownOpen">
           <span class="space-between align-center" *ngFor="let user of users">
             <div class="center">{{ user.first_name }} {{ user.last_name }}</div>
-            <input type="checkbox" [checked]="isUserSelected(user)" (change)="updateAssignedTo(user)">
+            <input type="checkbox" [checked]="isUserSelected(user)" (change)="updateAssignedTo(user)"
+              readonly="readonly">
           </span>
         </div>
       </div>

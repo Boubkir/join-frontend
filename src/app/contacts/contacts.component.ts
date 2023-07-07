@@ -57,6 +57,7 @@ export class ContactsComponent {
   async addContactSlider() {
     this.addContactSlide = !this.addContactSlide;
     await this.loadContacts();
+    console.log('yeah')
   }
 
   async editContactSlider() {
