@@ -43,13 +43,12 @@ textarea {
 
 .drop-down {
   width: 422px;
-  gap: 10px;
   border-radius: 10px;
   border: 1px solid var(--style, #d1d1d1);
   background: #fff;
   box-sizing: border-box;
   transition: all 225ms;
-  max-height: 162px;
+  max-height: 153px;
   span {
     padding: 0 21px;
     height: 51px;
@@ -202,7 +201,7 @@ input[type="checkbox"] {
   min-height: 20px;
   min-width: 20px;
   border-radius: 100%;
-  margin: 8px 0 8px 8px;
+  margin: -15px 0 8px 8px;
   border: 2px white solid;
   cursor: pointer;
 }
@@ -238,6 +237,4 @@ input[type="checkbox"] {
   width: 20px;
   border-radius: 100%;
   margin: 8px 0 8px 8px;
-  border: 2px white solid;
 }
-

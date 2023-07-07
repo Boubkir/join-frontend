@@ -44,24 +44,25 @@
               <img (click)="closeNewCategory()" s src="assets/icons/x.svg" alt="">
               <img (click)="setCreatedCategory()" src="assets/icons/check-dark.svg" alt="">
             </div>
-          </div>
-          <div class="column" [class.d-none]="!isDropDownOpen">
-            <span class="space-between align-center" (click)="setCategory('Sales','var(--label-1)')">
-              Sales
-              <div style="background-color: var(--label-1);" class="dot space-between"></div>
-            </span>
-            <span class="space-between align-center" (click)="setCategory('Accounting','var(--label-2)')">
-              Accounting
-              <div style="background-color: var(--label-2);" class="dot space-between"></div>
-            </span>
-            <span class="space-between align-center" (click)="setCategory('Backoffice','var(--label-3)')">
-              Backoffice
-              <div style="background-color: var(--label-3);" class="dot space-between"></div>
-            </span>
-            <div class="column">
-              <span (click)="newCategory()" class="space-between align-center" (click)="setCategory('','')">
-                New Category
+
+            <div class="column" [class.d-none]="!isDropDownOpen">
+              <span class="space-between align-center" (click)="setCategory('Sales','var(--label-1)')">
+                Sales
+                <div style="background-color: var(--label-1);" class="dot space-between"></div>
               </span>
+              <span class="space-between align-center" (click)="setCategory('Accounting','var(--label-2)')">
+                Accounting
+                <div style="background-color: var(--label-2);" class="dot space-between"></div>
+              </span>
+              <span class="space-between align-center" (click)="setCategory('Backoffice','var(--label-3)')">
+                Backoffice
+                <div style="background-color: var(--label-3);" class="dot space-between"></div>
+              </span>
+              <div class="column">
+                <span (click)="newCategory()" class="space-between align-center" (click)="setCategory('','')">
+                  New Category
+                </span>
+              </div>
             </div>
           </div>
         </div>
@@ -77,29 +78,6 @@
         <div *ngIf="isNewCategory" class="display-flex">
           <div *ngFor="let color of colors" class="dot" [ngStyle]="{ 'background-color': color }"
             [ngClass]="{ 'selected-color': selectedColor === color }" (click)="setCategoryColor(color)"></div>
-        </div>
-      </div>
-      <label for="assignedTo">Assigned to:</label>
-      <div formArrayName="assignedTo" class="drop-down column relative" [class.drop-down-open]="isUserDropDownOpen">
-        <img (click)="openCloseUserDropdown()" class="arrow-down" src="assets/icons/arrow-down.svg" alt="">
-        <input (click)="openCloseUserDropdown()" class="pointer" placeholder="Select contacts to assign"
-          readonly="readonly">
-        <div class="column" [class.d-none]="!isUserDropDownOpen">
-          <span class="space-between align-center" *ngFor="let user of users">
-            <div class="center">{{ user.first_name }} {{ user.last_name }}</div>
-            <input type="checkbox" [checked]="isUserSelected(user)" (change)="updateAssignedTo(user)"
-              readonly="readonly">
-          </span>
-        </div>
-      </div>
-      <div class="display-flex gap-8" *ngIf="assignedUsers">
-        <div *ngFor="let name of assignedUsers, let i = index">
-          <div class="display-flex">
-            <div [style.background-color]="'var(--label-'+(i+1)+')'" class="circle center">
-              {{ name.first_name[0]
-              |uppercase }}{{ name.last_name[0]|uppercase }}
-            </div>
-          </div>
         </div>
       </div>
     </div>
@@ -192,13 +170,28 @@
           <div class="place-holder"></div>
         </ng-template>
       </div>
-      <label for="">Subtasks</label>
-      <div class="display-flex column">
-        <div *ngFor="let subtask of taskForm.get('subtasks')?.value; let i = index" class="display-flex gap-13">
-          <input type="text">
-          <button (click)="removeSubtask(i)">Remove</button>
+      <label for="assignedTo">Assigned to:</label>
+      <div formArrayName="assignedTo" class="drop-down column relative" [class.drop-down-open]="isUserDropDownOpen">
+        <img (click)="openCloseUserDropdown()" class="arrow-down" src="assets/icons/arrow-down.svg" alt="">
+        <input (click)="openCloseUserDropdown()" class="pointer" placeholder="Select contacts to assign"
+          readonly="readonly">
+        <div class="column" [class.d-none]="!isUserDropDownOpen">
+          <span class="space-between align-center" *ngFor="let user of users">
+            <div class="center">{{ user.first_name }} {{ user.last_name }}</div>
+            <input type="checkbox" [checked]="isUserSelected(user)" (change)="updateAssignedTo(user)"
+              readonly="readonly">
+          </span>
         </div>
-        <button (click)="addSubtask()">Add Subtask</button>
+      </div>
+      <div class="display-flex gap-8" *ngIf="assignedUsers">
+        <div *ngFor="let name of assignedUsers, let i = index">
+          <div class="display-flex">
+            <div [style.background-color]="'var(--label-'+(i+1)+')'" class="circle center">
+              {{ name.first_name[0]
+              |uppercase }}{{ name.last_name[0]|uppercase }}
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <div class="button-container gap-26 display-flex">
