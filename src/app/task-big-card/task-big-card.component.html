@@ -132,14 +132,21 @@
     </div>
     <h3>Assigned to:</h3>
     <div *ngIf="!editMode" class="column gap-25">
-      <div class="display-flex gap-25 align-center" *ngFor="let name of assignedUsers, let i = index">
+      <div class="display-flex gap-25 align-center" *ngFor="let user of assignedUsers, let i = index">
         <div class="space-between gap-25">
           <div [style.background-color]="'var(--label-'+(i+1)+')'" class="circle center">
-            {{ name.first_name[0]
-            |uppercase }}{{ name.last_name[0]|uppercase }}</div>
+            {{ user.first_name[0]
+            |uppercase }}{{ user.last_name[0]|uppercase }}
+          </div>
         </div>
-        <div>{{ name.first_name
-          |titlecase }} {{ name.last_name|titlecase }}</div>
+        <div *ngIf="currentUser.id != user.id; else youDiv">
+          <div>{{ user.first_name
+            |titlecase }} {{ user.last_name|titlecase }}
+          </div>
+        </div>
+        <ng-template #youDiv>
+          <div>You</div>
+        </ng-template>
       </div>
     </div>
     <div *ngIf="editMode">
@@ -153,7 +160,7 @@
               <input type="checkbox" [checked]="isUserSelected(user)" (change)="updateAssignedTo(user)">
             </div>
             <ng-template #youDiv>
-                <span>You</span>
+              <span>You</span>
             </ng-template>
           </div>
         </div>

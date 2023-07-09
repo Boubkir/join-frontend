@@ -4,6 +4,10 @@
     <h3>{{task.title}}</h3>
     <span>{{task.description}}</span>
   </div>
+  <div class="space-between full-width center">
+    <div class="progress-bar"></div>
+    <span>0/{{task.sub_tasks.length}} Done</span>
+  </div>
   <div class="space-between full-width align-center">
     <div class="circle-container display-flex">
       <div *ngFor="let user of assignedUsers, let i = index" >

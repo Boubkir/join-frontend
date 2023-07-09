@@ -22,6 +22,9 @@ export class AddTaskComponent implements OnInit {
   isNewCategory: boolean = false;
   assignedUsers: User[] = [];
   selectedColor: string | null = null;
+  subtasks: { name: string; done: boolean }[] = [];
+  newSubtask: string = '';
+  newSubtaskName: string;
   colors: string[] = [
     'var(--label-1)',
     'var(--label-2)',
@@ -44,7 +47,7 @@ export class AddTaskComponent implements OnInit {
       dueDate: [null, Validators.required],
       priority: [''],
       assignedTo: this.formBuilder.array([]),
-      subtasks: this.formBuilder.array([]),
+      subtasks: [''],
     });
   }
 
@@ -110,7 +113,7 @@ export class AddTaskComponent implements OnInit {
         category_color: this.taskForm.get('category_color')?.value,
         due_date: this.taskForm.get('dueDate')?.value,
         assigned_to: this.taskForm.get('assignedTo')?.value,
-        sub_tasks: this.taskForm.get('subtasks')?.value,
+        sub_tasks: this.subtasks,
         priority: this.priority,
         user: this.currentUser.id,
         status: 'open',
@@ -153,13 +156,18 @@ export class AddTaskComponent implements OnInit {
   }
 
   addSubtask() {
-    const subtasks = this.taskForm.get('subtasks') as FormArray;
-    subtasks.push(this.formBuilder.control(''));
+    const newSubtask = {
+      name: this.taskForm.get('subtasks').value,
+      done: false,
+    };
+    this.subtasks.push(newSubtask);
+    this.taskForm.get('subtasks').setValue('');
+    console.log(newSubtask);
+    console.log(this.subtasks);
   }
 
-  removeSubtask(index: number) {
-    const subtasks = this.taskForm.get('subtasks') as FormArray;
-    subtasks.removeAt(index);
+  deleteSubtask(index:number) {
+      this.subtasks.splice(index,1);
   }
 
   newCategory() {

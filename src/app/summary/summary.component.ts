@@ -34,7 +34,7 @@ export class SummaryComponent {
     this.firstName = this.currentUser?.first_name ?? 'Sunshine';
     this.lastName = this.currentUser?.last_name ?? '';
     this.setGreetingMessage();
-    if (this.upComing) {
+    if (this.tasks) {
       this.upComing = this.calculateUpcomingDeadline();
     }
   }
