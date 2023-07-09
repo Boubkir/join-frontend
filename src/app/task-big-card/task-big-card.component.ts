@@ -139,9 +139,12 @@ export class TaskBigCardComponent {
       const currentUserIndex = loadedUsers.findIndex(
         (user) => user.id === this.currentUser.id
       );
+
       if (currentUserIndex !== -1) {
-        loadedUsers.splice(currentUserIndex, 1);
+        const currentUser = loadedUsers.splice(currentUserIndex, 1)[0];
+        loadedUsers.unshift(currentUser);
       }
+
       this.users = loadedUsers;
     } catch (error) {
       console.error('Fehler beim Laden der Benutzer:', error);

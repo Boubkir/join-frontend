@@ -17,7 +17,7 @@ export class TaskCardComponent implements OnInit {
 
   async ngOnInit() {
     await this.loadUser();
-    this.updateAssignedUsers();
+    await this.updateAssignedUsers();
     console.log(this.assignedUsers);
   }
 
@@ -30,7 +30,7 @@ export class TaskCardComponent implements OnInit {
     }
   }
 
-  updateAssignedUsers() {
+  async updateAssignedUsers() {
     this.assignedUsers = this.task.assigned_to.map((userId) => {
       return this.users.find((user) => user.id === userId);
     });

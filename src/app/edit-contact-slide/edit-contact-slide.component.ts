@@ -11,6 +11,7 @@ import { AuthService } from '../services/auth.service';
 })
 export class EditContactSlideComponent {
   @Output() onShowSlider: EventEmitter<void> = new EventEmitter<void>();
+  @Output() currentContactUpdated: EventEmitter<Contact> = new EventEmitter();
   @Input() currentContact!: Contact;
   currentUser!: Contact;
   contactForm: FormGroup;
@@ -46,11 +47,11 @@ export class EditContactSlideComponent {
         color: this.contactForm.get('color')?.value,
         user: this.currentUser.id,
       };
-      this.data.editContact(editedContact,id).subscribe(
+      this.data.editContact(editedContact, id).subscribe(
         () => {
           console.log('geschafft');
           this.triggerShowSlider();
-          console.log(id)
+          console.log(id);
         },
         (error) => {
           console.error('Error creating task:', error);
@@ -73,5 +74,6 @@ export class EditContactSlideComponent {
 
   triggerShowSlider() {
     this.onShowSlider.emit();
+    this.currentContactUpdated.emit(this.currentContact);
   }
 }

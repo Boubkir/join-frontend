@@ -1,31 +1,106 @@
 <div class="content center relative">
   <img class="logo" src="assets/icons/logo.svg" alt="">
-  <form [formGroup]="registerForm" (ngSubmit)="register()" class="center column gap-35 relative">
+  <form [formGroup]="registerForm" (ngSubmit)="register()" class="center column gap-13 relative">
     <div class="headline column center gap-24">
       <h1>Sign up</h1>
       <div class="line"></div>
     </div>
-    <div class="relative input column">
-      <input type="text" name="firstname" placeholder="Firstname" formControlName="first_name">
-      <img src="assets/icons/user.svg" alt="">
+    <div class="column gap-5">
+      <div class="relative input column">
+        <input type="text" name="firstname" placeholder="Username" formControlName="username">
+        <img src="assets/icons/user.svg" alt="">
+      </div>
+      <ng-container
+        *ngIf="registerForm.controls['username'].invalid && registerForm.controls['username'].touched; else placeHolder">
+        <div class="error-message">
+          Username is required
+        </div>
+      </ng-container>
+      <ng-template #placeHolder>
+        <div class="place-holder"></div>
+      </ng-template>
     </div>
-    <div class="relative input column">
-      <input type="text" name="lastname" placeholder="Lastname" formControlName="last_name">
-      <img src="assets/icons/user.svg" alt="">
+    <div class="column gap-5">
+      <div class="relative input column">
+        <input type="text" name="firstname" placeholder="Firstname" formControlName="first_name">
+        <img src="assets/icons/user.svg" alt="">
+      </div>
+      <ng-container
+        *ngIf="registerForm.controls['first_name'].invalid && registerForm.controls['first_name'].touched; else placeHolder">
+        <div class="error-message">
+          Firstname is required
+        </div>
+      </ng-container>
+      <ng-template #placeHolder>
+        <div class="place-holder"></div>
+      </ng-template>
     </div>
-    <div class="relative input column">
-      <input type="text" name="username" placeholder="Email" formControlName="email">
-      <img src="assets/icons/email.svg" alt="">
+    <div class="column gap-5">
+      <div class="relative input column">
+        <input type="text" name="lastname" placeholder="Lastname" formControlName="last_name">
+        <img src="assets/icons/user.svg" alt="">
+      </div>
+      <ng-container
+        *ngIf="registerForm.controls['last_name'].invalid && registerForm.controls['last_name'].touched; else placeHolder">
+        <div class="error-message">
+          Lastname is required
+        </div>
+      </ng-container>
+      <ng-template #placeHolder>
+        <div class="place-holder"></div>
+      </ng-template>
+
     </div>
-    <div class="relative input">
-      <input type="password" name="password" placeholder="Password" formControlName="password">
-      <img src="assets/icons/password.svg" alt="">
+    <div class="column gap-5">
+      <div class="relative input column">
+        <input type="text" name="username" placeholder="Email" formControlName="email">
+        <img src="assets/icons/email.svg" alt="">
+      </div>
+      <ng-container
+        *ngIf="registerForm.controls['email'].invalid && registerForm.controls['email'].touched; else placeHolder">
+        <div class="error-message">
+          Valid email is required
+        </div>
+      </ng-container>
+      <ng-template #placeHolder>
+        <div class="place-holder"></div>
+      </ng-template>
+
     </div>
-    <div class="relative input">
-      <input type="password" name="password" placeholder="Confirm password" formControlName="confirmed_password">
-      <img src="assets/icons/password.svg" alt="">
+
+    <div class="column gap-5">
+      <div class="relative input">
+        <input type="password" name="password" placeholder="Password" formControlName="password">
+        <img src="assets/icons/password.svg" alt="">
+      </div>
+      <ng-container
+        *ngIf="registerForm.controls['password'].invalid && registerForm.controls['password'].touched; else placeHolder">
+        <div class="error-message">
+          Password is required
+        </div>
+      </ng-container>
+      <ng-template #placeHolder>
+        <div class="place-holder"></div>
+      </ng-template>
     </div>
-    <button class="sign-up-btn">Sign up</button>
+    <div class="column gap-5">
+      <div class="relative input">
+        <input type="password" name="password" placeholder="Confirm password" formControlName="confirmed_password">
+        <img src="assets/icons/password.svg" alt="">
+      </div>
+      <ng-container
+        *ngIf="registerForm.controls['confirmed_password'].invalid && registerForm.controls['confirmed_password'].touched; else placeHolder">
+        <div class="error-message">
+          Confirmed password is required
+        </div>
+      </ng-container>
+      <ng-template #placeHolder>
+        <div class="place-holder"></div>
+      </ng-template>
+
+    </div>
+    <div class="column gap-5"></div>
+    <button [disabled]="!registerForm.valid" class="sign-up-btn">Sign up</button>
     <img routerLink="/login" class="arrow-left" src="assets/icons/arrow-left.svg" alt="">
   </form>
 </div>

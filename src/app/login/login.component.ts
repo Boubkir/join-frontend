@@ -44,9 +44,7 @@ export class LoginComponent {
 
     try {
       let resp: any = await this.authService.loginWitEmailAndPassword(user);
-      this.authService.setCurrentUser(resp['user']);
-      localStorage.setItem('token', resp['token']);
-      localStorage.setItem('expire', resp['expiry']);
+      this.authService.setCurrentUser(resp);
       this.router.navigate(['/summary']);
     } catch (e) {
       console.error('Fehler bei der Anmeldung', e);

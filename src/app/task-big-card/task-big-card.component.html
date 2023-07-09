@@ -147,10 +147,15 @@
         <img (click)="openCloseUserDropdown()" class="arrow-down" src="assets/icons/arrow-down.svg" alt="">
         <span class="db">Select contacts to assign</span>
         <div class="column gap-13 down" [class.d-none]="!isUserDropDownOpen">
-          <span class="space-between" *ngFor="let user of users">
-            <span>{{ user.first_name }} {{ user.last_name }}</span>
-            <input type="checkbox" [checked]="isUserSelected(user)" (change)="updateAssignedTo(user)">
-          </span>
+          <div *ngFor="let user of users">
+            <div class="space-between" *ngIf="currentUser.id != user.id; else youDiv">
+              <span>{{ user.first_name }} {{ user.last_name }}</span>
+              <input type="checkbox" [checked]="isUserSelected(user)" (change)="updateAssignedTo(user)">
+            </div>
+            <ng-template #youDiv>
+                <span>You</span>
+            </ng-template>
+          </div>
         </div>
       </div>
     </div>

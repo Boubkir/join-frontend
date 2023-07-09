@@ -23,6 +23,7 @@ export class AuthService {
     });
     await this.http.post(url, null, { headers }).toPromise();
     localStorage.removeItem('token');
+    localStorage.removeItem('expire');
     this.removeCurrentUser();
   }
 
@@ -46,8 +47,10 @@ export class AuthService {
     return false;
   }
 
-  setCurrentUser(user: any) {
-    localStorage.setItem('currentUser', JSON.stringify(user));
+  setCurrentUser(resp: any) {
+    localStorage.setItem('currentUser', JSON.stringify(resp['user']));
+        localStorage.setItem('token', resp['token']);
+        localStorage.setItem('expire', resp['expiry']);
   }
 
   getCurrentUser(): any {

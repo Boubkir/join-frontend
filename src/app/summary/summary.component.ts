@@ -34,7 +34,9 @@ export class SummaryComponent {
     this.firstName = this.currentUser?.first_name ?? 'Sunshine';
     this.lastName = this.currentUser?.last_name ?? '';
     this.setGreetingMessage();
-     this.upComing = this.calculateUpcomingDeadline();
+    if (this.upComing) {
+      this.upComing = this.calculateUpcomingDeadline();
+    }
   }
 
   async loadTodos() {
@@ -54,15 +56,19 @@ export class SummaryComponent {
     this.urgent = this.tasks.filter((t: any) => t['priority'] == 'urgent');
   }
 
-  calculateUpcomingDeadline(): string {
+  calculateUpcomingDeadline() {
     let upcoming = this.tasks.sort(function (a: any, b: any) {
       let x: any = new Date(a.due_date);
       let y: any = new Date(b.due_date);
       return x - y;
     });
 
-    let formattedDate = moment(upcoming[0].due_date).format('MMMM DD, YYYY');
-    return formattedDate;
+    if (upcoming) {
+      let formattedDate = moment(upcoming[0].due_date).format('MMMM DD, YYYY');
+      return formattedDate;
+    }else{
+      return null
+    }
   }
 
   setGreetingMessage() {

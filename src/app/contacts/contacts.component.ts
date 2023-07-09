@@ -11,11 +11,11 @@ export class ContactsComponent {
   groupedUsers: any = {};
   contacts: any = [];
   sortedContacts: any = [];
-  h1 = 'Contacts';
-  motto = 'Better with a team';
   selectedContact: Contact;
   addContactSlide: boolean = false;
   editContactSlide: boolean = false;
+  h1 = 'Contacts';
+  motto = 'Better with a team';
 
   constructor(private data: SharedDataService) {}
 
@@ -57,11 +57,16 @@ export class ContactsComponent {
   async addContactSlider() {
     this.addContactSlide = !this.addContactSlide;
     await this.loadContacts();
-    console.log('yeah')
+    console.log('yeah');
   }
 
   async editContactSlider() {
     this.editContactSlide = !this.editContactSlide;
     await this.loadContacts();
+  }
+
+  onCurrentContactUpdated(contact: Contact) {
+    this.selectedContact = contact;
+    console.log('Wasgeht');
   }
 }
