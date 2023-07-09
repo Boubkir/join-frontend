@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Task } from '../models/task.model';
 import { SharedDataService } from '../services/shared-data.service';
 import { User } from '../models/user.model';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-task-card',
@@ -12,8 +13,9 @@ export class TaskCardComponent implements OnInit {
   @Input() task: Task;
   assignedUsers: User[] = [];
   users: User[] = [];
+  currentUser: User = this.auth.getCurrentUser();
 
-  constructor(private data: SharedDataService) {}
+  constructor(private data: SharedDataService,private auth:AuthService) {}
 
   async ngOnInit() {
     await this.loadUser();

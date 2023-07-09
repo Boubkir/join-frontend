@@ -1,14 +1,18 @@
 <div cdkDrag class="card">
-<div [style.background-color]="task.category_color" class="card-category">{{task.category}}</div>
+  <div [style.background-color]="task.category_color" class="card-category">{{task.category}}</div>
   <div class="card-content">
     <h3>{{task.title}}</h3>
     <span>{{task.description}}</span>
   </div>
   <div class="space-between full-width align-center">
-    <div  class="circle-container display-flex">
-      <div [style.background-color]="'var(--label-'+(i+1)+')'" *ngFor="let name of assignedUsers, let i = index" class="circle center">
-        {{ name.first_name[0]
-      |uppercase }}{{ name.last_name[0]|uppercase }}</div>
+    <div class="circle-container display-flex">
+      <div *ngFor="let user of assignedUsers, let i = index" >
+        <div [style.background-color]="'var(--label-'+(i+1)+')'" *ngIf="currentUser.id != user.id" 
+          class="circle center">
+          {{ user.first_name[0]
+          |uppercase }}{{ user.last_name[0]|uppercase }}
+        </div>
+      </div>
     </div>
     <img [src]="'assets/icons/card-'+task.priority+'.svg'" alt="">
   </div>
