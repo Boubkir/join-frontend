@@ -2,7 +2,7 @@
    padding: 82px 123px;
   background-color: var(--main-bg-color);
   box-sizing: border-box;
-  height: calc(100vh - 93px);
+  min-height: calc(100vh - 93px);
 }
 
 .board {

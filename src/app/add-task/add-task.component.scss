@@ -2,7 +2,7 @@
   padding: 82px 123px;
   background-color: var(--main-bg-color);
   box-sizing: border-box;
-  height: calc(100vh - 93px);
+  min-height: calc(100vh - 93px);
 }
 
 h1 {
@@ -24,7 +24,7 @@ textarea {
   box-sizing: border-box;
   border-radius: 10px;
   border: 1px solid var(--style, #d1d1d1);
-  background: #fff;
+  background: var(--main-white);
   font-size: 21px;
   font-weight: 400;
 
@@ -45,7 +45,7 @@ textarea {
   width: 422px;
   border-radius: 10px;
   border: 1px solid var(--style, #d1d1d1);
-  background: #fff;
+  background: var(--main-white);
   box-sizing: border-box;
   transition: all 225ms;
   max-height: 153px;
@@ -57,7 +57,6 @@ textarea {
 }
 
 .arrow-down {
-  position: absolute;
   position: absolute;
   top: 24px;
   right: 21px;
@@ -76,10 +75,10 @@ textarea {
   box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.1);
   border: none;
   cursor: pointer;
-  color: #000;
+  color: var(--main-dark);
   font-size: 21px;
   font-weight: 400;
-  background-color: #fff;
+  background-color: var(--main-white);
 }
 
 .button-container {
@@ -95,14 +94,14 @@ textarea {
   gap: 10px;
   border-radius: 10px;
   border: none;
-  color: #fff;
+  color: var(--main-white);
   font-size: 21px;
   font-weight: 700;
   box-sizing: border-box;
   cursor: pointer;
 
   &:hover {
-    border-color: #29abe2;
+    border-color: var(--task-blue);
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2);
     transition: all 225ms;
   }
@@ -111,27 +110,27 @@ textarea {
 .clear-btn {
   background-color: transparent;
   width: 136px;
-  border: 1px solid var(--version-2-main-color, #2a3647);
-  color: var(--version-2-main-color, #2a3647);
+  border: 1px solid var(--main-dark);
+  color:  var(--main-dark);
 
   &:hover {
-    border: 1px solid var(--ligth-blue, #29abe2);
-    color: #29abe2;
+    border: 1px solid var(--task-blue);
+    color: var(--task-blue);
 
     svg > * > * {
-      stroke: #29abe2;
+      stroke: var(--task-blue);
     }
   }
 }
 
 .add-btn {
   border: none;
-  background: #2a3647;
-  color: #fff;
+  background: var(--main-dark);
+  color: var(--main-white);
 
   &:hover {
-    background-color: #29abe2;
-    border-color: #29abe2;
+    background-color: var(--task-blue);
+    border-color: var(--task-blue);
   }
 }
 
@@ -149,9 +148,9 @@ input[type="checkbox"] {
   justify-content: center;
   align-items: center;
   border-radius: 20px;
-  background: #2a3647;
+  background: var(--main-dark);
   box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.15);
-  color: #fff;
+  color: var(--main-white);
   font-size: 21px;
   transition: all 1s ease-in-out;
   cursor: pointer;
@@ -161,16 +160,12 @@ input[type="checkbox"] {
 .selected-medium,
 .selected-urgent {
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) !important;
-  color: #fff !important;
+  color: var(--main-white) !important;
   font-weight: 700 !important;
 
   path {
-    fill: white;
+    fill: var(--main-white);
   }
-}
-
-.pointer {
-  cursor: pointer;
 }
 
 .selected-low {
@@ -183,6 +178,10 @@ input[type="checkbox"] {
 
 .selected-urgent {
   background: var(--prio-urgent) !important;
+}
+
+.pointer {
+  cursor: pointer;
 }
 
 .drop-down-open {
@@ -209,7 +208,7 @@ input[type="checkbox"] {
 .circle {
   min-height: 45px;
   min-width: 45px;
-  background-color: #29abe2;
+  background-color: var(--task-blue);
   color: white;
   border-radius: 100%;
 }

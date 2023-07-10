@@ -17,7 +17,7 @@
   padding: 25px 0px;
   box-sizing: border-box;
   text-align: center;
-  background-color: white;
+  background-color: var(--main-white);
   box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
   border-radius: 30px;
   cursor: pointer;
@@ -27,7 +27,7 @@
 
   &:hover {
     background-color: var(--main-dark);
-    color: #ffffff;
+    color: var(--main-white);
   }
 }
 
@@ -44,7 +44,7 @@
 .important-tasks {
   width: 580px;
   height: 150px;
-  background-color: white;
+  background-color:var(--main-white);
   border-radius: 30px;
   padding: 28px 48px;
   box-sizing: border-box;
@@ -53,7 +53,7 @@
 
   &:hover {
     background-color: var(--main-dark);
-    color: #ffffff;
+    color: var(--main-white);
   }
 }
 
@@ -92,7 +92,7 @@
   gap: 18px;
   width: 272.5px;
   height: 150px;
-  background: #ffffff;
+  background: var(--main-white);
   box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
   border-radius: 30px;
   padding: 38px 19px;
@@ -113,11 +113,11 @@
 
 .to-do-done-container:hover {
   background-color: var(--main-dark);
-  color: white;
+  color: var(--main-white);
   cursor: pointer;
 
   svg circle {
-    fill: white;
+    fill: var(--main-white);
   }
 
   .todo-svg path {
@@ -130,7 +130,7 @@
 }
 
 .greeting {
-  color: #2a3647;
+  color: var(--main-dark);
   font-size: 47px;
   font-weight: 500;
 }

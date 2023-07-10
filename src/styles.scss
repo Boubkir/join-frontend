@@ -57,6 +57,10 @@ body {
   width: 100%;
 }
 
+.half-width {
+  width: 50%;
+}
+
 .column {
   display: flex;
   flex-direction: column;
@@ -140,7 +144,7 @@ body {
 }
 
 .error-message {
-  color: #ff8190;
+  color: var(--field-required);
   font-size: 12px;
   font-weight: 400;
 }

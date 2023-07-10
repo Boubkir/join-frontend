@@ -10,12 +10,12 @@
 
 form {
   display: inline-flex;
-  padding: 50px;
+  padding: 50px 50px 100px 50px;
   flex-direction: column;
   align-items: flex-start;
   gap: 25px;
   border-radius: 30px;
-  background: #fff;
+  background: var(--main-white);
   box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.1);
 }
 
@@ -30,7 +30,7 @@ textarea {
   box-sizing: border-box;
   border-radius: 10px;
   border: 1px solid var(--style, #d1d1d1);
-  background: #fff;
+  background: var(--main-white);
   font-size: 21px;
   font-weight: 400;
 }
@@ -44,7 +44,7 @@ textarea {
   gap: 10px;
   border-radius: 10px;
   border: 1px solid var(--style, #d1d1d1);
-  background: #fff;
+  background: var(--main-white);
   box-sizing: border-box;
   transition: all 225ms;
   max-height: 162px;
@@ -63,6 +63,20 @@ textarea {
   .db {
     border: none;
   }
+}
+
+.db {
+  display: flex;
+  padding: 13px 21px;
+  align-items: center;
+  min-height: 51px;
+  max-height: 51px;
+  gap: 10px;
+  width: 422px;
+  box-sizing: border-box;
+  border-radius: 10px;
+  border: 1px solid var(--style, #d1d1d1);
+  background: var(--main-white);
 }
 
 .arrow-down {
@@ -104,142 +118,42 @@ textarea {
   color: #000;
   font-size: 21px;
   font-weight: 400;
-  background-color: #fff;
-}
-
-.button-container {
-  position: absolute;
-  right: 0;
-  bottom: 0;
-}
-
-.clear-btn {
-  background-color: transparent;
-  display: flex;
-  width: 136px;
-  height: 55px;
-  padding: 18px 10px;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  border-radius: 10px;
-  border: 1px solid var(--version-2-main-color, #2a3647);
-  box-sizing: border-box;
-  color: var(--version-2-main-color, #2a3647);
-  font-size: 21px;
-  cursor: pointer;
-
-  &:hover {
-    border-radius: 10px;
-    border: 1px solid var(--ligth-blue, #29abe2);
-    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-    color: #29abe2;
-    cursor: pointer;
-
-    svg > * > * {
-      stroke: #29abe2;
-    }
-  }
-}
-
-.add-btn {
-  display: flex;
-  height: 55px;
-  padding: 18px 15px;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  border-radius: 10px;
-  border: none;
-  background: #2a3647;
-  color: #fff;
-  font-size: 21px;
-  font-weight: 700;
-  cursor: pointer;
-
-  &:hover {
-    background-color: #29abe2;
-    border-color: #29abe2;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2);
-    cursor: pointer;
-    transition: all 225ms;
-  }
-}
-
-.db {
-  display: flex;
-  padding: 13px 21px;
-  align-items: center;
-  min-height: 51px;
-  max-height: 51px;
-  gap: 10px;
-  width: 422px;
-  box-sizing: border-box;
-  border-radius: 10px;
-  border: 1px solid var(--style, #d1d1d1);
-  background: #fff;
+  background-color: var(--main-white);
 }
 
 input[type="checkbox"] {
   width: 30px;
 }
 
-.created-task {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  width: 326px;
-  height: 74px;
-  justify-content: center;
-  align-items: center;
-  border-radius: 20px;
-  background: #2a3647;
-  box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.15);
-  color: #fff;
-  font-size: 21px;
-  transition: all 1s ease-in-out;
-  cursor: pointer;
-}
-
+.selected-low,
+.selected-medium,
 .selected-urgent {
-  background: #ff3d00 !important;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) !important;
-  color: #fff !important;
+  color: var(--main-white) !important;
   font-weight: 700 !important;
 
   path {
-    fill: white !important;
-  }
-}
-
-.selected-medium {
-  background: #ffa800 !important;
-  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) !important;
-  color: #fff !important;
-  font-weight: 700 !important;
-
-  path {
-    fill: white;
+    fill: var(--main-white);
   }
 }
 
 .selected-low {
-  background: #7ae229 !important;
-  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) !important;
-  color: #fff !important;
-  font-weight: 700 !important;
+  background: var(--prio-low) !important;
+}
 
-  path {
-    fill: white;
-  }
+.selected-medium {
+  background: var(--prio-medium) !important;
+}
+
+.selected-urgent {
+  background: var(--prio-urgent) !important;
 }
 
 h2 {
   display: flex;
   width: 523px;
   flex-direction: column;
-  color: var(--version-2-main-color, #2a3647);
+  color: var(--main-dark);
   font-size: 61px;
   font-weight: 700;
   margin: 0;
@@ -251,15 +165,14 @@ h2 {
   align-items: flex-start;
   gap: 10px;
   border-radius: 8px;
-  background: #fc71ff;
-  color: #fff;
+  color: var(--main-white);
   font-size: 27px;
   font-weight: 400;
 }
 
 .description {
   width: 518px !important;
-  color: var(--black, #000);
+  color: var(--main-dark);
   font-size: 21px;
   font-weight: 400;
   height: 50px;
@@ -280,46 +193,45 @@ h3 {
   justify-content: center;
   align-items: flex-start;
   position: absolute;
-  right: 47px;
-  bottom: 61px;
+  right: 50px;
+  bottom: 50px;
   border-radius: 10px;
-  background: var(--white, #fff);
+  background: var(--white, var(--main-white));
 }
 
 .delete-btn,
 .edit-btn {
-  border: 1px solid var(--version-2-main-color, #2a3647);
+  border: 1px solid var(--main-dark);
   width: 50px;
   height: 50px;
   transition: all 225ms;
   cursor: pointer;
 
   &:hover {
-    border: 1px solid var(--ligth-blue, #29abe2);
-    border-color: #29abe2;
+    border: 1px solid var(--task-blue);
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2);
   }
 }
 
 .delete-btn {
   border-radius: 10px 0px 0px 10px;
-  background: var(--white, #fff);
+  background: var(--white, var(--main-white));
 
   &:hover {
-    color: #29abe2;
+    color: var(--task-blue);
 
     path {
-      fill: #29abe2;
+      fill: var(--task-blue);
     }
   }
 }
 
 .edit-btn {
   border-radius: 0px 10px 10px 0px;
-  background: var(--version-2-main-color, #2a3647);
+  background: var(--main-dark);
 
   &:hover {
-    background-color: #29abe2;
+    background-color:var(--task-blue);
   }
 }
 
@@ -332,34 +244,34 @@ h3 {
 
   &:hover {
     path {
-      stroke: #29abe2;
+      stroke: var(--task-blue);
     }
   }
 }
 
 .edit-layout {
   width: 515px;
-  height: 824px;
+  min-height: 600px;
 }
 
 .save {
   height: 50px;
   padding: 18px 15px;
   border-radius: 10px;
-  background: #2a3647;
-  color: #fff;
+  background: var(--main-dark);
+  color: var(--main-white);
   font-size: 21px;
   font-style: normal;
   font-weight: 700;
   position: absolute;
-  right: 47px;
-  bottom: 61px;
+  right: 50px;
+  bottom: 50px;
   border: none;
   cursor: pointer;
 
   &:hover {
-    background-color: #29abe2;
-    border-color: #29abe2;
+    background-color: var(--task-blue);
+    border-color: var(--task-blue);
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2);
     cursor: pointer;
     transition: all 225ms;
@@ -369,7 +281,7 @@ h3 {
 .circle {
   min-height: 45px;
   min-width: 45px;
-  background-color: #29abe2;
-  color: white;
+  background-color: var(--task-blue);
+  color: var(--main-white);
   border-radius: 100%;
 }

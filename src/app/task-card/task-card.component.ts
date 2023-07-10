@@ -14,13 +14,15 @@ export class TaskCardComponent implements OnInit {
   assignedUsers: User[] = [];
   users: User[] = [];
   currentUser: User = this.auth.getCurrentUser();
-
-  constructor(private data: SharedDataService,private auth:AuthService) {}
+  subtasksDone;
+  constructor(private data: SharedDataService, private auth: AuthService) {}
 
   async ngOnInit() {
     await this.loadUser();
     await this.updateAssignedUsers();
-    console.log(this.assignedUsers);
+    this.subtasksDone = this.task.sub_tasks.filter(
+      (subtask) => subtask.done === true
+    ).length;
   }
 
   async loadUser() {

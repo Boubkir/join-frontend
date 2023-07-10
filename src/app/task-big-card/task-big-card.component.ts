@@ -124,7 +124,6 @@ export class TaskBigCardComponent {
       this.data.editTask(editedTask, editedTask.id).subscribe(
         () => {
           console.log('geschafft');
-          this.triggerShowSlider();
         },
         (error) => {
           console.error('Error creating task:', error);
@@ -155,5 +154,10 @@ export class TaskBigCardComponent {
     this.assignedUsers = this.task.assigned_to.map((userId) => {
       return this.users.find((user) => user.id === userId);
     });
+  }
+
+  updateSubtaskStatus(subtask, checked) {
+    subtask.done = checked;
+    this.editTask();
   }
 }

@@ -130,23 +130,33 @@
         </div>
       </div>
     </div>
-    <h3>Assigned to:</h3>
-    <div *ngIf="!editMode" class="column gap-25">
-      <div class="display-flex gap-25 align-center" *ngFor="let user of assignedUsers, let i = index">
-        <div class="space-between gap-25">
-          <div [style.background-color]="'var(--label-'+(i+1)+')'" class="circle center">
-            {{ user.first_name[0]
-            |uppercase }}{{ user.last_name[0]|uppercase }}
+    <div class="display-flex full-width">
+      <div class="half-width gap-25">
+        <h3>Assigned to:</h3>
+        <div *ngIf="!editMode" class="column gap-25">
+          <div class="display-flex gap-25 align-center" *ngFor="let user of assignedUsers, let i = index">
+            <div class="space-between gap-25">
+              <div [style.background-color]="'var(--label-'+(i+1)+')'" class="circle center">
+                {{ user.first_name[0]
+                |uppercase }}{{ user.last_name[0]|uppercase }}
+              </div>
+            </div>
+            <div *ngIf="currentUser.id != user.id; else youDiv">
+              <div>{{ user.first_name
+                |titlecase }} {{ user.last_name|titlecase }}
+              </div>
+            </div>
+            <ng-template #youDiv>
+              <div>You</div>
+            </ng-template>
           </div>
         </div>
-        <div *ngIf="currentUser.id != user.id; else youDiv">
-          <div>{{ user.first_name
-            |titlecase }} {{ user.last_name|titlecase }}
-          </div>
+      </div>
+      <div *ngIf="!editMode" class="half-width">
+        <h3>Subtasks:</h3>
+        <div class="display-flex align-center" *ngFor="let subtask of task.sub_tasks">
+          <input type="checkbox"  [checked]="subtask.done" (change)="updateSubtaskStatus(subtask, $event.target.checked)"><span>{{subtask.name}}</span>
         </div>
-        <ng-template #youDiv>
-          <div>You</div>
-        </ng-template>
       </div>
     </div>
     <div *ngIf="editMode">
@@ -211,7 +221,7 @@
           stroke="#2A3647" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
       </g>
     </svg>
-    <button (click)="editTask()" *ngIf="editMode" class="save center gap-10">Ok <img src="assets/icons/check.svg"
+    <button (click)="editTask();triggerShowSlider()" *ngIf="editMode" class="save center gap-10">Ok <img src="assets/icons/check.svg"
         alt=""></button>
   </form>
 </div>
