@@ -24,7 +24,7 @@ export class AddContactSlideComponent {
       last_name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       phone: ['', Validators.required],
-      color: [''],
+      color: ['', Validators.required],
     });
   }
 

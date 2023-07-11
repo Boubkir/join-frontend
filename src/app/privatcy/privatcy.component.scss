@@ -1,13 +1,15 @@
 .content {
-  padding: 82px 123px;
+  min-height: calc(100vh - 93px);
+  box-sizing: border-box;
+  padding: 65.6px 98.4px;
 }
 
 h1 {
-  font-size: 61px;
+  font-size: 48.8px;
   font-weight: 700;
 }
 
 h2 {
-  font-size: 27px;
+  font-size: 21.6px;
   font-weight: 700;
 }

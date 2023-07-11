@@ -34,7 +34,7 @@
     <div>
       <div class="display-flex gap-25">
         <h3>Due date:</h3>
-        <span style="font-size: 21px;" *ngIf="!editMode">{{task.due_date | date:'dd-MM-yyyy'}}</span>
+        <span style="font-size: 17px;" *ngIf="!editMode">{{task.due_date | date:'dd-MM-yyyy'}}</span>
       </div>
       <div *ngIf="editMode">
         <input formControlName="dueDate" type="date">
@@ -52,7 +52,7 @@
     <div>
       <div class="display-flex gap-25 align-center">
         <h3>Priority:</h3>
-        <img *ngIf="!editMode" [src]="'assets/img/' + task.priority + '.svg'" alt="">
+        <img class="prio-img" *ngIf="!editMode" [src]="'assets/img/' + task.priority + '.svg'" alt="">
       </div>
       <div *ngIf="editMode">
         <div>
@@ -118,12 +118,6 @@
 
             </button>
           </div>
-          <!-- <ng-container
-            *ngIf="taskForm.controls['priority'].invalid && taskForm.controls['priority'].touched; else placeHolder5">
-            <div class="error-message">
-              Priority is required
-            </div>
-          </ng-container> -->
           <ng-template #placeHolder5>
             <div class="place-holder"></div>
           </ng-template>
@@ -166,10 +160,10 @@
         <span class="db">Select contacts to assign</span>
         <div class="column gap-13 down" [class.d-none]="!isUserDropDownOpen">
           <div *ngFor="let user of users">
-            <div class="space-between" *ngIf="currentUser.id != user.id; else youDiv">
-              <span>{{ user.first_name }} {{ user.last_name }}</span>
+            <span class="space-between" *ngIf="currentUser.id != user.id; else youDiv">
+              <div>{{ user.first_name }} {{ user.last_name }}</div>
               <input type="checkbox" [checked]="isUserSelected(user)" (change)="updateAssignedTo(user)">
-            </div>
+            </span>
             <ng-template #youDiv>
               <span>You</span>
             </ng-template>

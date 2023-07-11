@@ -1,4 +1,4 @@
-<app-add-contact-slide *ngIf="addContactSlide" (onShowSlider)="addContactSlider()"></app-add-contact-slide>
+<app-add-contact-slide [class.reverse]="!addContactSlide" *ngIf="addContactSlide" (onShowSlider)="addContactSlider()"></app-add-contact-slide>
 <app-edit-contact-slide (onShowSlider)="editContactSlider()" *ngIf="contacts.length > 0 && editContactSlide"
   [currentContact]="selectedContact"
   (currentContactUpdated)="onCurrentContactUpdated(contact)"></app-edit-contact-slide>

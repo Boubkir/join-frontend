@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, ElementRef, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
 import { SharedDataService } from '../services/shared-data.service';
 import { Task } from '../models/task.model';
@@ -11,6 +11,7 @@ import { User } from '../models/user.model';
   styleUrls: ['./add-task-slide.component.scss'],
 })
 export class AddTaskSlideComponent {
+  @ViewChild('categoryInput') categoryInput!: ElementRef<HTMLInputElement>;
   @Output() onShowSlider: EventEmitter<void> = new EventEmitter<void>();
   taskForm: FormGroup;
   users: User[] = [];
@@ -19,7 +20,20 @@ export class AddTaskSlideComponent {
   isUserDropDownOpen = false;
   currentUser!: User;
   isTaskCreated: boolean = false;
+  isNewCategory: boolean = false;
   assignedUsers: User[] = [];
+  selectedColor: string | null = null;
+  subtasks: { name: string; done: boolean }[] = [];
+  newSubtask: string = '';
+  newSubtaskName: string;
+  colors: string[] = [
+    'var(--label-1)',
+    'var(--label-2)',
+    'var(--label-3)',
+    'var(--label-4)',
+    'var(--label-5)',
+    'var(--label-6)',
+  ];
 
   constructor(
     private formBuilder: FormBuilder,
@@ -34,7 +48,7 @@ export class AddTaskSlideComponent {
       dueDate: [null, Validators.required],
       priority: [''],
       assignedTo: this.formBuilder.array([]),
-      subtasks: this.formBuilder.array([]),
+      subtasks: [''],
     });
   }
 
@@ -76,11 +90,22 @@ export class AddTaskSlideComponent {
     this.openCloseDropdown();
   }
 
+  setCreatedCategory() {
+    const categoryName = this.taskForm.get('category').value;
+    this.taskForm.get('category')?.setValue(categoryName);
+    this.setCategoryColor(this.selectedColor);
+    this.isDropDownOpen = false;
+    this.isNewCategory = false;
+    this.categoryInput.nativeElement.readOnly = true;
+  }
+
   setCategoryColor(color: string) {
+    this.selectedColor = color;
     this.taskForm.get('category_color')?.setValue(color);
   }
 
   onSubmit() {
+    console.log(this.taskForm);
     if (this.taskForm.valid) {
       const newTask: Task = {
         title: this.taskForm.get('title')?.value,
@@ -89,11 +114,13 @@ export class AddTaskSlideComponent {
         category_color: this.taskForm.get('category_color')?.value,
         due_date: this.taskForm.get('dueDate')?.value,
         assigned_to: this.taskForm.get('assignedTo')?.value,
-        sub_tasks: this.taskForm.get('subtasks')?.value,
+        sub_tasks: this.subtasks,
         priority: this.priority,
         user: this.currentUser.id,
         status: 'open',
       };
+
+      console.log(newTask);
 
       this.data.createTask(newTask).subscribe(
         () => {
@@ -104,8 +131,6 @@ export class AddTaskSlideComponent {
         }
       );
     }
-    this.triggerShowSlider();
-    this.loadUser();
   }
 
   isUserSelected(user: User): boolean {
@@ -132,14 +157,36 @@ export class AddTaskSlideComponent {
   }
 
   addSubtask() {
-    const subtasks = this.taskForm.get('subtasks') as FormArray;
-    subtasks.push(this.formBuilder.control(''));
+    const subtask = this.taskForm.get('subtasks').value;
+    if (subtask.length > 3) {
+      const newSubtask = {
+        name: subtask,
+        done: false,
+      };
+      this.subtasks.push(newSubtask);
+      this.taskForm.get('subtasks').setValue('');
+    }
   }
 
-  removeSubtask(index: number) {
-    const subtasks = this.taskForm.get('subtasks') as FormArray;
-    subtasks.removeAt(index);
+  deleteSubtask(index: number) {
+    this.subtasks.splice(index, 1);
   }
+
+  newCategory() {
+    this.isNewCategory = !this.isNewCategory;
+    this.categoryInput.nativeElement.focus();
+    this.categoryInput.nativeElement.readOnly = false;
+    this.categoryInput.nativeElement.placeholder = 'Enter new Categoryname';
+  }
+
+  closeNewCategory() {
+    this.isNewCategory = false;
+    this.categoryInput.nativeElement.placeholder = 'Select task category';
+    this.selectedColor = 'nothing';
+    this.categoryInput.nativeElement.readOnly = true;
+    this.categoryInput.nativeElement.value = null;
+  }
+
   triggerShowSlider() {
     this.onShowSlider.emit();
   }

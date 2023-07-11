@@ -10,9 +10,6 @@
       </div>
     </div>
     <div class="right-container display-flex">
-      <div class="circle center">
-        <img src="assets/img/user.svg" alt="">
-      </div>
       <form [formGroup]="contactForm" class="column" action="">
         <div>
           <div class="input relative ">
@@ -54,10 +51,16 @@
             Phonenumber is required </div>
         </div>
 
-        <div class="input relative">
-          <input type="color" value="#2A3647" name="" formControlName="color" placeholder="Color" id="">
-          <img src="assets/icons/color-picker.svg" alt="">
+        <div>
+          <div class="input relative">
+            <input type="color" value="#FF0000" name="" formControlName="color" placeholder="Color" id="">
+            <img src="assets/icons/color-picker.svg" alt="">
+          </div>
+          <div *ngIf="contactForm.controls['color'].invalid && contactForm.controls['color'].touched"
+            class="error-message">
+            Pick a color is required </div>
         </div>
+
         <div class="display-flex gap-25 center">
           <button class="secondary-btn center" (click)="triggerShowSlider()">Cancel <svg width="25" height="25"
               viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -68,8 +71,8 @@
               </g>
             </svg>
           </button>
-          <button class="primary-btn center" (click)="onSubmit()">Create contact <img src="assets/icons/check.svg"
-              alt=""></button>
+          <button class="primary-btn center" [disabled]="!contactForm.valid" (click)="onSubmit() ">Create contact <img
+              src="assets/icons/check.svg" alt=""></button>
         </div>
 
       </form>

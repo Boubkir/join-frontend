@@ -32,7 +32,7 @@ form {
 
 .arrow-down {
   position: absolute;
-  top: 19.2px; 
+  top: 16px; 
   right: 16.8px; 
   cursor: pointer;
 }
@@ -115,6 +115,10 @@ input[type="checkbox"] {
   overflow-x: hidden;
   overflow-y: scroll;
 
+  .arrow-down{
+    transform: rotateX(180deg);
+  }
+
   input {
     border: none;
   }
@@ -127,7 +131,6 @@ input[type="checkbox"] {
   min-height: 16px; 
   min-width: 16px; 
   border-radius: 100%;
-  margin: -12px 0 6.4px 6.4px; 
   border: 1.6px white solid; 
   cursor: pointer;
 }
@@ -157,10 +160,19 @@ input[type="checkbox"] {
 .input-dot {
   position: absolute;
   left: 160px; 
-  top: 28%; 
+  top: 50%; 
   transform: translateY(-50%);
   height: 16px; 
   width: 16px; 
   border-radius: 100%;
-  margin: 6.4px 0 6.4px 6.4px; 
 }
+
+.color-container{
+    margin-top: -12px; 
+}
+
+.subtasks{
+      padding: 0 8px;
+}
+
+

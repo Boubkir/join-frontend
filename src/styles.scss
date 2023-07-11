@@ -169,13 +169,13 @@ body {
 
 .primary-btn,
 .secondary-btn {
-  height: 44px; 
-  padding: 14.4px 12px; 
-  gap: 8px; 
-  border-radius: 8px; 
+  height: 44px;
+  padding: 14.4px 12px;
+  gap: 8px;
+  border-radius: 8px;
   border: none;
   color: var(--main-white);
-  font-size: 16.8px; 
+  font-size: 16.8px;
   font-weight: 700;
   box-sizing: border-box;
   white-space: nowrap;
@@ -192,6 +192,12 @@ body {
   border: none;
   background: var(--main-dark);
   color: var(--main-white);
+
+  &:disabled {
+  opacity: 0.5; 
+  cursor: not-allowed; 
+
+}
 
   &:hover {
     background-color: var(--task-blue);
@@ -237,3 +243,26 @@ textarea {
 textarea {
   height: 95.2px;
 }
+
+input[type="color"]::-webkit-color-swatch-wrapper {
+	padding-right: 32px;
+  border-radius: 8px;
+}
+
+.center-input-icon {
+  position: absolute;
+  right: 16.8px;
+  cursor: pointer;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+@keyframes slideFromRight {
+  0% {
+    left: 100%; /* Startposition, vollständig außerhalb des Bildschirms */
+  }
+  100% {
+    left: 0; /* Endposition, vollständig im Bildschirm */
+  }
+}
+

@@ -1,61 +1,74 @@
+.background {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 22;
+  height: 100vh;
+  width: 100vw;
+  animation: slideFromRight 500ms ease-in-out forwards;
+}
+
 .content {
-  padding: 82px 123px;
-  background-color: var(--main-bg-color);
+  padding: 24px 48px;
+  background-color: var(--main-white);
   box-sizing: border-box;
-  height: calc(100vh - 93px);
+  height: 713px;
+  width: 900px;
+  animation: slideFromRight 500ms ease-in-out forwards;
+  border-radius: 30px;
 }
 
 h1 {
-  font-size: 61px;
+  font-size: 48.8px;
   font-weight: 700;
   margin-top: 0;
 }
 
 form {
-  max-width: 965px;
+  max-width: 772px;
 }
 
-
 .drop-down {
-  width: 422px;
-  gap: 10px;
-  border-radius: 10px;
+  width: 337.6px;
+  border-radius: 8px;
   border: 1px solid var(--style, #d1d1d1);
-  background: #fff;
+  background: var(--main-white);
   box-sizing: border-box;
   transition: all 225ms;
-  max-height: 162px;
+  max-height: 122.4px;
   span {
-    padding: 0 21px;
-    height: 51px;
+    padding: 0 16.8px;
+    height: 40.8px;
     cursor: pointer;
   }
 }
 
 .arrow-down {
   position: absolute;
-  position: absolute;
-  top: 24px;
-  right: 21px;
+  top: 16px;
+  right: 16.8px;
   cursor: pointer;
 }
 
 .prio button {
   display: flex;
-  width: 136px;
-  height: 51px;
-  padding: 18px 10px;
+  width: 108.8px;
+  height: 40.8px;
+  padding: 14.4px 8px;
   justify-content: center;
   align-items: center;
-  gap: 10px;
-  border-radius: 10px;
+  gap: 8px;
+  border-radius: 8px;
   box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.1);
   border: none;
   cursor: pointer;
-  color: #000;
-  font-size: 21px;
+  color: var(--main-dark);
+  font-size: 16.8px;
   font-weight: 400;
-  background-color: #fff;
+  background-color: var(--main-white);
 }
 
 .button-container {
@@ -64,55 +77,8 @@ form {
   bottom: 0;
 }
 
-.clear-btn,
-.add-btn {
-  height: 55px;
-  padding: 18px 15px;
-  gap: 10px;
-  border-radius: 10px;
-  border: none;
-  color: #fff;
-  font-size: 21px;
-  font-weight: 700;
-  box-sizing: border-box;
-  cursor: pointer;
-
-  &:hover {
-    border-color: #29abe2;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2);
-    transition: all 225ms;
-  }
-}
-
-.clear-btn {
-  background-color: transparent;
-  width: 136px;
-  border: 1px solid var(--version-2-main-color, #2a3647);
-  color: var(--version-2-main-color, #2a3647);
-
-  &:hover {
-    border: 1px solid var(--ligth-blue, #29abe2);
-    color: #29abe2;
-
-    svg > * > * {
-      stroke: #29abe2;
-    }
-  }
-}
-
-.add-btn {
-  border: none;
-  background: #2a3647;
-  color: #fff;
-
-  &:hover {
-    background-color: #29abe2;
-    border-color: #29abe2;
-  }
-}
-
 input[type="checkbox"] {
-  width: 24px;
+  width: 16px;
 }
 
 .created-task {
@@ -120,15 +86,15 @@ input[type="checkbox"] {
   left: 50%;
   transform: translateX(-50%);
   display: flex;
-  width: 326px;
-  height: 74px;
+  width: 260.8px;
+  height: 59.2px;
   justify-content: center;
   align-items: center;
-  border-radius: 20px;
-  background: #2a3647;
+  border-radius: 16px;
+  background: var(--main-dark);
   box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.15);
-  color: #fff;
-  font-size: 21px;
+  color: var(--main-white);
+  font-size: 16.8px;
   transition: all 1s ease-in-out;
   cursor: pointer;
 }
@@ -137,11 +103,11 @@ input[type="checkbox"] {
 .selected-medium,
 .selected-urgent {
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) !important;
-  color: #fff !important;
+  color: var(--main-white) !important;
   font-weight: 700 !important;
 
   path {
-    fill: white;
+    fill: var(--main-white);
   }
 }
 
@@ -157,9 +123,17 @@ input[type="checkbox"] {
   background: var(--prio-urgent) !important;
 }
 
+.pointer {
+  cursor: pointer;
+}
+
 .drop-down-open {
   overflow-x: hidden;
   overflow-y: scroll;
+
+  .arrow-down {
+    transform: rotateX(180deg);
+  }
 
   input {
     border: none;
@@ -170,15 +144,57 @@ input[type="checkbox"] {
 }
 
 .dot {
-  min-height: 20px;
-  min-width: 20px;
+  min-height: 16px;
+  min-width: 16px;
   border-radius: 100%;
+  border: 1.6px white solid;
+  cursor: pointer;
 }
 
 .circle {
-  min-height: 45px;
-  min-width: 45px;
-  background-color: #29abe2;
+  min-height: 36px;
+  min-width: 36px;
+  background-color: var(--task-blue);
   color: white;
   border-radius: 100%;
+}
+
+.new-task {
+  position: absolute;
+  top: 15.2px;
+  right: 16.8px;
+
+  img {
+    cursor: pointer;
+  }
+}
+
+.selected-color {
+  border-color: black !important;
+}
+
+.input-dot {
+  position: absolute;
+  left: 160px;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 16px;
+  width: 16px;
+  border-radius: 100%;
+}
+
+.color-container {
+  margin-top: -12px;
+}
+
+.subtasks {
+  padding: 0 8px;
+}
+
+
+.cancel-x {
+  position: absolute;
+  top: 20.8px;
+  right: 44px;
+  cursor: pointer;
 }

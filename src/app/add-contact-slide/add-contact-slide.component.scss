@@ -8,12 +8,13 @@
   z-index: 22;
   height: 100vh;
   width: 100vw;
+  animation: slideFromRight 500ms ease-in-out forwards;
 }
 
 .content {
-  width: 969px;
+  width: 830px;
   height: 475px;
-  border-radius: 24px; 
+  border-radius: 24px;
   background: #fff;
   overflow: hidden;
   box-sizing: border-box;
@@ -23,30 +24,30 @@
 .left-container {
   display: inline-flex;
   height: 475px;
-  padding: 53px 37px; 
+  padding: 53px 37px;
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  gap: 9.6px; 
+  gap: 9.6px;
   background: var(--main-dark);
   color: white;
   box-sizing: border-box;
 
   .logo {
     width: 44px;
-    height: 53px; 
+    height: 53px;
     padding-bottom: 9.6px;
   }
 
   h1 {
-    font-size: 48.8px; 
+    font-size: 48.8px;
     font-weight: 700;
     margin: 0;
   }
 
   span {
-    padding: 9.6px 0; 
-    font-size: 21.6px; 
+    padding: 9.6px 0;
+    font-size: 21.6px;
     font-weight: 400;
   }
 
@@ -60,15 +61,14 @@
   box-sizing: border-box;
   align-items: center;
   justify-content: center;
-  width: 494.4px; 
-  gap: 67.2px; 
+  padding: 53px 37px;
 }
 
 .circle {
-  min-height: 96px; 
-  min-width: 96px; 
+  min-height: 96px;
+  min-width: 96px;
   border-radius: 100%;
-  font-size: 37.6px; 
+  font-size: 37.6px;
   color: white;
   font-weight: 500;
 }
@@ -79,14 +79,14 @@ form {
 
 .cancel-x {
   position: absolute;
-  top: 20.8px; 
-  right: 44px; 
+  top: 20.8px;
+  right: 44px;
   cursor: pointer;
 }
 
 .input {
   box-sizing: border-box;
-  gap: 6.4px; 
+  gap: 6.4px;
 
   img {
     position: absolute;

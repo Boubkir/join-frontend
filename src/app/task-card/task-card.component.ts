@@ -14,7 +14,7 @@ export class TaskCardComponent implements OnInit {
   assignedUsers: User[] = [];
   users: User[] = [];
   currentUser: User = this.auth.getCurrentUser();
-  subtasksDone;
+  subtasksDone?:number;
   constructor(private data: SharedDataService, private auth: AuthService) {}
 
   async ngOnInit() {

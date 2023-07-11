@@ -6,6 +6,7 @@
   left: 0;
   z-index: 22;
   background-color: rgba(0, 0, 0, 0.15);
+  animation: slideFromRight 500ms ease-in-out forwards;
 }
 
 form {
@@ -92,7 +93,7 @@ form {
   align-items: center;
   gap: 8px;
   border-radius: 8px;
-  box-shadow: 0px 0px 3.2px 0px rgba(0, 0, 0, 0.1); /* 4px um 20 % reduziert */
+  box-shadow: 0px 0px 3.2px 0px rgba(0, 0, 0, 0.1); 
   border: none;
   cursor: pointer;
   color: #000;
@@ -172,7 +173,7 @@ h3 {
   position: absolute;
   right: 40px;
   bottom: 40px;
-  border-radius: 8px; /* 10px um 20 % reduziert */
+  border-radius: 8px; 
   background: var(--main-white);
 }
 
@@ -204,7 +205,7 @@ h3 {
 }
 
 .edit-btn {
-  border-radius: 0px 8px 8px 0px; /* 10px um 20 % reduziert */
+  border-radius: 0px 8px 8px 0px;
   background: var(--main-dark);
 
   &:hover {
@@ -227,7 +228,7 @@ h3 {
 }
 
 .edit-layout {
-  width: 412px;
+  width: 423px;
   min-height: 480px;
 }
 
@@ -237,4 +238,8 @@ h3 {
   background-color: var(--task-blue);
   color: var(--main-white);
   border-radius: 100%;
+}
+
+.prio-img{
+  width: 120px;
 }

@@ -38,8 +38,8 @@
               src="assets/icons/arrow-down.svg" alt="">
             <input (click)="!isNewCategory && openCloseDropdown()" #categoryInput class="pointer" maxlength="15"
               formControlName="category" placeholder="Select task category" readonly="readonly">
-            <div *ngIf="!isNewCategory && selectedColor && selectedColor.length > 2" class="input-dot"
-              [style.background-color]="selectedColor"></div>
+            <div *ngIf="!isNewCategory && selectedColor && selectedColor.length > 2 && !isDropDownOpen "
+              class="input-dot" [style.background-color]="selectedColor"></div>
             <div *ngIf="isNewCategory" (click)="openCloseDropdown()" class="display-flex gap-8 new-task">
               <img (click)="closeNewCategory()" s src="assets/icons/x.svg" alt="">
               <img (click)="setCreatedCategory()" src="assets/icons/check-dark.svg" alt="">
@@ -75,7 +75,7 @@
         <ng-template ngIf="!isNewCategory" #placeHolder3>
           <div class="place-holder"></div>
         </ng-template>
-        <div *ngIf="isNewCategory" class="display-flex">
+        <div *ngIf="isNewCategory" class="display-flex gap-8 color-container">
           <div *ngFor="let color of colors" class="dot" [ngStyle]="{ 'background-color': color }"
             [ngClass]="{ 'selected-color': selectedColor === color }" (click)="setCategoryColor(color)"></div>
         </div>
@@ -198,12 +198,14 @@
         <input type="text" (keyup.enter)="addSubtask()" formControlName="subtasks" placeholder="Add new subtasks">
         <img (click)="addSubtask()" class="center-align-absolute" src="assets/icons/plus.svg" alt="">
       </div>
-      <div class="column">
-        <div *ngFor="let subtask of subtasks, let i = index" class="space-between align-center">
+      <div class="column subtasks">
+        <div *ngFor="let subtask of subtasks, let i = index" class="space-between align-center gap-8">
           <span>{{ subtask.name }}</span>
-          <svg (click)="deleteSubtask()" width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <svg (click)="deleteSubtask()" width="25" height="25" viewBox="0 0 32 32" fill="none"
+            xmlns="http://www.w3.org/2000/svg">
             <g id="delete">
-              <mask id="mask0_67591_2015" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="32" height="32">
+              <mask id="mask0_67591_2015" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="32"
+                height="32">
                 <rect id="Bounding box" width="32" height="32" fill="#D9D9D9" />
               </mask>
               <g mask="url(#mask0_67591_2015)">
@@ -226,7 +228,8 @@
           </g>
         </svg>
       </button>
-      <button (click)="onSubmit()" class="primary-btn center">Add Task <img src="assets/icons/check.svg" alt=""></button>
+      <button (click)="onSubmit()" class="primary-btn center" [disabled]="!taskForm.valid">Add Task <img src="assets/icons/check.svg"
+          alt=""></button>
     </div>
   </form>
 </div>
