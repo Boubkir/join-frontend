@@ -1,6 +1,7 @@
 <app-add-contact-slide *ngIf="addContactSlide" (onShowSlider)="addContactSlider()"></app-add-contact-slide>
 <app-edit-contact-slide (onShowSlider)="editContactSlider()" *ngIf="contacts.length > 0 && editContactSlide"
-  [currentContact]="selectedContact" (currentContactUpdated)="onCurrentContactUpdated(contact)"></app-edit-contact-slide>
+  [currentContact]="selectedContact"
+  (currentContactUpdated)="onCurrentContactUpdated(contact)"></app-edit-contact-slide>
 <div class="content display-flex relative">
   <div class="contacts-container">
     <div class="column align-center" *ngFor="let contact of contacts, let i = index">
@@ -47,8 +48,10 @@
         </div>
       </div>
     </div>
-    <button class="button gap-10" (click)="addContactSlider()">
-      New Contact <img src="assets/icons/new-contact.svg" alt="">
-    </button>
+    <div>
+      <button class="primary-btn center" (click)="addContactSlider()">
+        New Contact <img src="assets/icons/new-contact.svg" alt="">
+      </button>
+    </div>
   </div>
 </div>

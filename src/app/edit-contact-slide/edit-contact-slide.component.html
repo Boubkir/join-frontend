@@ -62,7 +62,7 @@
         </div>
 
         <div class="display-flex gap-25 center">
-          <button class="cancel-btn" (click)="deleteContact(currentContact.id)">Delete<svg width="25" height="25"
+          <button class="secondary-btn center" (click)="deleteContact(currentContact.id)">Delete<svg width="25" height="25"
               viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
               <g id="iconoir:cancel">
                 <path id="Vector"
@@ -71,7 +71,7 @@
               </g>
             </svg>
           </button>
-          <button class="create-btn" (click)="editContact(currentContact.id)">Save{{currentContact.id}}<img src="assets/icons/check.svg"
+          <button class="primary-btn center" (click)="editContact(currentContact.id)">Save<img src="assets/icons/check.svg"
               alt=""></button>
         </div>
       </form>

@@ -36,7 +36,6 @@ export class RegisterComponent {
         password: this.registerForm.get('password')?.value,
       };
 
-      console.log(newUser);
 
       this.authService.register(newUser).subscribe(
         (resp) => {

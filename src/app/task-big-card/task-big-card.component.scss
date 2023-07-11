@@ -1,5 +1,5 @@
 .content {
-  position: absolute;
+  position: fixed;
   top: 0;
   right: 0;
   bottom: 0;
@@ -10,46 +10,27 @@
 
 form {
   display: inline-flex;
-  padding: 50px 50px 100px 50px;
+  padding: 40px 40px 80px 40px;
   flex-direction: column;
   align-items: flex-start;
-  gap: 25px;
-  border-radius: 30px;
+  gap: 20px;
+  border-radius: 24px;
   background: var(--main-white);
-  box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.1);
-}
-
-input,
-textarea {
-  display: flex;
-  padding: 13px 21px;
-  align-items: center;
-  gap: 10px;
-  width: 422px;
-  height: 51px;
-  box-sizing: border-box;
-  border-radius: 10px;
-  border: 1px solid var(--style, #d1d1d1);
-  background: var(--main-white);
-  font-size: 21px;
-  font-weight: 400;
-}
-
-textarea {
-  height: 119px;
+  box-shadow: 0px 0px 3.2px 0px rgba(0, 0, 0, 0.1);
+  font-size: 12.8px;
 }
 
 .drop-down {
-  width: 422px;
-  gap: 10px;
-  border-radius: 10px;
+  width: 337.6px;
+  gap: 8px;
+  border-radius: 8px;
   border: 1px solid var(--style, #d1d1d1);
   background: var(--main-white);
   box-sizing: border-box;
-  transition: all 225ms;
-  max-height: 162px;
+  transition: all 180ms;
+  max-height: 129.6px;
   span {
-    padding: 0 21px;
+    padding: 0 16.8px;
   }
 
   input {
@@ -67,33 +48,32 @@ textarea {
 
 .db {
   display: flex;
-  padding: 13px 21px;
+  padding: 10.4px 16.8px;
   align-items: center;
-  min-height: 51px;
-  max-height: 51px;
-  gap: 10px;
-  width: 422px;
+  min-height: 40.8px;
+  max-height: 40.8px;
+  gap: 8px;
+  width: 337.6px;
   box-sizing: border-box;
-  border-radius: 10px;
+  border-radius: 8px;
   border: 1px solid var(--style, #d1d1d1);
   background: var(--main-white);
 }
 
 .arrow-down {
   position: absolute;
-  position: absolute;
-  top: 24px;
-  right: 21px;
+  top: 19.2px;
+  right: 16.8px;
   cursor: pointer;
 }
 
 .down {
-  gap: 8px;
+  gap: 6.4px;
 
   span {
     display: flex;
-    height: 51px;
-    padding: 0 21px;
+    height: 40.8px;
+    padding: 0 16.8px;
     align-items: center;
     cursor: pointer;
 
@@ -105,30 +85,31 @@ textarea {
 
 .prio button {
   display: flex;
-  width: 136px;
-  height: 51px;
-  padding: 18px 10px;
+  width: 108.8px;
+  height: 40.8px;
+  padding: 14.4px 8px;
   justify-content: center;
   align-items: center;
-  gap: 10px;
-  border-radius: 10px;
-  box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.1);
+  gap: 8px;
+  border-radius: 8px;
+  box-shadow: 0px 0px 3.2px 0px rgba(0, 0, 0, 0.1); /* 4px um 20 % reduziert */
   border: none;
   cursor: pointer;
   color: #000;
-  font-size: 21px;
+  font-size: 17.28px;
   font-weight: 400;
   background-color: var(--main-white);
 }
 
 input[type="checkbox"] {
-  width: 30px;
+  width: 16px;
+  height: 16px;
 }
 
 .selected-low,
 .selected-medium,
 .selected-urgent {
-  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) !important;
+  box-shadow: 0px 3.2px 3.2px 0px rgba(0, 0, 0, 0.25) !important;
   color: var(--main-white) !important;
   font-weight: 700 !important;
 
@@ -151,32 +132,32 @@ input[type="checkbox"] {
 
 h2 {
   display: flex;
-  width: 523px;
+  width: 418.4px;
   flex-direction: column;
   color: var(--main-dark);
-  font-size: 61px;
+  font-size: 48.8px;
   font-weight: 700;
   margin: 0;
 }
 
 .category {
   display: flex;
-  padding: 4px 36.5px;
+  padding: 3.2px 29.2px;
   align-items: flex-start;
-  gap: 10px;
-  border-radius: 8px;
+  gap: 8px;
+  border-radius: 6.4px;
   color: var(--main-white);
-  font-size: 27px;
+  font-size: 21.6px;
   font-weight: 400;
 }
 
 .description {
-  width: 518px !important;
+  width: 414.4px !important;
   color: var(--main-dark);
-  font-size: 21px;
+  font-size: 17.28px;
   font-weight: 400;
-  height: 50px;
-  width: 215px;
+  height: 40px;
+  width: 172px;
   text-overflow: ellipsis;
   overflow: hidden;
   word-wrap: break-word;
@@ -188,33 +169,29 @@ h3 {
 
 .button-div {
   display: flex;
-  width: 100px;
-  height: 50px;
-  justify-content: center;
-  align-items: flex-start;
   position: absolute;
-  right: 50px;
-  bottom: 50px;
-  border-radius: 10px;
-  background: var(--white, var(--main-white));
+  right: 40px;
+  bottom: 40px;
+  border-radius: 8px; /* 10px um 20 % reduziert */
+  background: var(--main-white);
 }
 
 .delete-btn,
 .edit-btn {
   border: 1px solid var(--main-dark);
-  width: 50px;
-  height: 50px;
-  transition: all 225ms;
+  width: 40px;
+  height: 40px;
+  transition: all 180ms;
   cursor: pointer;
 
   &:hover {
     border: 1px solid var(--task-blue);
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 3.2px 3.2px rgba(0, 0, 0, 0.2);
   }
 }
 
 .delete-btn {
-  border-radius: 10px 0px 0px 10px;
+  border-radius: 8px 0px 0px 8px;
   background: var(--white, var(--main-white));
 
   &:hover {
@@ -227,18 +204,18 @@ h3 {
 }
 
 .edit-btn {
-  border-radius: 0px 10px 10px 0px;
+  border-radius: 0px 8px 8px 0px; /* 10px um 20 % reduziert */
   background: var(--main-dark);
 
   &:hover {
-    background-color:var(--task-blue);
+    background-color: var(--task-blue);
   }
 }
 
 .close {
   position: absolute;
-  right: 25px;
-  top: 35px;
+  right: 20px;
+  top: 28px;
   z-index: 10;
   cursor: pointer;
 
@@ -250,37 +227,13 @@ h3 {
 }
 
 .edit-layout {
-  width: 515px;
-  min-height: 600px;
-}
-
-.save {
-  height: 50px;
-  padding: 18px 15px;
-  border-radius: 10px;
-  background: var(--main-dark);
-  color: var(--main-white);
-  font-size: 21px;
-  font-style: normal;
-  font-weight: 700;
-  position: absolute;
-  right: 50px;
-  bottom: 50px;
-  border: none;
-  cursor: pointer;
-
-  &:hover {
-    background-color: var(--task-blue);
-    border-color: var(--task-blue);
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2);
-    cursor: pointer;
-    transition: all 225ms;
-  }
+  width: 412px;
+  min-height: 480px;
 }
 
 .circle {
-  min-height: 45px;
-  min-width: 45px;
+  min-height: 36px;
+  min-width: 36px;
   background-color: var(--task-blue);
   color: var(--main-white);
   border-radius: 100%;

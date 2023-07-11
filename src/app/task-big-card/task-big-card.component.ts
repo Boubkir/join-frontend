@@ -97,7 +97,6 @@ export class TaskBigCardComponent {
   deleteTask(id: any) {
     this.data.deleteTask(id).subscribe(
       () => {
-        console.log('geschafft');
       },
       (error) => {
         console.error('Error creating task:', error);
@@ -120,10 +119,8 @@ export class TaskBigCardComponent {
         priority: this.priority,
         id: this.task.id,
       };
-      console.log(editedTask);
       this.data.editTask(editedTask, editedTask.id).subscribe(
         () => {
-          console.log('geschafft');
         },
         (error) => {
           console.error('Error creating task:', error);

@@ -1,12 +1,12 @@
 .content {
-   padding: 82px 123px;
+  padding: 65.6px 98.4px;
   background-color: var(--main-bg-color);
   box-sizing: border-box;
-  min-height: calc(100vh - 93px);
+  min-height: calc(100vh - 74.4px);
 }
 
 .board {
-  max-width: 1400px;
+  max-width: 1120px;
 }
 
 .header {
@@ -18,69 +18,40 @@
   h1 {
     margin: 0;
     font-weight: 700;
-    font-size: 61px;
-  }
-
-  input {
-    box-sizing: border-box;
-    height: 51px;
-    width: 251px;
-    padding: 13px 21px;
-    border-radius: 10px;
-    border-radius: 1px solid #a8a8a8;
-  }
-
-  button {
-    display: flex;
-    height: 55px;
-    padding: 18px 10px;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    border-radius: 10px;
-    border: none;
-    background-color: var(--main-dark);
-    color: white;
-    font-size: 21px;
-    font-weight: 700;
-    width: 140.08px;
-    cursor: pointer;
-
-    &:hover {
-      background: var(--main-blue);
-      box-shadow: 0px 5px 5px -3px rgba(0, 0, 0, 0.43);
-    }
+    font-size: 48.8px;
   }
 }
 
 .plus-icon:hover,
 .plus-icon:hover > * {
-  stroke: rgb(0 144 224);
+  stroke: rgb(0, 144, 224);
   cursor: pointer;
 }
+
 .input {
   box-sizing: border-box;
 
   img {
     position: absolute;
-    top: 10px;
-    right: 8px;
+    top: 8px;
+    right: 6.4px;
   }
 }
 
 .drag-drop-container {
   box-sizing: border-box;
-  margin-top: 99px;
+  margin-top: 64px;
 }
 
 .drag-drop-header {
-  width: 250px;
-  padding: 0 10px;
+  min-width: 200px;
+  padding: 0 8px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   box-sizing: border-box;
-  margin: 0 0 35px 0;
+  margin: 0 0 28px;
+  white-space: nowrap;
 
   h3 {
     margin: 0;
@@ -94,23 +65,11 @@
 .drag-drop-area {
   display: flex;
   flex-direction: column;
-  height: calc(100vh - 190px);
-  gap: 35px;
+  height: calc(100vh - 152px);
   box-sizing: border-box;
+  gap: 28px;
 }
 
-.slide-in {
-  height: 500px !important;
-  width: 500px !important;
-  animation: slideInFromRight 0.5s forwards;
-  background-color: white;
-}
-
-@keyframes slideInFromRight {
-  from {
-    transform: translateX(100%);
-  }
-  to {
-    transform: translateX(0);
-  }
+input{
+  height: 44px;
 }

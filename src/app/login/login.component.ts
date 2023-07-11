@@ -48,7 +48,6 @@ export class LoginComponent {
       this.router.navigate(['/summary']);
     } catch (e) {
       console.error('Fehler bei der Anmeldung', e);
-      console.log(Response);
     }
   }
 

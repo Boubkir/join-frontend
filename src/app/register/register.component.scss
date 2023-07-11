@@ -11,10 +11,10 @@
 }
 
 form {
-  background-color: white;
+  background-color: var(--main-white);
   border-radius: 30px;
   box-shadow: 0 0 14px 3px rgba(0, 0, 0, 0.04);
-  width: 652px;
+  width: 480px;
   padding: 35px 0;
 
   .arrow-left {
@@ -36,18 +36,6 @@ form {
     height: 4px;
   }
 
-  input {
-    box-sizing: border-box;
-    height: 51px;
-    width: 251px;
-    padding: 13px 21px;
-    border-radius: 10px;
-    border: 1px solid #d1d1d1;
-    width: 422px;
-    height: 51px;
-    font-size: 21px;
-    color: #d1d1d1;
-  }
 
   .input {
     box-sizing: border-box;
@@ -61,22 +49,4 @@ form {
     }
   }
 
-  .sign-up-btn {
-    width: 145px;
-    padding: 4px 16px;
-    height: 51px;
-    background: var(--main-dark);
-    border-radius: 8px;
-    font-weight: 700;
-    font-size: 16px;
-    color: var(--main-white);
-    cursor: pointer;
-    border: none;
-    transition: all 0.2s ease;
-
-    &:hover {
-      background: var(--main-blue);
-      box-shadow: 0px 5px 5px -3px rgba(0, 0, 0, 0.43);
-    }
-  }
 }

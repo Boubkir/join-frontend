@@ -45,13 +45,13 @@
       <span class="link" routerLink="/forgot-password">Forgot my password</span>
     </div>
     <div class="center gap-35">
-      <button class="login-btn" (click)="login()">Login</button>
-      <button class="guest-login-btn" (click)="login(true)">Guest Login</button>
+      <button class="primary-btn center" (click)="login()">Login</button>
+      <button class="secondary-btn center" (click)="login(true)">Guest Login</button>
     </div>
   </form>
 
   <div class="registration-container display-flex gap-35 center">
     <span>Not a Join user?</span>
-    <button  routerLink="/register">Sign up</button>
+    <button class="primary-btn center" routerLink="/register">Sign up</button>
   </div>
 </div>

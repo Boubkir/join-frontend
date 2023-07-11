@@ -15,31 +15,6 @@ form {
   max-width: 965px;
 }
 
-input,
-textarea {
-  display: flex;
-  padding: 13px 21px;
-  align-items: center;
-  width: 422px;
-  box-sizing: border-box;
-  border-radius: 10px;
-  border: 1px solid var(--style, #d1d1d1);
-  background: #fff;
-  font-size: 21px;
-  font-weight: 400;
-
-  &:focus {
-    outline: none;
-  }
-}
-
-input {
-  height: 51px;
-}
-
-textarea {
-  height: 119px;
-}
 
 .drop-down {
   width: 422px;

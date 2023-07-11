@@ -156,18 +156,19 @@ export class AddTaskComponent implements OnInit {
   }
 
   addSubtask() {
-    const newSubtask = {
-      name: this.taskForm.get('subtasks').value,
-      done: false,
-    };
-    this.subtasks.push(newSubtask);
-    this.taskForm.get('subtasks').setValue('');
-    console.log(newSubtask);
-    console.log(this.subtasks);
+    const subtask = this.taskForm.get('subtasks').value;
+    if (subtask.length > 3) {
+      const newSubtask = {
+        name: subtask,
+        done: false,
+      };
+      this.subtasks.push(newSubtask);
+      this.taskForm.get('subtasks').setValue('');
+    }
   }
 
-  deleteSubtask(index:number) {
-      this.subtasks.splice(index,1);
+  deleteSubtask(index: number) {
+    this.subtasks.splice(index, 1);
   }
 
   newCategory() {

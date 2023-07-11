@@ -155,7 +155,8 @@
       <div *ngIf="!editMode" class="half-width">
         <h3>Subtasks:</h3>
         <div class="display-flex align-center" *ngFor="let subtask of task.sub_tasks">
-          <input type="checkbox"  [checked]="subtask.done" (change)="updateSubtaskStatus(subtask, $event.target.checked)"><span>{{subtask.name}}</span>
+          <input type="checkbox" [checked]="subtask.done"
+            (change)="updateSubtaskStatus(subtask, $event.target.checked)"><span>{{subtask.name}}</span>
         </div>
       </div>
     </div>
@@ -221,7 +222,9 @@
           stroke="#2A3647" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
       </g>
     </svg>
-    <button (click)="editTask();triggerShowSlider()" *ngIf="editMode" class="save center gap-10">Ok <img src="assets/icons/check.svg"
-        alt=""></button>
+    <div class="button-div">
+      <button (click)="editTask();triggerShowSlider()" *ngIf="editMode" class="primary-btn center">Ok <img
+          src="assets/icons/check.svg" alt=""></button>
+    </div>
   </form>
 </div>

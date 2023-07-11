@@ -34,11 +34,8 @@ export class ResetPasswordComponent {
         token: this.token,
         password: this.resetForm.get('password')?.value,
       };
-      console.log(newPassword);
-
       this.http.post(this.url, newPassword).subscribe(
         (response) => {
-          console.log(response);
         },
         (error) => {
           console.error(error);

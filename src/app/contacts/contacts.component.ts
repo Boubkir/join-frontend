@@ -51,13 +51,11 @@ export class ContactsComponent {
 
   selectContact(contact: Contact) {
     this.selectedContact = contact;
-    console.log(this.selectedContact);
   }
 
   async addContactSlider() {
     this.addContactSlide = !this.addContactSlide;
     await this.loadContacts();
-    console.log('yeah');
   }
 
   async editContactSlider() {
@@ -67,6 +65,5 @@ export class ContactsComponent {
 
   onCurrentContactUpdated(contact: Contact) {
     this.selectedContact = contact;
-    console.log('Wasgeht');
   }
 }

@@ -1,82 +1,56 @@
 .content {
-  padding: 82px 123px;
+  padding: 65.6px 98.4px; 
   background-color: var(--main-bg-color);
   box-sizing: border-box;
-  min-height: calc(100vh - 93px);
+  min-height: calc(100vh - 74.4px); 
 }
 
 h1 {
-  font-size: 61px;
+  font-size: 48.8px; 
   font-weight: 700;
   margin-top: 0;
 }
 
 form {
-  max-width: 965px;
-}
-
-input,
-textarea {
-  display: flex;
-  padding: 13px 21px;
-  align-items: center;
-  width: 422px;
-  box-sizing: border-box;
-  border-radius: 10px;
-  border: 1px solid var(--style, #d1d1d1);
-  background: var(--main-white);
-  font-size: 21px;
-  font-weight: 400;
-
-  &:focus {
-    outline: none;
-  }
-}
-
-input {
-  height: 51px;
-}
-
-textarea {
-  height: 119px;
+  max-width: 772px; 
 }
 
 .drop-down {
-  width: 422px;
-  border-radius: 10px;
+  width: 337.6px; 
+  border-radius: 8px; 
   border: 1px solid var(--style, #d1d1d1);
   background: var(--main-white);
   box-sizing: border-box;
   transition: all 225ms;
-  max-height: 153px;
+  max-height: 122.4px; 
   span {
-    padding: 0 21px;
-    height: 51px;
+    padding: 0 16.8px; 
+    height: 40.8px; 
     cursor: pointer;
   }
 }
 
 .arrow-down {
   position: absolute;
-  top: 24px;
-  right: 21px;
+  top: 19.2px; 
+  right: 16.8px; 
   cursor: pointer;
 }
 
 .prio button {
   display: flex;
-  width: 136px;
-  height: 51px;
-  padding: 18px 10px;
+  width: 108.8px; 
+  height: 40.8px; 
+  padding: 14.4px 8px; 
   justify-content: center;
   align-items: center;
-  gap: 10px;
-  border-radius: 10px;
+  gap: 8px; 
+  border-radius: 8px; 
   box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.1);
   border: none;
   cursor: pointer;
   color: var(--main-dark);
-  font-size: 21px;
+  font-size: 16.8px; 
   font-weight: 400;
   background-color: var(--main-white);
 }
@@ -87,55 +61,8 @@ textarea {
   bottom: 0;
 }
 
-.clear-btn,
-.add-btn {
-  height: 55px;
-  padding: 18px 15px;
-  gap: 10px;
-  border-radius: 10px;
-  border: none;
-  color: var(--main-white);
-  font-size: 21px;
-  font-weight: 700;
-  box-sizing: border-box;
-  cursor: pointer;
-
-  &:hover {
-    border-color: var(--task-blue);
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2);
-    transition: all 225ms;
-  }
-}
-
-.clear-btn {
-  background-color: transparent;
-  width: 136px;
-  border: 1px solid var(--main-dark);
-  color:  var(--main-dark);
-
-  &:hover {
-    border: 1px solid var(--task-blue);
-    color: var(--task-blue);
-
-    svg > * > * {
-      stroke: var(--task-blue);
-    }
-  }
-}
-
-.add-btn {
-  border: none;
-  background: var(--main-dark);
-  color: var(--main-white);
-
-  &:hover {
-    background-color: var(--task-blue);
-    border-color: var(--task-blue);
-  }
-}
-
 input[type="checkbox"] {
-  width: 24px;
+  width: 16px; 
 }
 
 .created-task {
@@ -143,15 +70,15 @@ input[type="checkbox"] {
   left: 50%;
   transform: translateX(-50%);
   display: flex;
-  width: 326px;
-  height: 74px;
+  width: 260.8px; 
+  height: 59.2px; 
   justify-content: center;
   align-items: center;
-  border-radius: 20px;
+  border-radius: 16px; 
   background: var(--main-dark);
   box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.15);
   color: var(--main-white);
-  font-size: 21px;
+  font-size: 16.8px; 
   transition: all 1s ease-in-out;
   cursor: pointer;
 }
@@ -197,17 +124,17 @@ input[type="checkbox"] {
 }
 
 .dot {
-  min-height: 20px;
-  min-width: 20px;
+  min-height: 16px; 
+  min-width: 16px; 
   border-radius: 100%;
-  margin: -15px 0 8px 8px;
-  border: 2px white solid;
+  margin: -12px 0 6.4px 6.4px; 
+  border: 1.6px white solid; 
   cursor: pointer;
 }
 
 .circle {
-  min-height: 45px;
-  min-width: 45px;
+  min-height: 36px; 
+  min-width: 36px; 
   background-color: var(--task-blue);
   color: white;
   border-radius: 100%;
@@ -215,8 +142,8 @@ input[type="checkbox"] {
 
 .new-task {
   position: absolute;
-  top: 19px;
-  right: 21px;
+  top: 15.2px; 
+  right: 16.8px; 
 
   img {
     cursor: pointer;
@@ -229,11 +156,11 @@ input[type="checkbox"] {
 
 .input-dot {
   position: absolute;
-  left: 200px;
-  top: 35%;
+  left: 160px; 
+  top: 28%; 
   transform: translateY(-50%);
-  height: 20px;
-  width: 20px;
+  height: 16px; 
+  width: 16px; 
   border-radius: 100%;
-  margin: 8px 0 8px 8px;
+  margin: 6.4px 0 6.4px 6.4px; 
 }

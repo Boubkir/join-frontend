@@ -24,11 +24,8 @@ export class ForgotPasswordComponent {
         email: this.emailForm.get('email')?.value,
       };
 
-      console.log(newContact);
-
       this.http.post(url,newContact).subscribe(
         () => {
-          console.log('geschafft');
         },
         (error) => {
           console.error('Error:', error);

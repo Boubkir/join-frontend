@@ -81,7 +81,6 @@ export class AddTaskSlideComponent {
   }
 
   onSubmit() {
-    console.log(this.taskForm);
     if (this.taskForm.valid) {
       const newTask: Task = {
         title: this.taskForm.get('title')?.value,
@@ -95,8 +94,6 @@ export class AddTaskSlideComponent {
         user: this.currentUser.id,
         status: 'open',
       };
-
-      console.log(newTask);
 
       this.data.createTask(newTask).subscribe(
         () => {

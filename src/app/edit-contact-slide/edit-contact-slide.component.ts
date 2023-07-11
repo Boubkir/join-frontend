@@ -49,9 +49,7 @@ export class EditContactSlideComponent {
       };
       this.data.editContact(editedContact, id).subscribe(
         () => {
-          console.log('geschafft');
           this.triggerShowSlider();
-          console.log(id);
         },
         (error) => {
           console.error('Error creating task:', error);
@@ -63,7 +61,6 @@ export class EditContactSlideComponent {
   deleteContact(id: any) {
     this.data.deleteContact(id).subscribe(
       () => {
-        console.log('geschafft');
         this.triggerShowSlider();
       },
       (error) => {

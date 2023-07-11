@@ -47,7 +47,6 @@ export class AddContactSlideComponent {
 
       this.data.createContact(newContact).subscribe(
         () => {
-          console.log('geschafft');
         },
         (error) => {
           console.error('Error creating task:', error);

@@ -1,5 +1,5 @@
 .background {
-  position: absolute;
+  position: fixed;
   top: 0;
   right: 0;
   bottom: 0;
@@ -8,14 +8,13 @@
   z-index: 22;
   height: 100vh;
   width: 100vw;
-  transition: all 225ms ease-in-out;
 }
 
 .content {
-  width: 1212px;
-  height: 594px;
-  border-radius: 30px;
-  background: var(--main-white);
+  width: 969px;
+  height: 475px;
+  border-radius: 24px; 
+  background: #fff;
   overflow: hidden;
   box-sizing: border-box;
   z-index: 10;
@@ -23,142 +22,77 @@
 
 .left-container {
   display: inline-flex;
-  height: 594px;
-  padding: 66px 46px;
+  height: 475px;
+  padding: 53px 37px; 
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  gap: 12px;
+  gap: 9.6px; 
   background: var(--main-dark);
-  color: var(--main-white);
+  color: white;
   box-sizing: border-box;
 
   .logo {
-    width: 55px;
-    height: 66px;
-    padding-bottom: 12px;
+    width: 44px;
+    height: 53px; 
+    padding-bottom: 9.6px;
   }
 
   h1 {
-    font-size: 61px;
+    font-size: 48.8px; 
     font-weight: 700;
     margin: 0;
   }
 
   span {
-    padding: 12px 0;
-    font-size: 27px;
+    padding: 9.6px 0; 
+    font-size: 21.6px; 
     font-weight: 400;
   }
 
   img {
-    width: 90px;
+    width: 72px;
   }
 }
 
 .right-container {
-  padding-left: 100px;
+  padding-left: 80px;
   box-sizing: border-box;
   align-items: center;
   justify-content: center;
-  width: 618px;
-  gap: 84px;
-
-  input {
-    display: flex;
-    width: 422px;
-    height: 51px;
-    padding: 13px 21px;
-    align-items: center;
-    gap: 10px;
-    border-radius: 10px;
-    border: 1px solid var(--style, #d1d1d1);
-    background: var(--main-white);
-    box-sizing: border-box;
-    font-size: 21px;
-    font-weight: 400;
-  }
+  width: 494.4px; 
+  gap: 67.2px; 
 }
 
 .circle {
-  min-height: 120px;
-  min-width: 120px;
+  min-height: 96px; 
+  min-width: 96px; 
   border-radius: 100%;
-  background-color: #d1d1d1;
+  font-size: 37.6px; 
+  color: white;
+  font-weight: 500;
 }
 
 form {
-  gap: 29px;
+  gap: 23.2px;
 }
 
 .cancel-x {
   position: absolute;
-  top: 26px;
-  right: 55px;
+  top: 20.8px; 
+  right: 44px; 
   cursor: pointer;
-}
-
-.create-btn {
-  display: flex;
-  height: 55px;
-  padding: 18px 15px;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  border-radius: 10px;
-  border: unset;
-  background: var(--main-dark);
-  color: var(--main-white);
-  font-size: 21px;
-  font-weight: 700;
-
-  &:hover {
-    background-color: var(--task-blue);
-    border-color: var(--task-blue);
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2);
-    cursor: pointer;
-    transition: all 225ms;
-  }
-}
-
-.cancel-btn {
-  display: flex;
-  width: 136px;
-  height: 55px;
-  padding: 18px 10px;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  border-radius: 10px;
-  border: 1px solid var(--main-dark);
-  color: var(--main-dark);
-  font-size: 21px;
-  font-weight: 400;
-
-  &:hover {
-    border-radius: 10px;
-    border: 1px solid var(--task-blue);
-    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-    color: var(--task-blue);
-    cursor: pointer;
-    transition: all 225ms;
-
-    svg > * > * {
-      stroke: var(--task-blue);
-    }
-  }
 }
 
 .input {
   box-sizing: border-box;
-  gap: 8px;
-  font-size: 21px;
-  font-weight: 400;
+  gap: 6.4px; 
 
   img {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    right: 21px;
+
+    right: 16.8px;
   }
 }

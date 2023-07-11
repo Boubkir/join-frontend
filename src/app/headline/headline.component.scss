@@ -1,21 +1,21 @@
 .headline {
   display: flex;
-  gap: 30px;
+  gap: 24px;
   align-items: center;
 
   h1 {
     margin: 0;
     font-weight: 700;
-    font-size: 61px;
+    font-size: 49px;
   }
 
   span {
     font-weight: 400;
-    font-size: 27px;
+    font-size: 21px;
     white-space: nowrap;
   }
 
   img {
-    height: 59px;
+    height: 47.2px;
   }
 }
