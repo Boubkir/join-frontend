@@ -1,11 +1,11 @@
 <div class="content center relative">
   <img class="logo" src="assets/icons/logo.svg" alt="">
-  <form [formGroup]="loginForm" class="center column gap-35" id="login">
+  <form [formGroup]="loginForm" class="center column gap-35 relative" id="login">
     <div class="headline column center gap-24">
       <h1>Log in</h1>
       <div class="line"></div>
     </div>
-    <div class="column gap-13">
+    <div class="column gap-13 relative">
       <div class="column gap-5">
         <div class="input relative">
           <input type="text" name="email" placeholder="Email" formControlName="email">
@@ -35,6 +35,10 @@
         <ng-template #placeHolder>
           <div class="place-holder"></div>
         </ng-template>
+        <span *ngIf="registrationSuccess" class="success">Thank you for registering. You can now access your account.
+        </span>
+        <span *ngIf="resetedPasswordSuccess" class="success">Your password has been successfully reset. You can now log in.
+        </span>
       </div>
     </div>
     <div class="center">

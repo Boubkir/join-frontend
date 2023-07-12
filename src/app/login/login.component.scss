@@ -83,4 +83,13 @@ form {
     border-radius: 3px;
     margin-right: 16px;
   }
+
+  .success {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    bottom: -16px;
+    color: green;
+  }
 }

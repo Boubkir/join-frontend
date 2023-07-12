@@ -11,6 +11,7 @@ import { User } from '../models/user.model';
 })
 export class RegisterComponent {
   registerForm: FormGroup;
+
   constructor(
     private formBuilder: FormBuilder,
     private authService: AuthService,
@@ -36,11 +37,10 @@ export class RegisterComponent {
         password: this.registerForm.get('password')?.value,
       };
 
-
       this.authService.register(newUser).subscribe(
         (resp) => {
-           this.authService.setCurrentUser(resp);
-          this.router.navigate(['/summary/']);
+          this.authService.setRegistrationSuccess(true);
+          this.router.navigate(['/']);
         },
         (error) => {
           console.error('Fehler bei der Registrierung', error.error);

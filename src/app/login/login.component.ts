@@ -9,6 +9,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent {
+  resetedPasswordSuccess: boolean = false;
+  registrationSuccess: boolean = false;
   loginForm: FormGroup;
   isGuestLogin: any;
 
@@ -25,6 +27,12 @@ export class LoginComponent {
 
   ngOnInit() {
     this.checkLocalStorageExpiration();
+    this.authService.registrationSuccess$.subscribe((success) => {
+      this.registrationSuccess = success;
+    });
+    this.authService.passwordReseted$.subscribe((success) => {
+      this.resetedPasswordSuccess = success;
+    });
   }
 
   async login(isGuestLogin: boolean = false) {

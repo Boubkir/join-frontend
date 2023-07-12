@@ -10,6 +10,7 @@ import { environment } from 'src/environments/environment.development';
 })
 export class ForgotPasswordComponent {
   emailForm: FormGroup;
+  emailSended: boolean = false;
 
   constructor(private formBuilder: FormBuilder, private http: HttpClient) {
     this.emailForm = this.formBuilder.group({
@@ -20,12 +21,13 @@ export class ForgotPasswordComponent {
   onSumbmit() {
     const url = environment.baseUrl + '/reset-password/';
     if (this.emailForm.valid) {
-      const newContact = {
+      const email = {
         email: this.emailForm.get('email')?.value,
       };
 
-      this.http.post(url,newContact).subscribe(
+      this.http.post(url, email).subscribe(
         () => {
+          this.emailSended = true;
         },
         (error) => {
           console.error('Error:', error);

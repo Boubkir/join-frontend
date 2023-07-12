@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Route, Router } from '@angular/router';
 import { environment } from 'src/environments/environment.development';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-reset-password',
@@ -17,7 +18,9 @@ export class ResetPasswordComponent {
   constructor(
     private http: HttpClient,
     private formBuilder: FormBuilder,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private authService: AuthService,
+    private router: Router
   ) {
     this.resetForm = this.formBuilder.group({
       password: ['', Validators.required],
@@ -35,7 +38,9 @@ export class ResetPasswordComponent {
         password: this.resetForm.get('password')?.value,
       };
       this.http.post(this.url, newPassword).subscribe(
-        (response) => {
+        () => {
+          this.authService.setResetedPasswordSuccess(true);
+          this.router.navigate(['/']);
         },
         (error) => {
           console.error(error);

@@ -1,17 +1,21 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, lastValueFrom } from 'rxjs';
+import { BehaviorSubject, Observable, lastValueFrom } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
+  private registrationSuccessSubject = new BehaviorSubject<boolean>(false);
+  registrationSuccess$ = this.registrationSuccessSubject.asObservable();
+  private passwordResetedSuccessSubject = new BehaviorSubject<boolean>(false);
+  passwordReseted$ = this.passwordResetedSuccessSubject.asObservable();
   currentUser: any;
 
   constructor(private http: HttpClient) {}
 
-  public async loginWitEmailAndPassword(body:any) {
+  public async loginWitEmailAndPassword(body: any) {
     const url = environment.baseUrl + '/login/';
     return lastValueFrom(this.http.post(url, body));
   }
@@ -49,8 +53,8 @@ export class AuthService {
 
   setCurrentUser(resp: any) {
     localStorage.setItem('currentUser', JSON.stringify(resp['user']));
-        localStorage.setItem('token', resp['token']);
-        localStorage.setItem('expire', resp['expiry']);
+    localStorage.setItem('token', resp['token']);
+    localStorage.setItem('expire', resp['expiry']);
   }
 
   getCurrentUser(): any {
@@ -60,5 +64,13 @@ export class AuthService {
 
   removeCurrentUser() {
     localStorage.removeItem('currentUser');
+  }
+
+  setRegistrationSuccess(success: boolean) {
+    this.registrationSuccessSubject.next(success);
+  }
+
+  setResetedPasswordSuccess(success: boolean) {
+    this.passwordResetedSuccessSubject.next(success);
   }
 }

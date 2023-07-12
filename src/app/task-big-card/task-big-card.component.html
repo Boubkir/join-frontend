@@ -125,11 +125,11 @@
       </div>
     </div>
     <div class="display-flex full-width">
-      <div class="half-width gap-25">
+      <div class="half-width column gap-8">
         <h3>Assigned to:</h3>
-        <div *ngIf="!editMode" class="column gap-25">
-          <div class="display-flex gap-25 align-center" *ngFor="let user of assignedUsers, let i = index">
-            <div class="space-between gap-25">
+        <div *ngIf="!editMode" class="column gap-8">
+          <div class="display-flex gap-8 align-center" *ngFor="let user of assignedUsers, let i = index">
+            <div class="space-between ">
               <div [style.background-color]="'var(--label-'+(i+1)+')'" class="circle center">
                 {{ user.first_name[0]
                 |uppercase }}{{ user.last_name[0]|uppercase }}
@@ -146,7 +146,7 @@
           </div>
         </div>
       </div>
-      <div *ngIf="!editMode" class="half-width">
+      <div *ngIf="!editMode" class="half-width column gap-8">
         <h3>Subtasks:</h3>
         <div class="display-flex align-center" *ngFor="let subtask of task.sub_tasks">
           <input type="checkbox" [checked]="subtask.done"
