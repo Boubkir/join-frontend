@@ -5,10 +5,34 @@
   background-color: var(--main-bg-color);
   font-style: normal;
   min-height: calc(100vh - 93px);
+
+  @media (max-width: 1115px) {
+    .media-d-none {
+      display: none;
+    }
+    width: 100vw;
+    padding: 6vw;
+  }
+
+  @media (max-width: 750px) {
+    display: flex;
+    justify-content: center;
+
+    .media-gap {
+      gap: 3vw;
+    }
+  }
 }
 
 .dashboard {
   margin-top: 54px;
+
+  
+  @media (max-width: 750px) {
+    width: 100vw;
+
+    margin-top: 35px;
+  }
 }
 
 .task-number-card {
@@ -29,16 +53,34 @@
     background-color: var(--main-dark);
     color: var(--main-white);
   }
+
+  @media (max-width: 880px) {
+    height: unset;
+    aspect-ratio: 1/1;
+    width: calc(100% / 3);
+  }
+
+  @media (max-width: 750px) {
+    padding: 0;
+  }
 }
 
 .number {
   font-weight: 600;
   font-size: 51.2px;
+
+  @media (max-width: 750px) {
+    font-size: 12vw;
+  }
 }
 
 .task-status {
   font-weight: 400;
   font-size: 16.8px;
+
+  @media (max-width: 750px) {
+    font-size: 3vw;
+  }
 }
 
 .important-tasks {
@@ -55,6 +97,23 @@
     background-color: var(--main-dark);
     color: var(--main-white);
   }
+
+  @media (max-width: 880px) {
+    width: 100%;
+    height: unset;
+    aspect-ratio: 3.87 / 1;
+    background-color: var(--main-white);
+    border-radius: 24px;
+    padding: 22.4px 38.4px;
+    box-sizing: border-box;
+    gap: 48.8px;
+    cursor: pointer;
+  }
+
+  @media (max-width: 750px) {
+    padding: 0;
+    gap: 11vw;
+  }
 }
 
 .urgent-count {
@@ -64,11 +123,18 @@
     font-weight: 600;
     font-size: 37.6px;
     text-align: center;
+
+    @media (max-width: 750px) {
+      font-size: 9vw;
+    }
   }
 
   .urgent-text {
     font-weight: 400;
     font-size: 13.6px;
+    @media (max-width: 750px) {
+      font-size: 3vw;
+    }
   }
 }
 
@@ -76,16 +142,30 @@
   height: 81.6px;
   width: 1.6px;
   background-color: #d1d1d1;
+
+  @media (max-width: 750px) {
+    height: 66%;
+  }
 }
 
 .date {
   font-weight: 700;
   font-size: 16.8px;
+  white-space: nowrap;
+
+  @media (max-width: 750px) {
+    font-size: 4vw;
+  }
 }
 
 .date-text {
   font-weight: 400;
   font-size: 12.8px;
+  white-space: nowrap;
+
+  @media (max-width: 750px) {
+    font-size: 3vw;
+  }
 }
 
 .to-do-done-container {
@@ -98,17 +178,35 @@
   padding: 30.4px 15.2px;
   box-sizing: border-box;
   justify-content: center;
+
+  @media (max-width: 880px) {
+    width: 50%;
+    height: unset;
+    aspect-ratio: 1.82 / 1;
+  }
+
+  @media (max-width: 750px) {
+    padding: 0;
+  }
 }
 
 .to-do-done-number {
   font-weight: 600;
   font-size: 51.2px;
   text-align: center;
+
+  @media (max-width: 750px) {
+    font-size: 11vw;
+  }
 }
 
 .to-do-done-text {
   font-weight: 400;
   font-size: 16.8px;
+
+  @media (max-width: 750px) {
+    font-size: 4vw;
+  }
 }
 
 .to-do-done-container:hover {

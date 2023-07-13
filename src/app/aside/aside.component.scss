@@ -18,6 +18,33 @@
   font-size: 14.4px;
   box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
   z-index: 8;
+
+  @media (max-width: 750px) {
+    display: flex;
+    flex-direction: row;
+    align-items: unset;
+    padding: unset;
+    gap: unset;
+    background-color: var(--main-dark);
+    width: 100vw;
+    height: 80px;
+    position: fixed;
+    top: unset;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    box-sizing: border-box;
+    color: var(--aside-font-color);
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14.4px;
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
+    z-index: 8;
+
+    .media-d-none {
+      display: none;
+    }
+  }
 }
 
 nav {
@@ -27,6 +54,14 @@ nav {
   align-items: flex-start;
   gap: 13.5px;
   width: 232px;
+
+  @media (max-width: 750px) {
+    flex-direction: row;
+    justify-content: unset;
+    align-items: center;
+    gap: unset;
+    width: 100vw;
+  }
 }
 
 a {
@@ -47,6 +82,26 @@ a {
 
   span {
     width: 126px;
+  }
+
+  @media (max-width: 750px) {
+    gap: 14px;
+    color: var(--aside-font-color);
+    text-decoration: none;
+    height: 100%;
+    width: 25%;
+    padding: 8px 0;
+    flex-direction: column;
+
+    .aside-icon {
+      display: flex;
+      width: 22px;
+      align-items: flex-start;
+    }
+
+    span {
+      width: unset;
+    }
   }
 }
 

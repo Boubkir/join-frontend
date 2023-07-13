@@ -9,7 +9,7 @@
       <div class="column gap-5">
         <div class="input relative">
           <input type="text" name="email" placeholder="Email" formControlName="email">
-          <img src="assets/icons/email.svg" alt="">
+          <img src="./assets/icons/email.svg" alt="">
         </div>
         <ng-container
           *ngIf="loginForm.controls['email'].invalid && loginForm.controls['email'].touched; else placeHolder">
@@ -24,7 +24,7 @@
       <div class="column gap-5">
         <div class="input relative">
           <input type="password" name="password" placeholder="Password" formControlName="password">
-          <img src="assets/icons/password.svg" alt="">
+          <img src="./assets/icons/password.svg" alt="">
         </div>
         <ng-container
           *ngIf="loginForm.controls['password'].invalid && loginForm.controls['password'].touched; else placeHolder">

@@ -1,8 +1,8 @@
 <div class="content column">
   <app-headline [h1]="h1" [motto]="motto"></app-headline>
-  <div class="display-flex gap-67">
-    <div class="column dashboard gap-28">
-      <div class="display-flex gap-28">
+  <div class="display-flex gap-67 full-width">
+    <div class="column dashboard gap-28 media-gap">
+      <div class="display-flex gap-28 media-gap">
         <div routerLink="/board" class="task-number-card column center">
           <span class="number">{{tasks.length}}</span>
           <span class="task-status">Task in <br> Board</span>
@@ -32,7 +32,7 @@
         </div>
       </div>
       <div class="display-felx">
-        <div class="gap-28 display-flex">
+        <div class="gap-28 media-gap display-flex">
           <div routerLink="/board" class="to-do-done-container display-flex center">
             <svg class="todo-svg" width="56" height="56" viewBox="0 0 56 56" fill="none"
               xmlns="http://www.w3.org/2000/svg">
@@ -72,7 +72,7 @@
         </div>
       </div>
     </div>
-    <div class="justify-center column">
+    <div class="justify-center column media-d-none">
       <span class="greeting">{{ greetingMessage }}</span>
       <span class="name">{{firstName}} {{lastName}}</span>
     </div>

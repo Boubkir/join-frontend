@@ -249,6 +249,13 @@ input[type="color"]::-webkit-color-swatch-wrapper {
   border-radius: 8px;
 }
 
+input[type="checkbox"] {
+  min-width: 16px;
+  min-height: 16px;
+  max-height: 16px;
+  max-width: 16px;
+}
+
 .center-input-icon {
   position: absolute;
   right: 16.8px;
@@ -257,12 +264,13 @@ input[type="color"]::-webkit-color-swatch-wrapper {
   transform: translateY(-50%);
 }
 
+
 @keyframes slideFromRight {
   0% {
-    left: 100%; /* Startposition, vollständig außerhalb des Bildschirms */
+    left: 100%; 
   }
   100% {
-    left: 0; /* Endposition, vollständig im Bildschirm */
+    left: 0; 
   }
 }
 
