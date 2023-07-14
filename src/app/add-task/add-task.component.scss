@@ -1,56 +1,91 @@
 .content {
-  padding: 65.6px 98.4px; 
+  padding: 65.6px 98.4px;
   background-color: var(--main-bg-color);
   box-sizing: border-box;
-  min-height: calc(100vh - 74.4px); 
+  min-height: calc(100vh - 74.4px);
+  min-width: calc(100vw - 232px);
+
+  @media (max-width: 1140px) {
+    padding: 65.6px 0 0 65.6px;
+  }
+
+  @media (max-width: 750px) {
+    padding: 65.6px 8vw;
+    input,
+    textarea,
+    .prio {
+      min-width: unset;
+      max-width: 84vw;
+    }
+
+  
+  }
 }
 
 h1 {
-  font-size: 48.8px; 
+  font-size: 48.8px;
   font-weight: 700;
   margin-top: 0;
 }
 
 form {
-  max-width: 772px; 
+  @media (max-width: 1140px) {
+    overflow-y: hidden;
+    overflow-x: scroll;
+  }
+
+  @media (max-width: 900px) {
+    flex-direction: column;
+    overflow-x: hidden;
+    padding-bottom: 60px;
+    gap: unset;
+
+    .mobile-d-none {
+      display: none;
+    }
+  }
 }
 
 .drop-down {
-  width: 337.6px; 
-  border-radius: 8px; 
+  width: 337.6px;
+  border-radius: 8px;
   border: 1px solid var(--style, #d1d1d1);
   background: var(--main-white);
   box-sizing: border-box;
   transition: all 225ms;
-  max-height: 122.4px; 
+  max-height: 122.4px;
+
+  input{
+    border: none;
+  }
   span {
-    padding: 0 16.8px; 
-    height: 40.8px; 
+    padding: 0 16.8px;
+    height: 40.8px;
     cursor: pointer;
   }
 }
 
 .arrow-down {
   position: absolute;
-  top: 16px; 
-  right: 16.8px; 
+  top: 16px;
+  right: 16.8px;
   cursor: pointer;
 }
 
 .prio button {
   display: flex;
-  width: 108.8px; 
-  height: 40.8px; 
-  padding: 14.4px 8px; 
+  width: 108.8px;
+  height: 40.8px;
+  padding: 14.4px 8px;
   justify-content: center;
   align-items: center;
-  gap: 8px; 
-  border-radius: 8px; 
+  gap: 8px;
+  border-radius: 8px;
   box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.1);
   border: none;
   cursor: pointer;
   color: var(--main-dark);
-  font-size: 16.8px; 
+  font-size: 16.8px;
   font-weight: 400;
   background-color: var(--main-white);
 }
@@ -59,10 +94,21 @@ form {
   position: absolute;
   right: 0;
   bottom: 0;
+
+  @media (max-width: 1140px) {
+    right: unset;
+    left: 0;
+  }
+
+  @media (max-width: 900px) {
+    right: 50%;
+    left: unset;
+    transform: translateX(50%);
+  }
 }
 
 input[type="checkbox"] {
-  width: 16px; 
+  width: 16px;
 }
 
 .created-task {
@@ -70,15 +116,15 @@ input[type="checkbox"] {
   left: 50%;
   transform: translateX(-50%);
   display: flex;
-  width: 260.8px; 
-  height: 59.2px; 
+  width: 260.8px;
+  height: 59.2px;
   justify-content: center;
   align-items: center;
-  border-radius: 16px; 
+  border-radius: 16px;
   background: var(--main-dark);
   box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.15);
   color: var(--main-white);
-  font-size: 16.8px; 
+  font-size: 16.8px;
   transition: all 1s ease-in-out;
   cursor: pointer;
 }
@@ -115,7 +161,7 @@ input[type="checkbox"] {
   overflow-x: hidden;
   overflow-y: scroll;
 
-  .arrow-down{
+  .arrow-down {
     transform: rotateX(180deg);
   }
 
@@ -128,16 +174,16 @@ input[type="checkbox"] {
 }
 
 .dot {
-  min-height: 16px; 
-  min-width: 16px; 
+  min-height: 16px;
+  min-width: 16px;
   border-radius: 100%;
-  border: 1.6px white solid; 
+  border: 1.6px white solid;
   cursor: pointer;
 }
 
 .circle {
-  min-height: 36px; 
-  min-width: 36px; 
+  min-height: 36px;
+  min-width: 36px;
   background-color: var(--task-blue);
   color: white;
   border-radius: 100%;
@@ -145,8 +191,8 @@ input[type="checkbox"] {
 
 .new-task {
   position: absolute;
-  top: 15.2px; 
-  right: 16.8px; 
+  top: 15.2px;
+  right: 16.8px;
 
   img {
     cursor: pointer;
@@ -159,20 +205,18 @@ input[type="checkbox"] {
 
 .input-dot {
   position: absolute;
-  left: 160px; 
-  top: 50%; 
+  left: 160px;
+  top: 50%;
   transform: translateY(-50%);
-  height: 16px; 
-  width: 16px; 
+  height: 16px;
+  width: 16px;
   border-radius: 100%;
 }
 
-.color-container{
-    margin-top: -12px; 
+.color-container {
+  margin-top: -12px;
 }
 
-.subtasks{
-      padding: 0 8px;
+.subtasks {
+  padding: 0 8px;
 }
-
-

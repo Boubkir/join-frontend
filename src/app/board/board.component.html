@@ -1,5 +1,6 @@
 <app-add-task-slide *ngIf="openAddTaskSlide" (onShowSlider)="addTaskSlide()"></app-add-task-slide>
-<app-task-big-card *ngIf="openBigCard && selectedTask" [task]="selectedTask" (onShowSlider)="showBigCard()"></app-task-big-card>
+<app-task-big-card *ngIf="openBigCard && selectedTask" [task]="selectedTask"
+  (onShowSlider)="showBigCard()"></app-task-big-card>
 <div class="content relative">
   <div class="board">
     <div class="header">
@@ -9,14 +10,16 @@
           <input type="text" [(ngModel)]="searchText" placeholder="Find Task" (input)="searchMatches()" />
           <img src="assets/icons/lens.svg" alt="">
         </div>
-        <button class="primary-btn center" (click)="addTaskSlide()">Add task <img src="assets/icons/cross.svg" alt=""></button>
+        <button class="primary-btn media-btn center" (click)="addTaskSlide()"><span> Add task</span> <img
+            src="assets/icons/cross.svg" alt=""></button>
       </div>
     </div>
     <div class="display-flex gap-26 space-between drag-drop-group" cdkDropListGroup>
       <div class="drag-drop-container">
         <div class="drag-drop-header">
           <h3>To do</h3>
-          <svg (click)="addTaskSlide()" class="plus-icon" width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <svg (click)="addTaskSlide()" class="plus-icon" width="30" height="30" viewBox="0 0 30 30" fill="none"
+            xmlns="http://www.w3.org/2000/svg">
             <path d="M15 7.5V22.5" stroke="#2A3647" stroke-width="2" stroke-linecap="round" />
             <path d="M22.5 15.1416L7.5 15.1416" stroke="#2A3647" stroke-width="2" stroke-linecap="round" />
             <rect x="1" y="1" width="28" height="28" rx="9" stroke="#2A3647" stroke-width="2" />
@@ -24,14 +27,15 @@
         </div>
         <div class="drag-drop-area" cdkDropList [cdkDropListData]="open" (cdkDropListDropped)="drop($event)">
           <div *ngFor="let task of open">
-            <app-task-card  [task]="task" (click)="onTaskClick(task)"></app-task-card>
+            <app-task-card [task]="task" (click)="onTaskClick(task)"></app-task-card>
           </div>
         </div>
       </div>
       <div class="drag-drop-container">
         <div class="drag-drop-header">
           <h3>In progress</h3>
-          <svg (click)="addTaskSlide()" class="plus-icon" width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <svg (click)="addTaskSlide()" class="plus-icon" width="30" height="30" viewBox="0 0 30 30" fill="none"
+            xmlns="http://www.w3.org/2000/svg">
             <path d="M15 7.5V22.5" stroke="#2A3647" stroke-width="2" stroke-linecap="round" />
             <path d="M22.5 15.1416L7.5 15.1416" stroke="#2A3647" stroke-width="2" stroke-linecap="round" />
             <rect x="1" y="1" width="28" height="28" rx="9" stroke="#2A3647" stroke-width="2" />
@@ -46,7 +50,8 @@
       <div class="drag-drop-container">
         <div class="drag-drop-header">
           <h3>Awaiting Feedback </h3>
-          <svg (click)="addTaskSlide()" class="plus-icon" width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <svg (click)="addTaskSlide()" class="plus-icon" width="30" height="30" viewBox="0 0 30 30" fill="none"
+            xmlns="http://www.w3.org/2000/svg">
             <path d="M15 7.5V22.5" stroke="#2A3647" stroke-width="2" stroke-linecap="round" />
             <path d="M22.5 15.1416L7.5 15.1416" stroke="#2A3647" stroke-width="2" stroke-linecap="round" />
             <rect x="1" y="1" width="28" height="28" rx="9" stroke="#2A3647" stroke-width="2" />
@@ -62,7 +67,8 @@
       <div class="drag-drop-container">
         <div class="drag-drop-header">
           <h3>Done</h3>
-          <svg (click)="addTaskSlide()"  class="plus-icon" width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <svg (click)="addTaskSlide()" class="plus-icon" width="30" height="30" viewBox="0 0 30 30" fill="none"
+            xmlns="http://www.w3.org/2000/svg">
             <path d="M15 7.5V22.5" stroke="#2A3647" stroke-width="2" stroke-linecap="round" />
             <path d="M22.5 15.1416L7.5 15.1416" stroke="#2A3647" stroke-width="2" stroke-linecap="round" />
             <rect x="1" y="1" width="28" height="28" rx="9" stroke="#2A3647" stroke-width="2" />
@@ -70,7 +76,7 @@
         </div>
         <div class="drag-drop-area" cdkDropList [cdkDropListData]="done" (cdkDropListDropped)="drop($event)">
           <div *ngFor="let task of done" cdkDrag class="card">
-            <app-task-card (click)="onTaskClick(task)"[task]="task"></app-task-card>
+            <app-task-card (click)="onTaskClick(task)" [task]="task"></app-task-card>
           </div>
         </div>
       </div>

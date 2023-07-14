@@ -194,10 +194,9 @@ body {
   color: var(--main-white);
 
   &:disabled {
-  opacity: 0.5; 
-  cursor: not-allowed; 
-
-}
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
 
   &:hover {
     background-color: var(--task-blue);
@@ -227,7 +226,7 @@ textarea {
   padding: 9.6px 16.8px;
   align-items: center;
   gap: 8px;
-  width: 337.6px;
+  max-width: 337.6px;
   box-sizing: border-box;
   border-radius: 8px;
   border: 1px solid var(--style, #d1d1d1);
@@ -245,7 +244,7 @@ textarea {
 }
 
 input[type="color"]::-webkit-color-swatch-wrapper {
-	padding-right: 32px;
+  padding-right: 32px;
   border-radius: 8px;
 }
 
@@ -264,13 +263,11 @@ input[type="checkbox"] {
   transform: translateY(-50%);
 }
 
-
 @keyframes slideFromRight {
   0% {
-    left: 100%; 
+    left: 100%;
   }
   100% {
-    left: 0; 
+    left: 0;
   }
 }
-

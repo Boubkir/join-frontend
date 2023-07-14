@@ -1,35 +1,41 @@
 .card {
   display: flex;
   font-size: 12.8px;
-  max-width: 200px; 
-  max-height: 200px; 
-  padding: 14.4px 15.2px; 
+  max-width: 200px;
+  max-height: 200px;
+  padding: 14.4px 15.2px;
   flex-direction: column;
   align-items: flex-start;
-  gap: 16px; 
-  border-radius: 24px; 
+  gap: 16px;
+  border-radius: 24px;
   background-color: var(--main-white);
-  box-shadow: 0px 0px 11.2px 2.4px rgba(0, 0, 0, 0.04); 
+  box-shadow: 0px 0px 11.2px 2.4px rgba(0, 0, 0, 0.04);
   box-sizing: border-box;
   cursor: pointer;
+
+  @media (max-width: 507px) {
+    width: 84vw;
+    max-width: 320px;
+    aspect-ratio: 2/1;
+  }
 }
 
 .card-category {
   box-sizing: border-box;
   display: flex;
-  padding: 3.2px 20px; 
+  padding: 3.2px 20px;
   flex-direction: column;
   align-items: flex-start;
-  border-radius: 6.4px; 
+  border-radius: 6.4px;
   background-color: var(--label-5);
   color: var(--main-white);
-  font-size: 0.8rem; 
+  font-size: 0.8rem;
 }
 
 .card-content {
   display: flex;
   flex-direction: column;
-  gap: 8px; 
+  gap: 8px;
 
   h3 {
     margin: 0;
@@ -39,8 +45,8 @@
 
   span {
     color: #a8a8a8;
-    height: 30.4px; 
-    width: 172px; 
+    height: 30.4px;
+    width: 100%;
     text-overflow: ellipsis;
     overflow: hidden;
     word-wrap: break-word;
@@ -49,30 +55,37 @@
 }
 
 .progress-bar {
-  width: 110.4px; 
-  height: 6.4px; 
-  border-radius: 1.6px; 
+  width: 110.4px;
+  height: 6.4px;
+  border-radius: 1.6px;
   background: var(--label-8);
   overflow: hidden;
+
+    @media (max-width: 507px) {
+    width: 75%;
+
+  }
 }
 
 .circle {
-  min-height: 28px; 
-  min-width: 28px; 
+  min-height: 28px;
+  min-width: 28px;
   background-color: var(--task-blue);
   color: var(--main-white);
   border-radius: 100%;
   border: 1px solid var(--main-white);
 
   &:not(:first-child) {
-    margin-left: -4.8px; 
+    margin-left: -4.8px;
   }
 }
 
 .cdk-drag-preview {
   box-sizing: border-box;
-  border-radius: 24px; 
-  box-shadow: 0 4px 4px -2.4px rgba(0, 0, 0, 0.2), 0 6.4px 8px 0.8px rgba(0, 0, 0, 0.14), 0 2.4px 11.2px 1.6px rgba(0, 0, 0, 0.12);
+  border-radius: 24px;
+  box-shadow: 0 4px 4px -2.4px rgba(0, 0, 0, 0.2),
+    0 6.4px 8px 0.8px rgba(0, 0, 0, 0.14),
+    0 2.4px 11.2px 1.6px rgba(0, 0, 0, 0.12);
 }
 
 .cdk-drag-placeholder {
@@ -93,4 +106,3 @@
   height: 6.4px;
   width: 0px;
 }
-

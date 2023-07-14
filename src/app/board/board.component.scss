@@ -3,6 +3,14 @@
   background-color: var(--main-bg-color);
   box-sizing: border-box;
   min-height: calc(100vh - 74.4px);
+
+  @media (max-width: 1100px) {
+    padding: 65.6px 8vw;
+  }
+
+  @media (max-width: 750px) {
+    padding: 65.6px 8vw 100px 8vw;
+  }
 }
 
 .board {
@@ -19,6 +27,23 @@
     margin: 0;
     font-weight: 700;
     font-size: 48.8px;
+  }
+
+  @media (max-width: 1100px) {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 35px;
+    position: relative;
+
+    .media-btn {
+      position: absolute;
+      right: 0;
+      top: 0;
+
+      span {
+        display: none;
+      }
+    }
   }
 }
 
@@ -41,6 +66,14 @@
 .drag-drop-container {
   box-sizing: border-box;
   margin-top: 64px;
+
+  @media (max-width: 1100px) {
+    margin-top: unset;
+
+    &:first-child {
+      margin-top: 35px;
+    }
+  }
 }
 
 .drag-drop-header {
@@ -69,12 +102,25 @@
   box-sizing: border-box;
   gap: 28px;
   min-height: calc(100vh - 500px);
+
+  @media (max-width: 1100px) {
+    min-height: 235px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    width: 100%;
+  }
 }
 
-input{
+input {
   height: 44px;
 }
 
-.drag-drop-group{
+.drag-drop-group {
   overflow-x: scroll;
+
+  @media (max-width: 1100px) {
+    flex-direction: column;
+    gap: 28px;
+  }
 }

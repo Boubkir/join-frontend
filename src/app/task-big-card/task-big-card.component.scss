@@ -7,6 +7,11 @@
   z-index: 22;
   background-color: rgba(0, 0, 0, 0.15);
   animation: slideFromRight 500ms ease-in-out forwards;
+  @media (max-width: 590px) {
+    position: absolute;
+    bottom: 80px;
+    z-index: 1;
+  }
 }
 
 form {
@@ -19,6 +24,26 @@ form {
   background: var(--main-white);
   box-shadow: 0px 0px 3.2px 0px rgba(0, 0, 0, 0.1);
   font-size: 12.8px;
+
+  @media (max-width: 590px) {
+    height: calc(100vh - 80px);
+    width: 100vw;
+    position: absolute;
+    bottom: 80px;
+    display: flex;
+    box-sizing: border-box;
+    border-radius: unset;
+    padding: 40px 8vw 80px 8vw;
+    z-index: 33;
+
+    .description {
+      width: 84vw;
+    }
+
+    h2 {
+      font-size: 10vw;
+    }
+  }
 }
 
 .drop-down {
@@ -102,7 +127,6 @@ form {
   background-color: var(--main-white);
 }
 
-
 .selected-low,
 .selected-medium,
 .selected-urgent {
@@ -147,14 +171,12 @@ h2 {
   font-size: 21.6px;
   font-weight: 400;
 }
-
 .description {
-  width: 414.4px !important;
+  width: 414.4px;
   color: var(--main-dark);
   font-size: 17.28px;
   font-weight: 400;
   height: 40px;
-  width: 172px;
   text-overflow: ellipsis;
   overflow: hidden;
   word-wrap: break-word;
@@ -226,6 +248,11 @@ h3 {
 .edit-layout {
   width: 423px;
   min-height: 480px;
+
+  @media (max-width: 590px) {
+    width: 100vw;
+    height: calc(100vh - 80px);
+  }
 }
 
 .circle {

@@ -1,6 +1,17 @@
 .content {
   height: 100vh;
+  padding: 0 8vw;
   background-color: var(--main-bg-color);
+
+  @media (max-width: 800px) {
+    .media-column {
+      flex-direction: column;
+
+      span {
+        margin: 0;
+      }
+    }
+  }
 }
 
 .logo {
@@ -15,6 +26,9 @@
   animation-timing-function: ease-in-out;
   animation-delay: 0.5s;
   animation-fill-mode: forwards;
+  @media (max-width: 750px) {
+    animation-name: mediaShrink;
+  }
 }
 
 @keyframes shrink {
@@ -30,11 +44,35 @@
   }
 }
 
+@keyframes mediaShrink {
+  0% {
+    width: 150px;
+  }
+
+  100% {
+    width: 64px;
+    left: 37px;
+    top: 37px;
+    transform: unset;
+  }
+}
+
 .registration-container {
   position: absolute;
   top: 67px;
   right: 114px;
   font-size: 21px;
+
+  span{
+    white-space: nowrap;
+  }
+
+  @media (max-width: 750px) {
+    top: unset;
+    bottom: 50px;
+    right: 50%;
+    transform: translateX(50%);
+  }
 }
 
 form {
