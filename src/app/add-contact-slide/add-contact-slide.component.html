@@ -1,8 +1,12 @@
 <div class="background center">
   <div class="content display-flex relative">
+    <svg (click)="triggerShowSlider()" class="close" width="31" height="31" viewBox="0 0 31 31" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M22.9629 7.6543L7.65513 22.9621" stroke="white" stroke-width="2" stroke-linecap="round" />
+      <path d="M22.8184 23.1064L7.5106 7.79868" stroke="white" stroke-width="2" stroke-linecap="round" />
+    </svg>
     <img (click)="triggerShowSlider()" class="cancel-x" src="assets/icons/cancel.svg" alt="">
     <div class="left-container">
-      <img class="logo" src="assets/img/logo.png" alt="">
+      <img class="logo media-d-none" src="assets/img/logo.png" alt="">
       <h1>Add contact</h1>
       <div class="column">
         <span>Tasks are better with a Team!</span>
@@ -10,6 +14,9 @@
       </div>
     </div>
     <div class="right-container display-flex">
+      <div class="circle center">
+        <img src="./assets/img/image-placeholder.png" alt="">
+       </div>
       <form [formGroup]="contactForm" class="column" action="">
         <div>
           <div class="input relative ">

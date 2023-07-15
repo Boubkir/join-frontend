@@ -1,8 +1,12 @@
 <div class="background center ">
   <div class="content display-flex relative">
+    <svg (click)="triggerShowSlider()" class="close" width="31" height="31" viewBox="0 0 31 31" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M22.9629 7.6543L7.65513 22.9621" stroke="white" stroke-width="2" stroke-linecap="round" />
+      <path d="M22.8184 23.1064L7.5106 7.79868" stroke="white" stroke-width="2" stroke-linecap="round" />
+    </svg>
     <img (click)="triggerShowSlider()" class="cancel-x" src="assets/icons/cancel.svg" alt="">
     <div class="left-container">
-      <img class="logo" src="assets/img/logo.png" alt="">
+      <img class="logo media-d-none" src="assets/img/logo.png" alt="">
       <div class="column">
         <h1>Edit contact</h1>
         <img src="assets/img/task-underline.svg" alt="">
@@ -62,8 +66,8 @@
         </div>
 
         <div class="display-flex gap-25 center">
-          <button class="secondary-btn center" (click)="deleteContact(currentContact.id)">Delete<svg width="25" height="25"
-              viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <button class="secondary-btn center" (click)="deleteContact(currentContact.id)">Delete<svg width="25"
+              height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
               <g id="iconoir:cancel">
                 <path id="Vector"
                   d="M12.501 12.5001L17.744 17.7431M7.258 17.7431L12.501 12.5001L7.258 17.7431ZM17.744 7.25708L12.5 12.5001L17.744 7.25708ZM12.5 12.5001L7.258 7.25708L12.5 12.5001Z"
@@ -71,8 +75,8 @@
               </g>
             </svg>
           </button>
-          <button class="primary-btn center" (click)="editContact(currentContact.id)">Save<img src="assets/icons/check.svg"
-              alt=""></button>
+          <button class="primary-btn center" (click)="editContact(currentContact.id)">Save<img
+              src="assets/icons/check.svg" alt=""></button>
         </div>
       </form>
     </div>

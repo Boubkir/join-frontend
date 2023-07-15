@@ -19,6 +19,17 @@
   overflow: hidden;
   box-sizing: border-box;
   z-index: 10;
+
+  @media (max-width: 1000px) {
+    flex-direction: column;
+    height: 100vh;
+    width: 100vw;
+    border-radius: unset;
+
+    .media-d-none {
+      display: none;
+    }
+  }
 }
 
 .left-container {
@@ -54,6 +65,12 @@
   img {
     width: 72px;
   }
+
+  @media (max-width: 1000px) {
+    padding: 0 8vw;
+    height: 50vh;
+    width: 100vw;
+  }
 }
 
 .right-container {
@@ -63,6 +80,13 @@
   justify-content: center;
   width: 494.4px;
   gap: 67.2px;
+
+  @media (max-width: 1000px) {
+    padding: 0 8vw;
+    width: 100vw;
+    margin-top: 68px;
+    height: 50vh;
+  }
 }
 
 .circle {
@@ -72,6 +96,17 @@
   font-size: 37.6px;
   color: white;
   font-weight: 500;
+
+  @media (max-width: 1000px) {
+    position: absolute;
+    right: 50%;
+    transform: translateX(50%);
+    top: calc(50% - 100px);
+    z-index: 2;
+    border: 2px solid var(--main-white);
+    min-height: 120px;
+    min-width: 120px;
+  }
 }
 
 form {
@@ -96,4 +131,10 @@ form {
 
     right: 16.8px;
   }
+}
+
+.close{
+  position: absolute;
+  top: 26px;
+  right: 26px;
 }
