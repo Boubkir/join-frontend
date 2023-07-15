@@ -2,6 +2,11 @@
   min-height: calc(100vh - 93px);
   box-sizing: border-box;
   padding: 65.6px 98.4px;
+
+  @media(max-width:750px){
+    padding: 10vw 8vw;
+    min-height: 120vh;
+  }
 }
 
 h1 {

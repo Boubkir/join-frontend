@@ -14,9 +14,25 @@
   box-sizing: border-box;
   color: var(--main-dark);
   z-index: 5;
+  background-color: var(--main-white);
+
+  .logo{
+    display: none;
+  }
 
   @media (max-width: 750px) {
-    display: none;
+    height: 80px;
+    width: 100vw;
+    padding: 20px 25px;
+    
+    .logo{
+      display: flex;
+      height: 40px;
+    }
+
+    .media-d-none{
+      display: none;
+    }
   }
 }
 
@@ -36,6 +52,14 @@
   color: white;
   background-color: var(--main-dark);
   cursor: pointer;
+
+  @media (max-width: 750px) {
+    min-height: 37px;
+    min-width: 37px;
+    background-color: var(--main-white);
+    color: var(--task-blue);
+    font-size: 16px;
+  }
 }
 
 button {

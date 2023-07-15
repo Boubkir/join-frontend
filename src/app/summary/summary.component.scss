@@ -17,6 +17,7 @@
   @media (max-width: 750px) {
     display: flex;
     justify-content: center;
+    min-height: calc(100vh - 160px);
 
     .media-gap {
       gap: 3vw;
@@ -27,7 +28,6 @@
 .dashboard {
   margin-top: 54px;
 
-  
   @media (max-width: 750px) {
     width: 100vw;
 

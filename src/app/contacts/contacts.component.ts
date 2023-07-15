@@ -16,6 +16,7 @@ export class ContactsComponent {
   editContactSlide: boolean = false;
   h1 = 'Contacts';
   motto = 'Better with a team';
+  showContact: boolean = false;
 
   constructor(private data: SharedDataService) {}
 
@@ -51,6 +52,7 @@ export class ContactsComponent {
 
   selectContact(contact: Contact) {
     this.selectedContact = contact;
+    this.showContact = true;
   }
 
   async addContactSlider() {
@@ -65,5 +67,9 @@ export class ContactsComponent {
 
   onCurrentContactUpdated(contact: Contact) {
     this.selectedContact = contact;
+  }
+
+  isShowContact() {
+    this.showContact = false;
   }
 }

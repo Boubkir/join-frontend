@@ -19,6 +19,29 @@
   width: 900px;
   animation: slideFromRight 500ms ease-in-out forwards;
   border-radius: 30px;
+  overflow-y: scroll;
+
+  @media (max-width: 915px) {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 100vh;
+    padding: 65.6px 8vw 100px 8vw;
+    border-radius: unset;
+    width: 100vw;
+
+    input,
+    textarea,
+    .prio {
+      min-width: unset;
+      width: 83vw !important;
+    }
+    .drop-down {
+      width: 84vw !important;
+    }
+  }
 }
 
 h1 {
@@ -29,6 +52,18 @@ h1 {
 
 form {
   max-width: 772px;
+
+  @media (max-width: 900px) {
+    flex-direction: column;
+    overflow-x: hidden;
+    padding-bottom: 60px;
+    gap: unset;
+    max-width: 84vw;
+
+    .mobile-d-none {
+      display: none;
+    }
+  }
 }
 
 .drop-down {
@@ -39,6 +74,11 @@ form {
   box-sizing: border-box;
   transition: all 225ms;
   max-height: 122.4px;
+
+  input {
+    border: none;
+  }
+
   span {
     padding: 0 16.8px;
     height: 40.8px;
@@ -75,6 +115,12 @@ form {
   position: absolute;
   right: 0;
   bottom: 0;
+
+  @media (max-width: 900px) {
+    right: 50%;
+    left: unset;
+    transform: translateX(50%);
+  }
 }
 
 input[type="checkbox"] {
@@ -190,7 +236,6 @@ input[type="checkbox"] {
 .subtasks {
   padding: 0 8px;
 }
-
 
 .cancel-x {
   position: absolute;

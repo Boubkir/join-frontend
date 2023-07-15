@@ -20,7 +20,8 @@
       </div>
     </div>
   </div>
-  <div class="contact-detail relative column gap-48">
+  <div class="contact-detail relative column gap-48" [class.show-contact]="showContact">
+    <img (click)="isShowContact()" class="d-none arrow-left" src="assets/icons/arrow-left.svg">
     <app-headline [h1]="h1" [motto]="motto"></app-headline>
     <div *ngIf="selectedContact" class="column gap-24">
       <div class="display-flex gap-54 name-container">

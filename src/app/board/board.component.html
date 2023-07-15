@@ -1,7 +1,7 @@
 <app-add-task-slide *ngIf="openAddTaskSlide" (onShowSlider)="addTaskSlide()"></app-add-task-slide>
 <app-task-big-card *ngIf="openBigCard && selectedTask" [task]="selectedTask"
   (onShowSlider)="showBigCard()"></app-task-big-card>
-<div class="content relative">
+<div class="content relative" [ngClass]="{'fixed-position': openBigCard || openAddTaskSlide}" >
   <div class="board">
     <div class="header">
       <h1>Board</h1>

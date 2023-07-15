@@ -11,6 +11,7 @@
     position: absolute;
     bottom: 80px;
     z-index: 1;
+    overflow-x: hidden;
   }
 }
 
@@ -29,7 +30,8 @@ form {
     height: calc(100vh - 80px);
     width: 100vw;
     position: absolute;
-    bottom: 80px;
+    top: 0;
+    bottom: 0;
     display: flex;
     box-sizing: border-box;
     border-radius: unset;
@@ -248,10 +250,18 @@ h3 {
 .edit-layout {
   width: 423px;
   min-height: 480px;
+  overflow-y: scroll;
 
   @media (max-width: 590px) {
     width: 100vw;
-    height: calc(100vh - 80px);
+    height: calc(100vh - 145px);
+    position: absolute;
+    top: 80px;
+    bottom: 80px;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    min-height: unset;
+    justify-content: center;
   }
 }
 

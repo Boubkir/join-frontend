@@ -1,5 +1,6 @@
 <div class="content">
-  <span>Kanban Project Management Tool</span>
+  <img class="logo" routerLink="/summary" src="./assets/icons/logo.svg" alt="">
+  <span class="media-d-none">Kanban Project Management Tool</span>
   <div class="display-flex center">
     <img routerLink="/help" class="help" src="assets/img/question-mark.png" alt="">
     <div (click)="showLogOut()" class="profile-picture center"> {{currentUser?.first_name[0]}}{{currentUser?.last_name[0]}}</div>

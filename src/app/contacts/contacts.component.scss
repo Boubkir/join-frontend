@@ -2,6 +2,12 @@
   min-height: calc(100vh - 94px);
   width: calc(100vw - 453px);
   box-sizing: border-box;
+
+  @media (max-width: 750px) {
+    .contacts-container {
+      width: 100vw;
+    }
+  }
 }
 
 .contacts-container {
@@ -39,7 +45,7 @@
     }
   }
 
-  &:last-child{
+  &:last-child {
     margin-bottom: 8px;
   }
 }
@@ -79,7 +85,7 @@
 }
 
 .sepate-contacts {
-  padding: 11.2px 0; 
+  padding: 11.2px 0;
 }
 
 .contact-detail {
@@ -88,6 +94,10 @@
   top: 0;
   left: 325px;
   box-sizing: border-box;
+
+  @media (max-width: 750px) {
+    display: none;
+  }
 }
 
 .name-container {
@@ -96,22 +106,22 @@
 }
 
 .big-circle {
-  min-height: 96px; 
-  min-width: 96px; 
+  min-height: 96px;
+  min-width: 96px;
   border-radius: 100%;
-  font-size: 37.6px; 
+  font-size: 37.6px;
   font-weight: 500;
   color: var(--main-white);
 }
 
 .detail-name {
-   font-size: 37.6px; 
+  font-size: 37.6px;
   font-weight: 500;
 }
 
 .add-task {
   color: var(--task-blue);
-  font-size: 12.8px; 
+  font-size: 12.8px;
 }
 
 .contact.active {
@@ -121,4 +131,41 @@
 
 .pointer {
   cursor: pointer;
+}
+
+.show-contact {
+  @media (max-width: 750px) {
+    display: flex;
+    position: absolute;
+    left: 0;
+    bottom: 80px;
+    width: 100vw;
+    background-color: var(--main-white);
+    height: calc(100vh - 160px);
+    justify-content: center;
+    padding: 8vw;
+
+    .detail-name {
+      font-size: 6vw;
+    }
+
+    .big-circle {
+      min-height: 80px;
+      min-width: 80px;
+    }
+
+    .gap-54 {
+      gap: 20px;
+    }
+
+    .arrow-left {
+      display: flex;
+      height: 24px;
+      width: 24px;
+      position: absolute;
+      top: 8vw;
+      right: 8vw;
+      cursor: pointer;
+    }
+  }
 }
