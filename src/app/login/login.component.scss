@@ -26,8 +26,13 @@
   animation-timing-function: ease-in-out;
   animation-delay: 0.5s;
   animation-fill-mode: forwards;
+
   @media (max-width: 750px) {
-    animation-name: mediaShrink;
+    animation: unset;
+    width: 64px;
+    left: 37px;
+    top: 37px;
+    transform: unset;
   }
 }
 
@@ -63,7 +68,7 @@
   right: 114px;
   font-size: 21px;
 
-  span{
+  span {
     white-space: nowrap;
   }
 

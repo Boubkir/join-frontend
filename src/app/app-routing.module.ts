@@ -12,6 +12,7 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { QuestionComponent } from './question/question.component';
 import { PrivatcyComponent } from './privatcy/privatcy.component';
+import { NoAuthGuard } from './no-auth.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -24,12 +25,24 @@ const routes: Routes = [
     component: LegalNoticeComponent,
     canActivate: [AuthGuard],
   },
-  { path: 'login', component: LoginComponent },
-  { path: 'register', component: RegisterComponent },
-  { path: 'forgot-password', component: ForgotPasswordComponent },
-  { path: 'reset-password', component: ResetPasswordComponent },
-  { path: 'help', component: QuestionComponent },
-  { path: 'privacy', component: PrivatcyComponent },
+  { path: 'login', component: LoginComponent, canActivate: [NoAuthGuard] },
+  {
+    path: 'register',
+    component: RegisterComponent,
+    canActivate: [NoAuthGuard],
+  },
+  {
+    path: 'forgot-password',
+    component: ForgotPasswordComponent,
+    canActivate: [NoAuthGuard],
+  },
+  {
+    path: 'reset-password',
+    component: ResetPasswordComponent,
+    canActivate: [NoAuthGuard],
+  },
+  { path: 'help', component: QuestionComponent, canActivate: [AuthGuard] },
+  { path: 'privacy', component: PrivatcyComponent, canActivate: [AuthGuard] },
 ];
 
 @NgModule({

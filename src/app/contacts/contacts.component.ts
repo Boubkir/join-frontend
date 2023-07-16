@@ -57,11 +57,21 @@ export class ContactsComponent {
 
   async addContactSlider() {
     this.addContactSlide = !this.addContactSlide;
+    if(this.addContactSlide){
+      document.body.classList.add('fixed')
+    }else{
+      document.body.classList.remove('fixed')
+    }
     await this.loadContacts();
   }
 
   async editContactSlider() {
     this.editContactSlide = !this.editContactSlide;
+        if (this.editContactSlide) {
+          document.body.classList.add('fixed');
+        } else {
+          document.body.classList.remove('fixed');
+        }
     await this.loadContacts();
   }
 

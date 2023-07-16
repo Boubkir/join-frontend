@@ -42,12 +42,10 @@ export class AuthService {
 
     if (token && expire) {
       const expiryDate = new Date(expire);
-
       if (expiryDate > new Date()) {
         return true;
       }
     }
-
     return false;
   }
 
