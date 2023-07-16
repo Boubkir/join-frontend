@@ -11,9 +11,9 @@ export class NoAuthGuard {
   canActivate: CanActivateFn = () => {
     if (this.authService.isAuthenticated()) {
       this.router.navigate(['/summary']);
-      return true;
-    } else {
       return false;
+    } else {
+      return true;
     }
   };
 }
