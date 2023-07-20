@@ -263,6 +263,10 @@ input[type="checkbox"] {
   transform: translateY(-50%);
 }
 
+.fixed {
+  position: fixed;
+}
+
 @keyframes slideFromRight {
   0% {
     left: 100%;
@@ -272,6 +276,12 @@ input[type="checkbox"] {
   }
 }
 
-.fixed {
-  position: fixed;
+@keyframes slideFromLeft {
+  0% {
+    left: 0;
+  }
+  100% {
+    left: 100%;
+  }
 }
+

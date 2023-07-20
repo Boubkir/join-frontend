@@ -1,0 +1,7 @@
+RewriteEngine On
+RewriteBase /join/
+
+# Umleiten auf index.html für fehlende Dateien und Verzeichnisse
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^ /join/index.html [L]

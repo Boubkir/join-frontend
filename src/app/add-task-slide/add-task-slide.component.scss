@@ -11,6 +11,10 @@
   animation: slideFromRight 500ms ease-in-out forwards;
 }
 
+.background.closing {
+  animation: slideFromLeft 500ms ease-in-out forwards;
+}
+
 .content {
   padding: 24px 48px;
   background-color: var(--main-white);
@@ -19,8 +23,7 @@
   width: 900px;
   animation: slideFromRight 500ms ease-in-out forwards;
   border-radius: 30px;
-  overflow-y: scroll;
-
+ 
   @media (max-width: 915px) {
     position: absolute;
     top: 0;
@@ -175,7 +178,7 @@ input[type="checkbox"] {
 
 .drop-down-open {
   overflow-x: hidden;
-  overflow-y: scroll;
+  overflow-y: auto;
 
   .arrow-down {
     transform: rotateX(180deg);

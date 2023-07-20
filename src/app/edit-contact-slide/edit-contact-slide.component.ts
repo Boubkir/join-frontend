@@ -70,7 +70,11 @@ export class EditContactSlideComponent {
   }
 
   triggerShowSlider() {
-    this.onShowSlider.emit();
     this.currentContactUpdated.emit(this.currentContact);
+    const background = document.querySelector('.background') as HTMLElement;
+    background.classList.add('closing');
+    setTimeout(() => {
+      this.onShowSlider.emit();
+    }, 600);
   }
 }

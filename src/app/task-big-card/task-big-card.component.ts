@@ -67,7 +67,11 @@ export class TaskBigCardComponent {
   }
 
   triggerShowSlider() {
-    this.onShowSlider.emit();
+       const background = document.querySelector('.background') as HTMLElement;
+       background.classList.add('closing');
+       setTimeout(() => {
+         this.onShowSlider.emit();
+       }, 500); 
   }
 
   isUserSelected(user: User): boolean {

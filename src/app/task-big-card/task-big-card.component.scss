@@ -1,4 +1,4 @@
-.content {
+.background {
   position: fixed;
   top: 0;
   right: 0;
@@ -15,6 +15,10 @@
   }
 }
 
+.background.closing {
+  animation: slideFromLeft 500ms ease-in-out forwards;
+}
+
 form {
   display: inline-flex;
   padding: 40px 40px 80px 40px;
@@ -25,6 +29,8 @@ form {
   background: var(--main-white);
   box-shadow: 0px 0px 3.2px 0px rgba(0, 0, 0, 0.1);
   font-size: 12.8px;
+  width: 420px;
+  overflow: hidden;
 
   @media (max-width: 590px) {
     height: calc(100vh - 80px);
@@ -161,6 +167,7 @@ h2 {
   font-size: 48.8px;
   font-weight: 700;
   margin: 0;
+  word-wrap: break-word;
 }
 
 .category {
@@ -173,12 +180,13 @@ h2 {
   font-size: 21.6px;
   font-weight: 400;
 }
+
 .description {
   width: 414.4px;
   color: var(--main-dark);
   font-size: 17.28px;
   font-weight: 400;
-  height: 40px;
+  max-height: 240px;
   text-overflow: ellipsis;
   overflow: hidden;
   word-wrap: break-word;
@@ -250,7 +258,6 @@ h3 {
 .edit-layout {
   width: 423px;
   min-height: 480px;
-  overflow-y: scroll;
 
   @media (max-width: 590px) {
     width: 100vw;
@@ -262,6 +269,7 @@ h3 {
     overflow-x: hidden;
     min-height: unset;
     justify-content: center;
+    overflow-y: scroll;
   }
 }
 
@@ -275,4 +283,8 @@ h3 {
 
 .prio-img {
   width: 120px;
+}
+
+.half-width {
+  padding-bottom: 20px;
 }

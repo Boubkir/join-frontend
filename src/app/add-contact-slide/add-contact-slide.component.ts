@@ -56,6 +56,10 @@ export class AddContactSlideComponent {
   }
 
   triggerShowSlider() {
-    this.onShowSlider.emit();
+      const background = document.querySelector('.background') as HTMLElement;
+      background.classList.add('closing');
+      setTimeout(() => {
+        this.onShowSlider.emit();
+      }, 600); 
   }
 }

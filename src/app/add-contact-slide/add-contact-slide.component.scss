@@ -11,9 +11,13 @@
   animation: slideFromRight 500ms ease-in-out forwards;
 }
 
+.background.closing {
+  animation: slideFromLeft 500ms ease-in-out forwards;
+}
+
 .content {
-  width: 830px;
-  height: 475px;
+  width: 969px;
+    height: 475px;
   border-radius: 24px;
   background: #fff;
   overflow: hidden;
@@ -78,7 +82,8 @@
   box-sizing: border-box;
   align-items: center;
   justify-content: center;
-  padding: 53px 37px;
+  width: 494.4px;
+  gap: 67.2px;
 
   @media (max-width: 1000px) {
     padding: 0 8vw;
@@ -96,7 +101,7 @@
   color: white;
   font-weight: 500;
   overflow: hidden;
-  background-color: var(--main-white);
+  background-color: #D1D1D1;
 
   img {
     max-height: 96px;

@@ -11,6 +11,10 @@
   animation: slideFromRight 500ms ease-in-out forwards;
 }
 
+.background.closing {
+  animation: slideFromLeft 500ms ease-in-out forwards;
+}
+
 .content {
   width: 969px;
   height: 475px;

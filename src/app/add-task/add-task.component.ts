@@ -4,6 +4,7 @@ import { SharedDataService } from '../services/shared-data.service';
 import { Task } from '../models/task.model';
 import { AuthService } from '../services/auth.service';
 import { User } from '../models/user.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-task',
@@ -37,7 +38,8 @@ export class AddTaskComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private data: SharedDataService,
-    private auth: AuthService
+    private auth: AuthService,
+    private router:Router
   ) {
     this.taskForm = this.formBuilder.group({
       title: ['', Validators.required],
@@ -119,11 +121,10 @@ export class AddTaskComponent implements OnInit {
         status: 'open',
       };
 
-      console.log(newTask);
-
       this.data.createTask(newTask).subscribe(
         () => {
           this.isTaskCreated = true;
+          setTimeout(() => this.router.navigate(['/board']),700);
         },
         (error) => {
           console.error('Error creating task:', error);

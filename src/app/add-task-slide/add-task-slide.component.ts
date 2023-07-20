@@ -1,4 +1,10 @@
-import { Component, ElementRef, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  EventEmitter,
+  Output,
+  ViewChild,
+} from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
 import { SharedDataService } from '../services/shared-data.service';
 import { Task } from '../models/task.model';
@@ -125,6 +131,7 @@ export class AddTaskSlideComponent {
       this.data.createTask(newTask).subscribe(
         () => {
           this.isTaskCreated = true;
+          this.triggerShowSlider()
         },
         (error) => {
           console.error('Error creating task:', error);
@@ -188,6 +195,10 @@ export class AddTaskSlideComponent {
   }
 
   triggerShowSlider() {
-    this.onShowSlider.emit();
+    const background = document.querySelector('.background') as HTMLElement;
+    background.classList.add('closing');
+     setTimeout(() => {
+       this.onShowSlider.emit();
+     }, 600); 
   }
 }

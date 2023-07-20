@@ -127,5 +127,12 @@ input {
 
 .fixed-position {
   position: fixed;
-  display: none;
+  top: 80px;
+  right: 0;
+  left: 232px;
+
+  @media (max-width: 590px) {
+    position: fixed;
+    display: none;
+  }
 }

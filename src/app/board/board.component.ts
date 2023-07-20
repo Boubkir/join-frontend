@@ -156,7 +156,7 @@ export class BoardComponent implements OnInit {
   addTaskSlide() {
     this.openAddTaskSlide = !this.openAddTaskSlide;
     this.loadTasks();
-  }
+    }
 
   showBigCard() {
     this.openBigCard = !this.openBigCard;
