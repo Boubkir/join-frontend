@@ -59,7 +59,6 @@ export class BoardComponent implements OnInit {
         addedIds.add(task['id']);
       }
     }
-
     return filteredTasks;
   }
 
@@ -140,23 +139,25 @@ export class BoardComponent implements OnInit {
   }
 
   searchMatches() {
-    if (this.searchText.trim() === '') {
-      this.filteredTasks = this.tasks;
-    } else {
-      this.filteredTasks = this.tasks.filter((task: any) => {
-        return (
-          task.title.toLowerCase().includes(this.searchText.toLowerCase()) ||
-          task.description.toLowerCase().includes(this.searchText.toLowerCase())
-        );
-      });
-    }
+    const addedTaskIds: { [id: string]: boolean } = {}; 
+    this.filteredTasks = this.tasks.filter((task: any) => {
+      const lowerCaseSearchText = this.searchText.toLowerCase();
+      const isMatch =
+        task.title.toLowerCase().includes(lowerCaseSearchText) ||
+        task.description.toLowerCase().includes(lowerCaseSearchText);
+      if (isMatch && !addedTaskIds[task.id]) {
+        addedTaskIds[task.id] = true; 
+        return true; 
+      }
+      return false;
+    });
     this.filterMatches();
   }
 
   addTaskSlide() {
     this.openAddTaskSlide = !this.openAddTaskSlide;
     this.loadTasks();
-    }
+  }
 
   showBigCard() {
     this.openBigCard = !this.openBigCard;
