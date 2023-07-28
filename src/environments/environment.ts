@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  baseUrl: 'https://boubkir.pythonanywhere.com',
+  baseUrl: 'https://join-backend.boubkir-benamar.de',
 };

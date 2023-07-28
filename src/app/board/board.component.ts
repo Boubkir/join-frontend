@@ -25,11 +25,16 @@ export class BoardComponent implements OnInit {
   openAddTaskSlide: boolean = false;
   openBigCard: boolean = false;
   selectedTask!: Task;
+  alltasks: Task[];
 
-  constructor(private data: SharedDataService, private http: HttpClient) {}
+  constructor(
+    private data: SharedDataService,
+    private http: HttpClient,
+  ) {}
 
   ngOnInit(): void {
     this.loadTasks();
+
   }
 
   async loadTasks(): Promise<void> {
@@ -139,15 +144,15 @@ export class BoardComponent implements OnInit {
   }
 
   searchMatches() {
-    const addedTaskIds: { [id: string]: boolean } = {}; 
+    const addedTaskIds: { [id: string]: boolean } = {};
     this.filteredTasks = this.tasks.filter((task: any) => {
       const lowerCaseSearchText = this.searchText.toLowerCase();
       const isMatch =
         task.title.toLowerCase().includes(lowerCaseSearchText) ||
         task.description.toLowerCase().includes(lowerCaseSearchText);
       if (isMatch && !addedTaskIds[task.id]) {
-        addedTaskIds[task.id] = true; 
-        return true; 
+        addedTaskIds[task.id] = true;
+        return true;
       }
       return false;
     });
@@ -161,7 +166,9 @@ export class BoardComponent implements OnInit {
 
   showBigCard() {
     this.openBigCard = !this.openBigCard;
-    this.loadTasks();
+    if (!this.openBigCard) {
+      this.loadTasks();
+    }
   }
 
   onTaskSelected(task: Task) {
@@ -173,3 +180,4 @@ export class BoardComponent implements OnInit {
     this.onTaskSelected(task);
   }
 }
+

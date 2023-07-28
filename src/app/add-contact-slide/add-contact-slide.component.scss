@@ -9,6 +9,10 @@
   height: 100vh;
   width: 100vw;
   animation: slideFromRight 500ms ease-in-out forwards;
+
+  @media (max-width: 1000px) {
+    height: 100svh;
+  }
 }
 
 .background.closing {
@@ -17,7 +21,7 @@
 
 .content {
   width: 969px;
-    height: 475px;
+  height: 475px;
   border-radius: 24px;
   background: #fff;
   overflow: hidden;
@@ -26,7 +30,7 @@
 
   @media (max-width: 1000px) {
     flex-direction: column;
-    min-height: 100vh;
+    height: 100svh;
     width: 100vw;
     border-radius: unset;
 
@@ -101,7 +105,7 @@
   color: white;
   font-weight: 500;
   overflow: hidden;
-  background-color: #D1D1D1;
+  background-color: #d1d1d1;
 
   img {
     max-height: 96px;
@@ -112,7 +116,7 @@
     position: absolute;
     right: 50%;
     transform: translateX(50%);
-    top: calc(50% - 100px);
+    top: calc(50svh - 100px);
     z-index: 2;
     border: 2px solid var(--main-white);
     min-height: 120px;
@@ -144,7 +148,7 @@ form {
   }
 }
 
-.close{
+.close {
   position: absolute;
   top: 26px;
   right: 26px;

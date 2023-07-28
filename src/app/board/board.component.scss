@@ -9,6 +9,7 @@
   }
 
   @media (max-width: 750px) {
+    height: calc(100svh - 160px);
     padding: 65.6px 8vw 100px 8vw;
   }
 }
