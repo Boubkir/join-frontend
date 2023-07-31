@@ -48,7 +48,7 @@ form {
 }
 
 .drop-down {
-  width: 337.6px;
+  min-width: 337.6px;
   border-radius: 8px;
   border: 1px solid var(--style, #d1d1d1);
   background: var(--main-white);

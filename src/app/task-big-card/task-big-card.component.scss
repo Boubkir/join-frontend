@@ -9,6 +9,7 @@
   animation: slideFromRight 500ms ease-in-out forwards;
   @media (max-width: 590px) {
     position: absolute;
+    top: 80px;
     bottom: 80px;
     z-index: 1;
     overflow-x: hidden;
@@ -55,7 +56,7 @@ form {
 }
 
 .drop-down {
-  width: 337.6px;
+  min-width: 337.6px;
   gap: 8px;
   border-radius: 8px;
   border: 1px solid var(--style, #d1d1d1);
@@ -75,9 +76,6 @@ form {
 .drop-down-open {
   overflow-y: scroll;
   overflow-x: hidden;
-  .db {
-    border: none;
-  }
 }
 
 .db {
@@ -90,7 +88,6 @@ form {
   width: 337.6px;
   box-sizing: border-box;
   border-radius: 8px;
-  border: 1px solid var(--style, #d1d1d1);
   background: var(--main-white);
 }
 
@@ -263,7 +260,6 @@ h3 {
     width: 100vw;
     height: calc(100vh - 145px);
     position: absolute;
-    top: 80px;
     bottom: 80px;
     box-sizing: border-box;
     overflow-x: hidden;

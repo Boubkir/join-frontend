@@ -34,12 +34,17 @@
     padding: 65.6px 8vw 100px 8vw;
     border-radius: unset;
     width: 100vw;
+     overflow-y: auto;
 
     input,
     textarea,
     .prio {
       min-width: unset;
       width: 83vw !important;
+
+      button{
+        width: 33%;
+      }
     }
     .drop-down {
       width: 84vw !important;
@@ -70,7 +75,7 @@ form {
 }
 
 .drop-down {
-  width: 337.6px;
+  min-width: 337.6px;
   border-radius: 8px;
   border: 1px solid var(--style, #d1d1d1);
   background: var(--main-white);
@@ -98,7 +103,7 @@ form {
 
 .prio button {
   display: flex;
-  width: 108.8px;
+  min-width: 108.8px;
   height: 40.8px;
   padding: 14.4px 8px;
   justify-content: center;

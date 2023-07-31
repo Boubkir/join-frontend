@@ -137,6 +137,7 @@ body {
 
 .center-align-absolute {
   position: absolute;
+  background-color: var(--main-white);
   right: 21px;
   top: 50%;
   transform: translateY(-50%);
