@@ -67,11 +67,11 @@ export class TaskBigCardComponent {
   }
 
   triggerShowSlider() {
-       const background = document.querySelector('.background') as HTMLElement;
-       background.classList.add('closing');
-       setTimeout(() => {
-         this.onShowSlider.emit();
-       }, 500); 
+    const background = document.querySelector('.background') as HTMLElement;
+    background.classList.add('closing');
+    setTimeout(() => {
+      this.onShowSlider.emit();
+    }, 500);
   }
 
   isUserSelected(user: User): boolean {
@@ -100,10 +100,12 @@ export class TaskBigCardComponent {
 
   deleteTask(id: any) {
     this.data.deleteTask(id).subscribe(
-      () => {
-      },
+      () => {},
       (error) => {
-        console.error('Error creating task:', error);
+        console.error(
+          'Sie haben keine berechtigung den Task zu löschen:',
+          error
+        );
       }
     );
     this.triggerShowSlider();
@@ -124,8 +126,7 @@ export class TaskBigCardComponent {
         id: this.task.id,
       };
       this.data.editTask(editedTask, editedTask.id).subscribe(
-        () => {
-        },
+        () => {},
         (error) => {
           console.error('Error creating task:', error);
         }
